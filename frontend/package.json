@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs":"active",
+  "editor.formatOnSave": true,
   "scripts": {
     "dev": "webpack --mode development --watch",
     "build": "webpack --mode production",

@@ -1,2 +1,13 @@
+/* Colors */
+/**/
 * {
-  background: orange; }
+  background: #4b6ed1;
+  font-family: "Quicksand"; }
+
+h1 {
+  font-weight: 600;
+  font-style: italic;
+  text-align: center;
+  border: 3px solid white;
+  color: white;
+  padding: 10px; }

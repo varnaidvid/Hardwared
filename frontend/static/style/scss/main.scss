@@ -1,7 +1,9 @@
 @import "variables";
+@import "homepage";
+@import "button";
 
 * {
-  background: $main;
+  background: $gray;
   font-family: "Quicksand";
 }
 
@@ -10,6 +12,21 @@ h1 {
   font-style: italic;
   text-align: center;
   border: 3px solid white;
-  color: white;
+  color: $white;
   padding: 10px;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $lightGray1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
 }

@@ -1,7 +1,17 @@
 /* Colors */
 /**/
+/* Colors */
+/**/
+.mainBtn {
+  padding: 16px;
+  background-color: transparent;
+  border-radius: 20px;
+  border: 2px solid #676eff;
+  color: #eeeeee;
+  cursor: pointer; }
+
 * {
-  background: #4b6ed1;
+  background: #23232e;
   font-family: "Quicksand"; }
 
 h1 {
@@ -9,5 +19,18 @@ h1 {
   font-style: italic;
   text-align: center;
   border: 3px solid white;
-  color: white;
+  color: #eeeeee;
   padding: 10px; }
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 20px; }
+
+::-webkit-scrollbar-track {
+  background-color: transparent; }
+
+::-webkit-scrollbar-thumb {
+  background-color: #8a8a8f;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box; }

@@ -6,7 +6,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hardwared</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="{% static 'frontend/bootstrap.css' %}"
+      type="text/css"
+    />
+    <script src="{% static 'frontend/bootstrap.min.js' %}"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
@@ -19,9 +25,7 @@
     />
   </head>
   <body>
-    <div id="main">
-      <div id="app"></div>
-    </div>
+    <div id="app"></div>
     <script src="{% static 'frontend/main.js' %}"></script>
   </body>
 </html>

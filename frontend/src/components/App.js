@@ -1,39 +1,37 @@
 import React, { Component } from "react"
 import { render } from "react-dom"
-import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom"
-import HomePage from "./views/HomePage"
-import NavBar from "./views/NavBar"
-import AboutUs from "./views/AboutUs"
-import Services from "./views/Services"
-import Products from "./views/Products"
-import ContactUs from "./views/ContactUs"
+import { BrowserRouter as Router, Switch, Route, NavLink} from "react-router-dom"
+import { HomePage, AboutUs, Services, Products, ContactUs, ViewBase, NavBar } from "./views"
 
 export default function App() {
     return (
-        <>
-            <NavBar/>
+        <ViewBase>
             <Router>
                 <Switch>
-                    <Route exact path="/rolunk">
+                    <Route path="/rolunk">
+                        <NavBar/>
                         <AboutUs/>
                     </Route>
                     <Route path="/szolgaltatasok">
+                        <NavBar/>
                         <Services/>
                     </Route>
                     <Route path="/termekek">
+                        <NavBar/>
                         <Products/>
                     </Route>
                     <Route path="/elerhetoseg">
+                        <NavBar/>
                         <ContactUs/>
                     </Route>
-                    <Route exact path="/">
+                    <Route path="/">
+                        <NavBar/>
                         <HomePage/>
                     </Route>
                 </Switch>
             </Router>
-        </>
+        </ViewBase>
     )
 }
 
-const appDiv = document.getElementById("app")
-render(<App/>, appDiv)
+render(<App/>, document.getElementById("app"))

@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { render } from "react-dom"
 import { BrowserRouter as Router, Switch, Route, NavLink} from "react-router-dom"
-import { HomePage, AboutUs, Services, Products, ContactUs, ViewBase, NavBar } from "./views"
+import { HomePage, AboutUs, Services, Products, ContactUs, ViewBase, NavBar, Footer } from "./views"
 
 export default function App() {
     return (
@@ -27,6 +27,7 @@ export default function App() {
                     <Route path="/">
                         <NavBar/>
                         <HomePage/>
+                        <Footer/>
                     </Route>
                 </Switch>
             </Router>

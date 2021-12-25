@@ -56,6 +56,85 @@
     }
   }
 
+  @media (max-width: 767px) {
+    .third-section {
+      text-align: center;
+      margin: 0 auto;
+      p {
+        text-align: center !important;
+      }
+      img {
+        width: 60% !important;
+        margin: 0 auto;
+      }
+      .main-btn {
+        margin-bottom: 20px;
+      }
+      .specs {
+        .col-6:not([data-value="12-mag"]):not([data-value="5.0-Ghz"]) {
+          margin-top: 40px;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    .first-section {
+      .bg-text {
+        top: 50px !important;
+      }
+      .main-btn {
+        margin-top: 100px !important;
+        margin-bottom: 40px;
+      }
+    }
+
+    .second-section {
+      .bg-text {
+        top: 150px !important;
+        left: -130px !important;
+      }
+    }
+
+    .third-section {
+      .bg-text {
+        top: 400px !important;
+        left: -80px !important;
+      }
+      .specs {
+        .col-6 {
+          margin-top: 30px;
+          padding-bottom: 10px;
+        }
+        .col-6[data-value="5.0-Ghz"] {
+          border-bottom: 2px solid $main;
+        }
+      }
+    }
+    .fourth-section {
+      .md-divider {
+        width: 150%;
+        background: $lightGray2;
+        opacity: 1;
+        height: 6px;
+        margin-left: -20%;
+        position: relative;
+        margin-bottom: 30px;
+        transform: rotate(-5deg);
+      }
+      .second-item {
+        text-align: right;
+        .bg-text {
+          margin-left: unset !important;
+          right: -70px !important;
+        }
+        .main-btn {
+          right: 0;
+        }
+      }
+    }
+  }
+
   .first-section {
     margin-top: 75px;
   }
@@ -93,8 +172,8 @@
       opacity: 1;
       margin-top: 10px;
       margin-bottom: 16px;
-      width: 30px;
-      height: 5px;
+      width: 25px;
+      height: 3px;
       margin-right: auto;
       margin-left: auto;
     }
@@ -132,8 +211,51 @@
       color: $lightGray1;
       font-size: 16px;
     }
+    img {
+      margin-top: -40px;
+    }
     .specs {
-      margin-top: 100px;
+      margin-top: 30px;
+    }
+  }
+
+  .third-fourth {
+    margin-top: 50px;
+    margin-bottom: 0;
+  }
+  .fourth {
+    padding: 0 75px !important;
+  }
+
+  .fourth-section {
+    .divider {
+      margin: 0 auto;
+      position: relative;
+      height: 100%;
+      width: 6px !important;
+      background-color: $lightGray2;
+      opacity: 1;
+    }
+    .sup-title {
+      color: $lightGray1;
+    }
+    .title {
+      margin-top: 60px;
+      font-weight: 600;
+      margin-bottom: 200px;
+    }
+    .bg-text {
+      margin-left: -70px;
+      bottom: 150px;
+    }
+    .main-btn {
+      position: absolute;
+      bottom: 75px;
+    }
+    .first-item,
+    .second-item {
+      position: relative;
+      padding: 60px 0;
     }
   }
 }

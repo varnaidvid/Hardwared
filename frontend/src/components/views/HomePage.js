@@ -28,7 +28,7 @@ export const SlideShow = () => {
 
 export const SecondSectionItem = ({...props}, {children}) => {
     return (
-        <div className="col-xs-12 col-lg-4 text-center">
+        <div className="col-12 col-lg-4 text-center">
             <img src={`/static/images/svg/${props.icon}.svg`} className={`icon d-block mx-auto ${props.class}`} alt="Ikon" title="Ikon"/>
             <h2 className="second-title title">{props.title}</h2>
             <hr/>
@@ -39,8 +39,8 @@ export const SecondSectionItem = ({...props}, {children}) => {
 
 export const ThirdSectionItem = ({...props}, {children}) => {
     return (
-        <div className="col-xs-6 col-md-4 col-lg-2">
-            <p className="sm-text">Up to</p>
+        <div className="col-6 col-md-4 col-lg-2" data-value={`${props.main}`}>
+            <p className="sm-text fr-sm-text">Akár</p>
             <h2>{props.main}</h2>
             <p className="sm-text">{props.under}</p>
         </div>
@@ -50,41 +50,50 @@ export const ThirdSectionItem = ({...props}, {children}) => {
 export default function HomePage(){
     return (
         <>
+        <div className="container">
             <div className="main-wrapper">
                 <div className="first-section">
                     <div className="row">
-                        <div className="col-xs-12 col-lg-7">
-                            <h1 className="bg-text d-none d-lg-block">Hardver</h1>
+                        <div className="col-12 col-lg-7">
+                            <h1 className="bg-text d-none d-md-block">Hardver</h1>
                             <h5 className="sup-title">Várnai Dávid</h5>
                             <h1 className="main-title title">Számítástechnikai<br/>Szaküzlet</h1>
                             <a className="main-btn">Szolgáltatások.</a>
                         </div>
-                        <div className="col-xs-12 col-lg-5">
+                        <div className="col-12 col-lg-5">
                             <SlideShow/>
                         </div>
                     </div>
                 </div>
             </div>
-            <hr className="main-hr"/>
+        </div>
+
+        <hr className="main-hr first-hr"/>
+        
+        <div className="container">
             <div className="main-wrapper">
                 <div className="second-section">
-                    <h1 className="bg-text d-none d-lg-block">Technológia</h1>
+                    <h1 className="bg-text d-none d-md-block">Technológia</h1>
                     <div className="row">
-                        <SecondSectionItem icon={"chip"} class={"chip"} title={"INTEL & AMD"} desc={"Except lightning fast speeds and peak performance with Lynx gaming PC featuring the latest Intel or AMD processor."}/>
-                        <SecondSectionItem icon={"eye"} title={"GEFORCE GRAFIKA"} desc={"Discover unprecedented performance, power efficiency, and gaming experiences - driven bay the new NVIDIA Turing architecture"}/>
-                        <SecondSectionItem icon={"vr"} title={"VR KOMPATIBILIS"} desc={"With NVIDIA RTX 2060 and up graphics cards, theese gaming PCs are designed and tested to bring the Oculus Rift and HTC Vive to life."}/>
+                        <SecondSectionItem icon={"chip"} class={"chip"} title={"INTEL & AMD"} desc={"Csakis a villámgyors sebességgel és a csúcsteljesítménnyel rendelkező processzorokat használunk fel. Legyen az AMD vagy Intel."}/>
+                        <SecondSectionItem icon={"eye"} title={"GEFORCE GRAFIKA"} desc={"Fedezze fel a példátlan grafikai teljesítményt, energiahatékonyságot és élményt biztosító új NVIDIA architektúrák vezérlésével."}/>
+                        <SecondSectionItem icon={"vr"} title={"VR KOMPATIBILIS"} desc={"Az NVIDIA RTX 2060 és újabb grafikus kártyákkal ezeket a PC-ket úgy terveztük és teszteltük, hogy életre hozzák az Oculus Rift-et."}/>
                     </div>
                 </div>
             </div>
+        </div>
+
             <hr className="main-hr mt-4"/>
+
+        <div className="container">
             <div className="main-wrapper">
                 <div className="third-section">
                     <div className="row">
-                        <div className="col-xs-12 col-lg-5">
-                            <img src="/static/images/pcs/motherboard.png" className="d-block w-100" alt="Alaplap" title="Alaplap"/>
+                        <div className="col-12 col-lg-5">
+                            <img src="/static/images/pcs/pc6.png" className="d-block w-100" alt="Alaplap" title="Alaplap"/>
                         </div>
-                        <div className="col-xs-12 col-lg-7">
-                            <h1 className="bg-text d-none d-lg-block">Termékek</h1>
+                        <div className="col-12 col-lg-7">
+                            <h1 className="bg-text d-none d-md-block">Termékek</h1>
                             <h5 className="sup-title">Vásárolj most</h5>
                             <h1 className="title">Rendkívüli<br/>Teljesítmény</h1>
                             <p className="mt-2 mb-3">Több mint 20 éves szakértelmünket adjuk bele a nagy teljesítményű PC-k gyártásában, különös tekintettel a hőtechnikai tervezésre, légáramlatra. Minden alkatrészt optimalizálunk és összehasonlítunk, hogy a teljesítmény új szintjét hozzuk létre, amely több, mint a részek összege.</p>
@@ -93,14 +102,51 @@ export default function HomePage(){
                     </div>
                     <div className="row specs">
                         <ThirdSectionItem main={"12-mag"} under={"Processzor"}/>
-                        <ThirdSectionItem main={"5.0 Ghz"} under={"Turbó órajel"}/>
-                        <ThirdSectionItem main={"128 GB"} under={"Memória"}/>
-                        <ThirdSectionItem main={"3.5 GB/s"} under={"SSD olvasási sebesség"}/>
-                        <ThirdSectionItem main={"15 TB"} under={"Tárhely"}/>
-                        <ThirdSectionItem main={"260 TFlops"} under={"Számolási képesség"}/>
+                        <ThirdSectionItem main={"5.0-Ghz"} under={"Turbó órajel"}/>
+                        <ThirdSectionItem main={"128-GB"} under={"Memória"}/>
+                        <hr className="specs-hr d-none"/>
+                        <ThirdSectionItem main={"3.5-GB/s"} under={"SSD olvasási sebesség"}/>
+                        <ThirdSectionItem main={"15-TB"} under={"Tárhely"}/>
+                        <ThirdSectionItem main={"50-TFlops"} under={"Számolási képesség"}/>
                     </div>
                 </div>
             </div>
+        </div>
+
+            <hr className="main-hr mt-4 third-fourth"/>
+
+        <div className="container">
+            <div className="main-wrapper fourth">
+                <div className="fourth-section">
+                    <div className="row">
+                        <div className="col-12 col-lg-5 first-item">
+                            <h1 className="bg-text d-none d-md-block">Teszt</h1>
+                            <h5 className="sup-title">Megfelel a költségvetéshez és a teljesítményhez.</h5>
+                            <h1 className="title">Egyedi gaming<br/>rendszer</h1>
+                            <a className="main-btn">Szerkesztés.</a>
+                        </div>
+
+                        <div className="col-lg-2">
+                            <hr className="divider"/>
+                        </div>
+
+                        <div className="d-block d-lg-none">
+                            <hr className="md-divider"/>
+                        </div>
+
+                        <div className="col-12 col-lg-5 second-item">
+                            <h1 className="bg-text d-none d-md-block">Segíts</h1>
+                            <h5 className="sup-title">Kérdése van? Keresse az ügyfélszolgálatot.</h5>
+                            <h1 className="title">ügyfélszolgálat</h1>
+                            <a className="main-btn">Segítség.</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <hr className="main-hr third-fourth mt-0"/>
+
         </>
 
     )

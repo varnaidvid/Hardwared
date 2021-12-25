@@ -7,25 +7,61 @@ html {
   background: $gray;
   color: $white;
   font-family: "Quicksand";
-  overflow: hidden;
+  overflow-y: overlay;
+  padding: 0;
+  margin: 0;
 }
 
 #main {
   height: 100vh;
   width: 100vw;
-  display: flex;
-  overflow-y: scroll;
+  position: relative;
+  display: block;
+  overflow-y: overlay;
   overflow-x: hidden;
   color: $white;
+  padding: 0 !important;
 }
 
 .main-hr {
   width: 100%;
+  position: relative;
   margin: 50px auto;
-  height: 8px !important;
-  border-radius: 50px;
+  height: 6px !important;
   background-color: $lightGray2;
   opacity: 1;
+}
+
+@media (max-width: 767px) {
+  .container {
+    max-width: 95%;
+  }
+}
+@media (max-width: 500px) {
+  #main {
+    .main-title {
+      font-size: 30px !important;
+    }
+    .first-section {
+      .main-btn {
+        margin-top: 10px;
+        margin-bottom: 15px;
+      }
+    }
+    .carousel-control-next {
+      top: unset;
+      bottom: -50px;
+      right: 100px;
+    }
+    .carousel-control-prev {
+      top: unset;
+      bottom: -50px;
+      left: 100px;
+    }
+    .first-hr {
+      margin-top: 100px;
+    }
+  }
 }
 
 /* Texts */
@@ -59,7 +95,7 @@ p {
 .nav-link {
   color: $lightGray1;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 16px;
 }
 .nav-link.active,
 .nav-link:hover {
@@ -70,8 +106,70 @@ p {
   margin-left: -5px;
 }
 
-/* Button */
+/* Footer */
+footer {
+  background-color: $darkGray;
+  .support {
+    display: flex;
+    position: relative;
+    p {
+      margin-top: 13px;
+      margin-left: 10px;
+    }
+  }
 
+  .footer-wrapper {
+    padding: 60px 0;
+  }
+  hr {
+    width: 100%;
+    margin: 0;
+    height: 6px !important;
+    background-color: $lightGray2;
+    opacity: 1;
+  }
+  p {
+    color: $lightGray1;
+    font-size: 14px;
+    text-align: justify;
+  }
+  .small-desc {
+    margin: 25px 0;
+    line-height: 19px;
+  }
+  .copyright {
+    padding: 15px 0;
+    margin-bottom: 0;
+  }
+  .logo {
+    width: 100px;
+  }
+  .footer-icon-link img {
+    width: 20px;
+    margin: 0 auto;
+    display: block;
+  }
+  .fb {
+    width: 14px !important;
+    margin-top: 10px !important;
+  }
+  .sm-p {
+    font-size: 12px;
+  }
+  ul li {
+    margin-bottom: 20px;
+  }
+  ul li a {
+    font-size: 15px;
+    color: $white;
+    text-decoration: none;
+  }
+  ul li a:hover {
+    color: $white;
+  }
+}
+
+/* Button */
 .main-btn {
   padding: 10px 20px !important;
   background-color: transparent;
@@ -101,10 +199,13 @@ p {
   z-index: -1;
   transition: all 0.4s;
 }
+.main-btn:active:not(.nav-link) {
+  transform: translateY(-1px);
+}
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 20px;
+  width: 18px;
 }
 ::-webkit-scrollbar-track {
   background-color: transparent;

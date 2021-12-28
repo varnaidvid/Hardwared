@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom"
 
 export default function NavBar(){
     return (
-        <div className="main-wrapper">
+        <div className="main-wrapper custom-wrapper">
             <nav className="navbar navbar-expand-lg navbar-dark">
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -29,7 +29,7 @@ export default function NavBar(){
                             <NavLink to="/szolgaltatasok" className="nav-link" activeClassName="active">Szolgáltatások.</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="/elerhetoseg" className="nav-link" activeClassName="active">Elérhetőség.</NavLink>
+                            <NavLink to="/elerhetoseg" className="nav-link before-btn" activeClassName="active">Elérhetőség.</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink to="/bejelentkezes" className="nav-link main-btn" activeClassName="active">Bejelentkezés.</NavLink>

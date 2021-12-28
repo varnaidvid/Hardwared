@@ -27,40 +27,62 @@ html {
   width: 100%;
   position: relative;
   margin: 50px auto;
-  height: 6px !important;
+  height: 5px !important;
   background-color: $lightGray2;
   opacity: 1;
 }
 
-@media (max-width: 767px) {
-  .container {
-    max-width: 95%;
+@media (max-width: 991px) {
+  .navbar-nav {
+    flex-direction: row !important;
+    li {
+      margin-right: 18px;
+    }
   }
 }
-@media (max-width: 500px) {
-  #main {
-    .main-title {
-      font-size: 30px !important;
+
+@media (min-width: 767px) {
+  #footer-2row {
+    position: relative;
+  }
+  .col-md-2 {
+    ul {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
     }
-    .first-section {
-      .main-btn {
-        margin-top: 10px;
-        margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-wrapper {
+    padding: 60px 20px !important;
+    .col-md-2 {
+      ul {
+        display: flex !important;
+        margin: 0 auto;
+        li {
+          margin: 0 auto;
+          img:not(.fb) {
+            margin-top: 10px;
+            width: 22px;
+          }
+        }
       }
     }
-    .carousel-control-next {
-      top: unset;
-      bottom: -50px;
-      right: 100px;
+    .footer-links {
+      margin: 10px 0;
     }
-    .carousel-control-prev {
-      top: unset;
-      bottom: -50px;
-      left: 100px;
-    }
-    .first-hr {
-      margin-top: 100px;
-    }
+  }
+  .custom-wrapper {
+    margin: 0 20px;
+  }
+}
+
+@media (min-width: 575px) and (max-width: 767px) {
+  .main-container {
+    max-width: 100% !important;
   }
 }
 
@@ -117,14 +139,16 @@ footer {
       margin-left: 10px;
     }
   }
-
+  .footer-links {
+    display: flex !important;
+  }
   .footer-wrapper {
     padding: 60px 0;
   }
   hr {
     width: 100%;
     margin: 0;
-    height: 6px !important;
+    height: 5px !important;
     background-color: $lightGray2;
     opacity: 1;
   }

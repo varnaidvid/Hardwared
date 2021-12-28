@@ -1,9 +1,8 @@
 import React, {Component} from "react"
-import { Footer } from "."
 
 export default function ViewBase({ children }){
     return (
-        <main id="main" className="container">
+        <main id="main" className="container main-container">
             { children }
         </main>
     )

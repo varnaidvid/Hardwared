@@ -28,7 +28,7 @@ export const SlideShow = () => {
 
 export const SecondSectionItem = ({...props}, {children}) => {
     return (
-        <div className="col-12 col-lg-4 text-center">
+        <div className="col-12 col-lg-4 text-center" data-value={`${props.icon}`}>
             <img src={`/static/images/svg/${props.icon}.svg`} className={`icon d-block mx-auto ${props.class}`} alt="Ikon" title="Ikon"/>
             <h2 className="second-title title">{props.title}</h2>
             <hr/>
@@ -50,7 +50,7 @@ export const ThirdSectionItem = ({...props}, {children}) => {
 export default function HomePage(){
     return (
         <>
-        <div className="container">
+        <div className="container custom-container">
             <div className="main-wrapper">
                 <div className="first-section">
                     <div className="row">
@@ -58,7 +58,7 @@ export default function HomePage(){
                             <h1 className="bg-text d-none d-md-block">Hardver</h1>
                             <h5 className="sup-title">Várnai Dávid</h5>
                             <h1 className="main-title title">Számítástechnikai<br/>Szaküzlet</h1>
-                            <a className="main-btn">Szolgáltatások.</a>
+                            <a className="main-btn">Rólunk.</a>
                         </div>
                         <div className="col-12 col-lg-5">
                             <SlideShow/>
@@ -70,7 +70,7 @@ export default function HomePage(){
 
         <hr className="main-hr first-hr"/>
         
-        <div className="container">
+        <div className="container custom-container">
             <div className="main-wrapper">
                 <div className="second-section">
                     <h1 className="bg-text d-none d-md-block">Technológia</h1>
@@ -83,9 +83,9 @@ export default function HomePage(){
             </div>
         </div>
 
-            <hr className="main-hr mt-4"/>
+        <hr className="main-hr mt-4"/>
 
-        <div className="container">
+        <div className="container custom-container">
             <div className="main-wrapper">
                 <div className="third-section">
                     <div className="row">
@@ -113,17 +113,17 @@ export default function HomePage(){
             </div>
         </div>
 
-            <hr className="main-hr mt-4 third-fourth"/>
+        <hr className="main-hr mt-4 third-fourth"/>
 
-        <div className="container">
+        <div className="container custom-container">
             <div className="main-wrapper fourth">
                 <div className="fourth-section">
                     <div className="row">
                         <div className="col-12 col-lg-5 first-item">
-                            <h1 className="bg-text d-none d-md-block">Teszt</h1>
+                            <h1 className="bg-text d-none d-sm-block">Teszt</h1>
                             <h5 className="sup-title">Megfelel a költségvetéshez és a teljesítményhez.</h5>
-                            <h1 className="title">Egyedi gaming<br/>rendszer</h1>
-                            <a className="main-btn">Szerkesztés.</a>
+                            <h1 className="title">Egyedi gaming <br/>rendszer</h1>
+                            <a className="main-btn">Összeállítás.</a>
                         </div>
 
                         <div className="col-lg-2">
@@ -135,7 +135,7 @@ export default function HomePage(){
                         </div>
 
                         <div className="col-12 col-lg-5 second-item">
-                            <h1 className="bg-text d-none d-md-block">Segíts</h1>
+                            <h1 className="bg-text d-none d-sm-block">Segíts</h1>
                             <h5 className="sup-title">Kérdése van? Keresse az ügyfélszolgálatot.</h5>
                             <h1 className="title">ügyfélszolgálat</h1>
                             <a className="main-btn">Segítség.</a>
@@ -145,7 +145,7 @@ export default function HomePage(){
             </div>
         </div>
 
-            <hr className="main-hr third-fourth mt-0"/>
+        <hr className="main-hr third-fourth mt-0"/>
 
         </>
 

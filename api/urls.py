@@ -1,6 +1,6 @@
-from django.urls import path
-from .views import ComputerView
+from django.urls import path, re_path
+from . import views
 
 urlpatterns = [
-    path('', ComputerView.as_view()),
+    re_path(r'^$', views.UserCreate.as_view(), name='account-create'),
 ]

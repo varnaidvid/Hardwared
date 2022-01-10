@@ -1,6 +1,7 @@
-from django.urls import path, re_path
+from django.urls import path, re_path, include
 from . import views
 
 urlpatterns = [
-    re_path(r'^$', views.UserCreate.as_view(), name='account-create'),
+    path("", views.ComputerView.as_view()),
+    path("user/create/", views.UserCreate.as_view(), name="create_user")
 ]

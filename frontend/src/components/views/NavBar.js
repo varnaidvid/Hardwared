@@ -1,7 +1,15 @@
-import React, {Component} from "react"
+import React, {Component, useEffect, useState} from "react"
 import { NavLink } from "react-router-dom"
 
 export default function NavBar(){
+    const [isAuth, setIsAuth] = useState(false)
+
+    useEffect(() => {
+        if (localStorage.getItem("access_token") !== null) {
+            setIsAuth(true)
+        }
+    }, [])
+
     return (
         <div className="main-wrapper custom-wrapper">
             <nav className="navbar navbar-expand-lg navbar-dark">
@@ -31,9 +39,16 @@ export default function NavBar(){
                         <li className="nav-item">
                             <NavLink to="/elerhetoseg" className="nav-link before-btn" activeClassName="active">Elérhetőség.</NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink to="/bejelentkezes" className="nav-link main-btn" activeClassName="active">Bejelentkezés.</NavLink>
-                        </li>
+                        { isAuth === true ? (
+                            <li className="nav-item">
+                                <NavLink to="/bejelentkezes" className="nav-link main-btn" activeClassName="active">Bejelentkezés.</NavLink>
+                            </li>
+                        ) : (
+                            <li className="nav-item">
+                                <NavLink to="/fiok" className="nav-link main-btn" activeClassName="active">Fiók.</NavLink>
+                            </li>
+                        )}
+
                     </ul>
                 </div>
             </nav>

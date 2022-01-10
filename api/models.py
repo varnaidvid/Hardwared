@@ -4,15 +4,10 @@ from django.utils import timezone
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-class Profile(models.Model):
-    roles = (
-        (0, "default"),
-        (1, "support"),
-        (2, "admin"),
-    )
+from rest_framework.authtoken.models import Token
 
+class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    role = models.CharField(max_length=10, choices=roles, default=0)
     birth_date = models.DateField(blank=True, null=True)
     country = models.CharField(max_length=30, blank=True)
 
@@ -22,8 +17,10 @@ class Profile(models.Model):
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
-    instance.profile.save()
+        profile = Profile.objects.create(user=instance)
+        token = Token.objects.create(user=instance)
+    profile.save()
+    token.save()
 
 class Computer(models.Model):
     generation = models.CharField(max_length=8, default="")

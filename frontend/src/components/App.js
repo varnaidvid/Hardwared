@@ -1,7 +1,7 @@
-import React, { Component } from "react"
+import React, { Component, useState, useEffect, Fragment } from "react"
 import { render } from "react-dom"
 import { BrowserRouter as Router, Switch, Route, NavLink} from "react-router-dom"
-import { HomePage, AboutUs, Services, Products, ContactUs, ViewBase, NavBar, Footer } from "./views"
+import { HomePage, AboutUs, Services, Products, ContactUs, ViewBase, NavBar, Footer, Login, Register } from "./views"
 
 function getCookie(name) {
     let cookieValue = null;
@@ -45,6 +45,14 @@ export default function App() {
                     <Route path="/elerhetoseg">
                         <NavBar/>
                         <ContactUs/>
+                    </Route>
+                    <Route path="/regisztracio">
+                        <NavBar/>
+                        <Register/>
+                    </Route>
+                    <Route path="/bejelentkezes">
+                        <NavBar/>
+                        <Login/>
                     </Route>
                     <Route path="/">
                         <NavBar/>

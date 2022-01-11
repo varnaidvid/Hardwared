@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "propxy": "http://localhost:3000",
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs":"active",
   "editor.formatOnSave": true,
@@ -27,7 +28,10 @@
     "css-loader": "^6.5.1",    
     "style-loader": "^3.3.1",
     "@tweenjs/tween.js": "^18.6.4",
-	"jquery": "^3.6.0"
+    "jquery": "^3.6.0",
+    "axios": "^0.19.0",
+    "react-alert": "^7.0.3",	
+	"react-alert-template-basic": "^1.0.2"
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.12.1",

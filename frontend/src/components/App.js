@@ -2,7 +2,11 @@ import React, { Component, useState, useEffect, Fragment } from "react"
 import { render } from "react-dom"
 import { BrowserRouter as Router, Switch, Route, NavLink} from "react-router-dom"
 import { HomePage, AboutUs, Services, Products, ContactUs, ViewBase, NavBar, Footer, Login, Register } from "./views"
+import { transitions, positions, Provider as AlertProvider } from "react-alert"
+import AlertTemplate from "react-alert-template-basic"
 
+
+// CSRFToken
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -17,51 +21,63 @@ function getCookie(name) {
     }
     return cookieValue;
 }
-const csrftoken = getCookie('csrftoken');
-export const CSRFToken = () => {
-    return (
-        <input type="hidden" name="csrfmiddlewaretoken" value={csrftoken} />
-    );
-};
+export const CSRFToken = getCookie('csrftoken');
+
+// Alert
+const AlertOptions = {
+    position: positions.TOP_RIGHT,
+    timeout: 5000,
+    offset: "30px",
+    transition: transitions.SCALE
+}
 
 
+// Main App
 export default function App() {
     return (
-        <ViewBase>
-            <Router>
-                <Switch>
-                    <Route path="/rolunk">
-                        <NavBar/>
-                        <AboutUs/>
-                    </Route>
-                    <Route path="/szolgaltatasok">
-                        <NavBar/>
-                        <Services/>
-                    </Route>
-                    <Route path="/termekek">
-                        <NavBar/>
-                        <Products/>
-                    </Route>
-                    <Route path="/elerhetoseg">
-                        <NavBar/>
-                        <ContactUs/>
-                    </Route>
-                    <Route path="/regisztracio">
-                        <NavBar/>
-                        <Register/>
-                    </Route>
-                    <Route path="/bejelentkezes">
-                        <NavBar/>
-                        <Login/>
-                    </Route>
-                    <Route path="/">
-                        <NavBar/>
-                        <HomePage/>
-                        <Footer/>
-                    </Route>
-                </Switch>
-            </Router>
-        </ViewBase>
+        <AlertProvider template={AlertTemplate} {...AlertOptions}>
+            <ViewBase>
+                <Router>
+                    <Switch>
+                        <Route path="/rolunk">
+                            <NavBar/>
+                            <AboutUs/>
+                            <Footer/>
+                        </Route>
+                        <Route path="/szolgaltatasok">
+                            <NavBar/>
+                            <Services/>
+                            <Footer/>
+                        </Route>
+                        <Route path="/termekek">
+                            <NavBar/>
+                            <Products/>
+                            <Footer/>
+                        </Route>
+                        <Route path="/elerhetoseg">
+                            <NavBar/>
+                            <ContactUs/>
+                            <Footer/>
+                        </Route>
+                        <Route path="/regisztracio">
+                            <NavBar/>
+                            <Register/>
+                            <Footer/>
+                        </Route>
+                        <Route path="/bejelentkezes">
+                            <NavBar/>
+                            <Login/>
+                            <Footer/>
+                        </Route>
+                        <Route path="/">
+                            <NavBar/>
+                            <HomePage/>
+                            <Footer/>
+                        </Route>
+                    </Switch>
+                </Router>
+            </ViewBase>
+        </AlertProvider>
     )
 }
 

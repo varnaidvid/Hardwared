@@ -5,7 +5,7 @@ export default function NavBar(){
     const [isAuth, setIsAuth] = useState(false)
 
     useEffect(() => {
-        if (localStorage.getItem("access_token") !== null) {
+        if (localStorage.getItem("TOKEN") !== null) {
             setIsAuth(true)
         }
     }, [])
@@ -41,11 +41,11 @@ export default function NavBar(){
                         </li>
                         { isAuth === true ? (
                             <li className="nav-item">
-                                <NavLink to="/bejelentkezes" className="nav-link main-btn" activeClassName="active">Bejelentkezés.</NavLink>
+                                <NavLink to="/fiok" className="nav-link main-btn" activeClassName="active" role="button" onClick={alert(localStorage.getItem("TOKEN"))}>Fiók.</NavLink>
                             </li>
                         ) : (
                             <li className="nav-item">
-                                <NavLink to="/fiok" className="nav-link main-btn" activeClassName="active">Fiók.</NavLink>
+                                <NavLink to="/bejelentkezes" className="nav-link main-btn" activeClassName="active">Bejelentkezés.</NavLink>
                             </li>
                         )}
 

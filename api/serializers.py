@@ -7,7 +7,6 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ("id", "username", "email", "password")
 
-
 class ComputerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Computer

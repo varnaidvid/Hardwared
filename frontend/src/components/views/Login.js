@@ -1,9 +1,7 @@
 import React, {Component} from "react"
 import axios from "axios"
-import { useAlert } from "react-alert"
 import { CSRFToken } from "../App"
 
-const alert = useAlert()
 
 export default class Login extends Component{
     constructor(props){
@@ -30,12 +28,11 @@ export default class Login extends Component{
             console.log(response)
         })
         .catch(function (error) {
-            alert.show(error.response.status)
+            console.log(error)
         })
-        event.preventDefault()
-    
+        event.preventDefault()    
     }
-
+     
 
     render() {
         return (

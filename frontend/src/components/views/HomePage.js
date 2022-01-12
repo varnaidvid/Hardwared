@@ -47,7 +47,7 @@ export const ThirdSectionItem = ({...props}, {children}) => {
     )
 }
 
-export default function HomePage(){
+export default function HomePage({...props}){
     return (
         <>
         <div className="container custom-container">
@@ -58,7 +58,12 @@ export default function HomePage(){
                             <h1 className="bg-text d-none d-md-block">Hardver</h1>
                             <h5 className="sup-title">Várnai Dávid</h5>
                             <h1 className="main-title title">Számítástechnikai<br/>Szaküzlet</h1>
-                            <a className="main-btn">Rólunk.</a>
+                            <a className="main-btn" role="button" onClick={() => {
+                                    localStorage.setItem("ALERT_TYPE", "primary")
+                                    localStorage.setItem("ALERT_TEXT", "Rólunk")
+                                    props.setIsAlert(true)
+                                }
+                            }>Rólunk.</a>
                         </div>
                         <div className="col-12 col-lg-5">
                             <SlideShow/>
@@ -97,7 +102,12 @@ export default function HomePage(){
                             <h5 className="sup-title">Vásárolj most</h5>
                             <h1 className="title">Rendkívüli<br/>Teljesítmény</h1>
                             <p className="mt-2 mb-3">Több mint 20 éves szakértelmünket adjuk bele a nagy teljesítményű PC-k gyártásában, különös tekintettel a hőtechnikai tervezésre, légáramlatra. Minden alkatrészt optimalizálunk és összehasonlítunk, hogy a teljesítmény új szintjét hozzuk létre, amely több, mint a részek összege.</p>
-                            <a className="main-btn">Termékek.</a>
+                            <a className="main-btn" role="button" onClick={() => {
+                                    localStorage.setItem("ALERT_TYPE", "primary")
+                                    localStorage.setItem("ALERT_TEXT", "Termékek")
+                                    props.setIsAlert(true)
+                                }
+                            }>Termékek.</a>                        
                         </div>
                     </div>
                     <div className="row specs">

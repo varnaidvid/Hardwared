@@ -1,14 +1,9 @@
-import React, {Component, useEffect, useState} from "react"
+import React, { Component, useEffect, useState, useContext } from "react"
 import { NavLink } from "react-router-dom"
+import { MainContext } from "../App"
 
-export default function NavBar(){
-    const [isAuth, setIsAuth] = useState(false)
-
-    useEffect(() => {
-        if (localStorage.getItem("TOKEN") !== null) {
-            setIsAuth(true)
-        }
-    }, [])
+export default function NavBar(props){
+    const [user, setUser, isAlert, setIsAlert] = useContext(MainContext)
 
     return (
         <div className="main-wrapper custom-wrapper">
@@ -39,9 +34,10 @@ export default function NavBar(){
                         <li className="nav-item">
                             <NavLink to="/elerhetoseg" className="nav-link before-btn" activeClassName="active">Elérhetőség.</NavLink>
                         </li>
-                        { isAuth === true ? (
+
+                        { user ? (
                             <li className="nav-item">
-                                <NavLink to="/fiok" className="nav-link main-btn" activeClassName="active" role="button" onClick={alert(localStorage.getItem("TOKEN"))}>Fiók.</NavLink>
+                                <NavLink to="/fiok" className="nav-link main-btn" activeClassName="active" role="button">Fiók.</NavLink>
                             </li>
                         ) : (
                             <li className="nav-item">

@@ -1,9 +1,11 @@
-import React, {Component} from "react"
+import React, { Component, useContext } from "react"
 import axios from "axios"
-import { CSRFToken } from "../App"
-
+import { CSRFToken, MainContext } from "../App"
 
 export default class Login extends Component{
+    
+    static contextType = MainContext
+
     constructor(props){
         super(props)
         this.state = {
@@ -20,17 +22,27 @@ export default class Login extends Component{
     }
 
     handleSubmit(event) {        
-        axios.post("http://localhost:3000/api/user/token/obtain/", {
+        event.preventDefault()
+
+        axios.post("http://localhost:3000/api/user/login/", {
             username: this.state.username,
             password: this.state.password
         })
-        .then(function (response) {
+        .then((response) => {
             console.log(response)
+
+            this.context[setUser(response.data)]
+            this.context[setIsAlert(true)]
+
+            localStorage.setItem("user", JSON.stringify(response.data))
+            localStorage.setItem("ALERT_TYPE", "success")
+            localStorage.setItem("ALERT_TEXT", "Sikeres bejelentkezés!")
+
+            axios.defaults.headers.common["Authorization"] = `Token ${response.data.token}`
         })
-        .catch(function (error) {
+        .catch(function(error) {
             console.log(error)
         })
-        event.preventDefault()    
     }
      
 

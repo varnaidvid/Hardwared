@@ -13,8 +13,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-WSGIIPassAuthorization = "On"
-
 SITE_ID = 1
 
 # Application definition
@@ -43,9 +41,6 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
     ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    )
 }
 
 MIDDLEWARE = [

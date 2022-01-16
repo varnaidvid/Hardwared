@@ -1,47 +1,53 @@
-import React, {Component} from "react"
+import React, { Component, useState } from "react"
 
-export default class Register extends Component{    
-    constructor(props){
-        super(props)
-        this.state = {
-            username: "",
-            password: "",
-            email: ""
-        }
+export default function Register(props) {
+    const [state, setState] = useState({
+        "username": "",
+        "email": "",
+        "password": "",
+        "password1": ""
+    })
 
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+    const handleChange = event => {
+        const { id, value } = event.target
+        setState(prevState => ({
+            ...prevState,
+            [id]: value
+        }))
     }
 
-    handleChange(event) {
-        this.setState({[event.target.name]: event.target.value})
-    }
-
-    handleSubmit(event) {
-        alert("A username and password was submitted: " + this.state.username + " " + this.state.password + " " + this.state.email)
+    const handleSubmit = event => {
         event.preventDefault()
+        if (state.password === state.password1) {
+            return 
+        } else {
+            return ""
+        }
     }
 
-    render() {
-        return (
-            <div>
-                Signup
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Username:
-                        <input name="username" type="text" value={this.state.username} onChange={this.handleChange}/>
-                    </label>
-                    <label>
-                        Email:
-                        <input name="email" type="email" value={this.state.email} onChange={this.handleChange}/>
-                    </label>
-                    <label>
-                        Password:
-                        <input name="password" type="password" value={this.state.password} onChange={this.handleChange}/>
-                    </label>
-                    <input type="submit" value="Submit"/>
-                </form>
-            </div>
-        )
-    }
+    return (
+        <div>
+            Signup
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Username:
+                    <input name="username" type="text" value={state.username} onChange={handleChange}/>
+                </label>
+                <label>
+                    Email:
+                    <input name="email" type="email" value={state.email} onChange={handleChange}/>
+                </label>
+                <label>
+                    Password:
+                    <input name="password" type="password" value={state.password} onChange={handleChange}/>
+                </label>
+                <label>
+                    Password confirmation:
+                    <input name="password1" type="password" value={state.password1} onChange={handleChange}/>
+                </label>
+                <input type="submit" value="Submit"/>
+            </form>
+        </div>
+    )
+
 }

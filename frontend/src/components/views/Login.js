@@ -1,69 +1,59 @@
-import React, { Component, useContext } from "react"
+import React, { Component, useContext, useState } from "react"
 import axios from "axios"
 import { CSRFToken, MainContext } from "../App"
+import { NavLink, useHistory } from "react-router-dom"
 
-export default class Login extends Component{
-    
-    static contextType = MainContext
+export default function Login(){
+    const [user, setUser, isAlert, setIsAlert] = useContext(MainContext)
 
-    constructor(props){
-        super(props)
-        this.state = {
-            username: "",
-            password: ""
-        }
+    const history = useHistory()
 
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-    }
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
 
-    handleChange(event) {
-        this.setState({[event.target.name]: event.target.value})
-    }
-
-    handleSubmit(event) {        
+    const handleSubmit = event => {        
         event.preventDefault()
 
         axios.post("http://localhost:3000/api/user/login/", {
-            username: this.state.username,
-            password: this.state.password
+            username: username,
+            password: password
         })
         .then((response) => {
             console.log(response)
 
-            this.context[setUser(response.data)]
-            this.context[setIsAlert(true)]
-
+            setUser(response.data)
             localStorage.setItem("user", JSON.stringify(response.data))
+
+            setIsAlert(true)
             localStorage.setItem("ALERT_TYPE", "success")
             localStorage.setItem("ALERT_TEXT", "Sikeres bejelentkezés!")
 
             axios.defaults.headers.common["Authorization"] = `Token ${response.data.token}`
+
+            history.push("/fiok", {message: "anyad"})
         })
         .catch(function(error) {
             console.log(error)
         })
     }
-     
 
-    render() {
-        return (
-            <div>
-                Login
-                <form onSubmit={this.handleSubmit} method="POST">
-                    <input type="hidden" name="csrfmiddlewaretoken" value={CSRFToken} />
+    return (
+        <div>
+            Login
+            <form method="POST" onSubmit={handleSubmit} action="/fiok">
+                <input type="hidden" name="csrfmiddlewaretoken" value={CSRFToken}/>
 
-                    <label>
-                        Username:
-                        <input name="username" type="text" value={this.state.username} onChange={this.handleChange}/>
-                    </label>
-                    <label>
-                        Password:
-                        <input name="password" type="password" value={this.state.password} onChange={this.handleChange}/>
-                    </label>
-                    <input type="submit" value="Submit"/>
-                </form>
-            </div>
-        )
-    }
+                <label>
+                    Username:
+                    <input name="username" type="text" value={username} onChange={event => setUsername(event.target.value)}/>
+                </label>
+                <label>
+                    Password:
+                    <input name="password" type="password" value={password} onChange={event => setPassword(event.target.value)}/>
+                </label>
+                <input type="submit" value="Submit"/>
+            </form>
+        </div>
+    )
+
 }

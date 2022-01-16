@@ -33,11 +33,6 @@ function getCookie(name) {
 export const CSRFToken = getCookie('csrftoken');
 
 
-
-//
-// Bind exclude if arrow functions
-//
-
 export const MainContext = createContext()
 
 // Main App
@@ -47,17 +42,20 @@ export default function App() {
     const [isAlert, setIsAlert] = useState(false)
     const Alert = (props) => {
         return (
-            <div className={`sticky alert alert-${props.type} alert-dismissible fade show`} role="alert">
+            <div className={`sticky alert alert-${props.type} alert-dismissible fade show text-center`} role="alert">
                 <strong>{props.text}</strong>
-                <button type="button" className="btn-close" onClick={() => {
-                        localStorage.removeItem("ALERT_TYPE")
-                        localStorage.removeItem("ALERT_TEXT")
-                        setIsAlert(false)
-                    }
-                }></button>
             </div>
         )
     } 
+    useEffect(() => {
+        if (localStorage.getItem("ALERT_TYPE")){
+            setTimeout(() => {
+                localStorage.removeItem("ALERT_TYPE")
+                localStorage.removeItem("ALERT_TEXT")
+                setIsAlert(false)
+            }, 4000)
+        } 
+    }, [localStorage.getItem("ALERT_TYPE")])
 
     // User
     const [user, setUser] = useState()

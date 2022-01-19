@@ -343,7 +343,10 @@ p {
 
 /* Footer */
 footer {
-  background-color: #1d1d29; }
+  background-color: #1d1d29;
+  position: relative;
+  bottom: 0;
+  width: 100%; }
   footer .support {
     display: flex;
     position: relative; }

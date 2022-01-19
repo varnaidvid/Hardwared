@@ -130,6 +130,9 @@ p {
 /* Footer */
 footer {
   background-color: $darkGray;
+  position: relative;
+  bottom: 0;
+  width: 100%;
   .support {
     display: flex;
     position: relative;

@@ -1,6 +1,7 @@
-import React, { Component, useState, useEffect, createContext } from "react"
+import React, { PureComponent, useState, useEffect, createContext } from "react"
 import { render } from "react-dom"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import toast, { Toaster } from "react-hot-toast"
 import { 
     HomePage, 
     AboutUs, 
@@ -35,27 +36,21 @@ export const CSRFToken = getCookie('csrftoken');
 
 export const MainContext = createContext()
 
+
+
 // Main App
 export default function App() {
 
     // Alert
-    const [isAlert, setIsAlert] = useState(false)
-    const Alert = (props) => {
-        return (
-            <div className={`sticky alert alert-${props.type} alert-dismissible fade show text-center`} role="alert">
-                <strong>{props.text}</strong>
-            </div>
-        )
-    } 
-    useEffect(() => {
-        if (localStorage.getItem("ALERT_TYPE")){
-            setTimeout(() => {
-                localStorage.removeItem("ALERT_TYPE")
-                localStorage.removeItem("ALERT_TEXT")
-                setIsAlert(false)
-            }, 4000)
-        } 
-    }, [localStorage.getItem("ALERT_TYPE")])
+    class Alert extends PureComponent{
+        render(){
+            return (
+                <div className={`sticky alert alert-${this.props.type} alert-dismissible fade show text-center`} role="alert">
+                    <strong>{this.props.message}</strong>
+                </div>
+            )
+        }
+    }
 
     // User
     const [user, setUser] = useState()
@@ -68,11 +63,12 @@ export default function App() {
     }, [user]) 
 
     return (
-        <MainContext.Provider value={[user, setUser, isAlert, setIsAlert]}>
+        <MainContext.Provider value={[user, setUser]}>
             <ViewBase>
-                { isAlert === true ? (
-                    <Alert type={localStorage.getItem("ALERT_TYPE")} text={localStorage.getItem("ALERT_TEXT")}/>
-                ) : null}
+                <Toaster toastOptions={{
+                    className: "alert",
+                    duration: 4000
+                }}/>
                 <Router>
                     <Switch>
                         <Route path="/rolunk">

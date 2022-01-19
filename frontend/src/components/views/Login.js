@@ -2,9 +2,10 @@ import React, { Component, useContext, useState } from "react"
 import axios from "axios"
 import { CSRFToken, MainContext } from "../App"
 import { NavLink, useHistory } from "react-router-dom"
+import toast from "react-hot-toast"
 
 export default function Login(){
-    const [user, setUser, isAlert, setIsAlert] = useContext(MainContext)
+    const [user, setUser] = useContext(MainContext)
 
     const history = useHistory()
 
@@ -24,15 +25,14 @@ export default function Login(){
             setUser(response.data)
             localStorage.setItem("user", JSON.stringify(response.data))
 
-            setIsAlert(true)
-            localStorage.setItem("ALERT_TYPE", "success")
-            localStorage.setItem("ALERT_TEXT", "Sikeres bejelentkezés!")
+            toast.success("Sikeres bejelentkezés!")
 
             axios.defaults.headers.common["Authorization"] = `Token ${response.data.token}`
 
-            history.push("/fiok", {message: "anyad"})
+            history.push("/fiok")
         })
-        .catch(function(error) {
+        .catch((error) => {
+            toast.error("Rossz adatok!")
             console.log(error)
         })
     }

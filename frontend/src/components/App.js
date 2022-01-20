@@ -41,21 +41,10 @@ export const MainContext = createContext()
 // Main App
 export default function App() {
 
-    // Alert
-    class Alert extends PureComponent{
-        render(){
-            return (
-                <div className={`sticky alert alert-${this.props.type} alert-dismissible fade show text-center`} role="alert">
-                    <strong>{this.props.message}</strong>
-                </div>
-            )
-        }
-    }
-
     // User
     const [user, setUser] = useState()
     useEffect(() => {
-        const loggedInUser = localStorage.getItem("user")
+        const loggedInUser = localStorage.getItem("user") || sessionStorage.getItem("user")
         if (loggedInUser) {
             const user = JSON.parse(loggedInUser)
             setUser(user)
@@ -67,7 +56,18 @@ export default function App() {
             <ViewBase>
                 <Toaster toastOptions={{
                     className: "alert",
-                    duration: 4000
+                    duration: 2500,
+                    error: {
+                        iconTheme: {
+                            primary: "#FF7575"
+                        },
+                    },
+                    success: {
+                        iconTheme: {
+                            primary: "#78FF9E"
+                        },
+                    },
+   
                 }}/>
                 <Router>
                     <Switch>

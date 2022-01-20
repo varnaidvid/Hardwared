@@ -239,6 +239,122 @@
 #main .fourth-section .title {
   font-size: 22px; }
 
+footer {
+  position: absolute;
+  bottom: 0; }
+
+.login-wrapper {
+  max-width: 850px;
+  margin: 150px auto; }
+  .login-wrapper .login-container {
+    margin: 0 auto;
+    text-align: left;
+    border: 5px solid #292a37;
+    border-radius: 20px;
+    width: 100%; }
+    .login-wrapper .login-container hr {
+      width: 30px;
+      height: 4px;
+      border-radius: 10px;
+      opacity: 100%; }
+    .login-wrapper .login-container .l-content {
+      padding: 20px;
+      background: #676eff;
+      overflow: hidden;
+      border-radius: 20px;
+      position: relative; }
+      .login-wrapper .login-container .l-content .logo {
+        max-height: 35px; }
+      .login-wrapper .login-container .l-content hr {
+        background-color: #eeeeee; }
+      .login-wrapper .login-container .l-content .text {
+        font-size: 14px;
+        font-weight: 400px; }
+      .login-wrapper .login-container .l-content .ellipse {
+        height: 100px;
+        position: absolute;
+        bottom: 30px;
+        right: -40px; }
+    .login-wrapper .login-container .r-content {
+      padding: 20px;
+      /* Hide default HTML checkbox */
+      /* The slider */
+      /* Rounded sliders */ }
+      .login-wrapper .login-container .r-content hr {
+        background-color: #676eff; }
+      .login-wrapper .login-container .r-content .login-wrapper {
+        position: relative; }
+      .login-wrapper .login-container .r-content .input-container label {
+        color: #8a8a8f;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 10px;
+        transition: all .2s;
+        pointer-events: none; }
+      .login-wrapper .login-container .r-content .input-container label.focus {
+        top: 12px;
+        font-size: 12px; }
+      .login-wrapper .login-container .r-content .input-container input {
+        color: #8a8a8f;
+        background-color: #8a8a8f10;
+        outline: none;
+        border: none;
+        border-radius: 6px;
+        height: 60px;
+        padding: 0 10px;
+        padding-top: 14px; }
+      .login-wrapper .login-container .r-content .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px; }
+      .login-wrapper .login-container .r-content .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0; }
+      .login-wrapper .login-container .r-content #rememberLabel {
+        padding-top: 4px; }
+      .login-wrapper .login-container .r-content .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .25s;
+        transition: .25s; }
+      .login-wrapper .login-container .r-content .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .25s;
+        transition: .25s; }
+      .login-wrapper .login-container .r-content input:checked + .slider {
+        background-color: #2196F3; }
+      .login-wrapper .login-container .r-content input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3; }
+      .login-wrapper .login-container .r-content input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px); }
+      .login-wrapper .login-container .r-content .slider.round {
+        border-radius: 34px; }
+      .login-wrapper .login-container .r-content .slider.round:before {
+        border-radius: 50%; }
+      .login-wrapper .login-container .r-content .main-btn {
+        margin: 20px 0; }
+      .login-wrapper .login-container .r-content a {
+        color: #eeeeee;
+        text-decoration: underline;
+        text-decoration-style: dotted;
+        text-underline-offset: 2px; }
+
 #app,
 body,
 html {
@@ -394,7 +510,46 @@ footer {
     color: #eeeeee; }
 
 /* Alert */
-/* Button */
+.alert {
+  font-family: "Quicksand" !important;
+  color: white !important;
+  font-weight: 500;
+  min-width: 140px;
+  font-size: 16px;
+  background-color: #1d1d29 !important; }
+
+/* Input */
+.input-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px; }
+
+.label {
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 500; }
+
+.input {
+  height: 30px;
+  max-width: 100px;
+  padding: 8px 4px;
+  font-size: 16px; }
+
+.input:-webkit-autofill {
+  animation-name: onAutoFillStart;
+  transition: background-color 50000s ease-in-out 0s; }
+
+.input:not(:-webkit-autofill) {
+  animation-name: onAutoFillCancel; }
+
+.hide {
+  top: -8px;
+  left: 0;
+  font-size: 12px;
+  pointer-events: all; }
+
+@keyframes onAutoFillStart {}@keyframes onAutoFillCancel {}/* Button */
 .main-btn {
   padding: 10px 20px !important;
   background-color: transparent;

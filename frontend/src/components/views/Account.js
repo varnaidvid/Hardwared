@@ -14,6 +14,7 @@ export default function Account(){
         toast.success("Sikeres kijelentkezés!")
         axios.defaults.headers.common["Authorization"] = ""
         localStorage.clear()
+        sessionStorage.clear()
         setUser()
     }
 

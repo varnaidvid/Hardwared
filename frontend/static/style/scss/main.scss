@@ -1,6 +1,6 @@
 @import "variables";
 @import "homepage";
-@import "login";
+@import "auth";
 
 #app,
 body,
@@ -211,38 +211,46 @@ footer {
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-top: 16px;
+  margin-top: 22px;
+  label {
+      font-size: 18px;
+      line-height: 16px;
+      font-weight: 500;
+      color: $lightGray1;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 16px;
+      transition: all .2s;
+      pointer-events: none;
+  }
+  label.focus {
+      top: 12px;
+      font-size: 12px;
+  }
+  input {
+      color: $lightGray1;
+      background-color: #8a8a8f10;
+      outline: none;
+      border: none;
+      border-radius: 12px;
+      height: 60px;
+      max-width: 380px;
+      padding: 0 16px;
+      padding-top: 14px;
+      font-size: 16px;
+  }
+  .hide {
+    top: -8px;
+    left: 0;
+    font-size: 12px;
+    pointer-events: all;
+  }
 }
-.label {
-  font-size: 16px;
-  line-height: 16px;
-  font-weight: 500;
-}
-.input {
-  height: 30px;
-  max-width: 100px;
-  padding: 8px 4px;
-  font-size: 16px;
-}
-.input:-webkit-autofill {
-  animation-name: onAutoFillStart;
-  transition: background-color 50000s ease-in-out 0s;
-}
-.input:not(:-webkit-autofill) {
-  animation-name: onAutoFillCancel;
-}
-.hide {
-  top: -8px;
-  left: 0;
-  font-size: 12px;
-  pointer-events: all;
-}
-
-@keyframes onAutoFillStart {
-  
-}
-@keyframes onAutoFillCancel {
-
+.login-wrapper, .register-wrapper {
+  .main-btn {
+    padding: 10px 40px !important;
+  }
 }
 
 

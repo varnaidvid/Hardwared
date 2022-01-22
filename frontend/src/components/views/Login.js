@@ -1,8 +1,11 @@
-import React, { Component, useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import axios from "axios"
 import { CSRFToken, MainContext } from "../App"
 import { NavLink, useHistory } from "react-router-dom"
 import toast from "react-hot-toast"
+import {
+    nullInput,
+} from "../constants"
 
 export default function Login(){
     const [user, setUser] = useContext(MainContext)
@@ -39,14 +42,29 @@ export default function Login(){
             history.push("/fiok")
         })
         .catch((error) => {
-            console.log(remember)
-            toast.error("Rossz adatok!")
-            console.log(error)
+            const pwdInput = document.getElementById("password")
+            const uidInput = document.getElementById("username")
+            if (username === "" && password == ""){
+                nullInput(pwdInput)
+                nullInput(uidInput)
+                toast.error("Hiányos adatok!")
+            } else if (username === "") {
+                nullInput(uidInput)
+                toast.error("Hiányos felhasználónév!")
+            } else if (password === "") {
+                nullInput(pwdInput)
+                toast.error("Hiányos jelszó!")
+            } else {
+                nullInput(pwdInput)
+                nullInput(uidInput)
+                toast.error("Rossz adatok!")
+                console.log(error)                
+            }
         })
     }
 
     return (
-        <div className="login-wrapper">
+        <div className="auth-wrapper">
             <div className="login-container">
                 <div className="row">
                     <div className="d-none d-md-block col-12 col-md-4 l-content">
@@ -60,13 +78,14 @@ export default function Login(){
                     <div className="col-12 col-md-8 r-content">
                         <h1>Bejelentkezés</h1>
                         <hr/>
+                        <img className="lock" src="/static/images/svg/lock.svg"/>
                         <form method="POST" onSubmit={handleSubmit} action="/fiok">
                             <input type="hidden" name="csrfmiddlewaretoken" value={CSRFToken}/>
                             
                             <div className="input-wrapper">
                                 <div className="input-container">
-                                    <label id="uidLabel" className={ uidFocus ? "focus" : "" }>{ uidFocus ? "Felhasználónév" : "Felhasználónév..." }</label>
-                                    <input name="username" type="text" 
+                                    <label id="uidLabel" className={ uidFocus ? "focus" : "" }>{ uidFocus ? "Felhasználónév:" : "Felhasználónév..." }</label>
+                                    <input name="username" type="text" id="username" 
                                         value={username} 
                                         onFocus={() => setUidFocus(true)} 
                                         onBlur={event => {if (event.target.value === "") {setUidFocus(false)} else {setUidFocus(true)} }}  
@@ -75,8 +94,8 @@ export default function Login(){
                                 </div>                                
                                 
                                 <div className="input-container mb-4">
-                                    <label id="pwdLabel" className={ pwdFocus ? "focus" : "" }>{ pwdFocus ? "Jelszó" : "Jelszó..." }</label>
-                                    <input name="password" type="password" 
+                                    <label id="pwdLabel" className={ pwdFocus ? "focus" : "" }>{ pwdFocus ? "Jelszó:" : "Jelszó..." }</label>
+                                    <input name="password" type="password" id="password"
                                         value={password} 
                                         onFocus={() => setPwdFocus(true)} onBlur={() => setPwdFocus(false)} 
                                         onBlur={event => { if (event.target.value === "") {setPwdFocus(false)} else {setPwdFocus(true)} }}  
@@ -84,19 +103,19 @@ export default function Login(){
                                     />
                                 </div>
 
-                                <label className="switch">
-                                    <input type="checkbox" name="remember" onChange={event => {
-                                        if (event.target.checked === true) {
-                                            setRemember(true)
-                                        } else {
-                                            setRemember(false)
-                                        }
-                                    }} checked={remember} value={remember}/>
-                                    <span class="slider round"></span>
-                                </label>
-
-                                <label for="remember" id="rememberLabel">Emlékezz rám</label>
-
+                                <div className="switch-container">
+                                    <label className="switch">
+                                        <input type="checkbox" name="remember" onChange={event => {
+                                            if (event.target.checked === true) {
+                                                setRemember(true)
+                                            } else {
+                                                setRemember(false)
+                                            }
+                                        }} checked={remember} value={remember}/>
+                                        <span class="slider round"></span>
+                                        <label for="remember" id="rememberLabel">Emlékezz rám</label>
+                                    </label>
+                                </div>
                             </div>
                             <input className="main-btn" type="submit" value="Belépés."/>
                         </form>

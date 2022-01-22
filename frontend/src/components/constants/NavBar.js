@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom"
 import { MainContext } from "../App"
 
 export default function NavBar(props){
-    const [user, setUser, isAlert, setIsAlert] = useContext(MainContext)
+    const [user, setUser] = useContext(MainContext)
 
     return (
         <div className="main-wrapper custom-wrapper">
@@ -37,7 +37,13 @@ export default function NavBar(props){
 
                         { user ? (
                             <li className="nav-item">
-                                <NavLink to="/fiok" className="nav-link main-btn" activeClassName="active" role="button">Fiók.</NavLink>
+                                <div className="dropdown">
+                                    <button className="dropdown-toggle main-btn" aria-expanded="false" data-bs-toggle="dropdown" type="button">{user.user.username}.</button>
+                                    <ul className="dropdown-menu" aria-labelledby="dropdown">
+                                        <li><NavLink className="dropdown-item nav-link" activeClassName="active" to="/fiok">Fiók.</NavLink></li>
+                                        <li><NavLink className="dropdown-item nav-link" to="/" >Kijelentkezés</NavLink></li>
+                                    </ul>
+                                </div>
                             </li>
                         ) : (
                             <li className="nav-item">

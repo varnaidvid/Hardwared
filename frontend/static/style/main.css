@@ -243,113 +243,98 @@ footer {
   position: absolute;
   bottom: 0; }
 
-.login-wrapper {
+.auth-wrapper {
   max-width: 850px;
   margin: 150px auto; }
-  .login-wrapper .login-container {
+  .auth-wrapper .login-container, .auth-wrapper .register-container {
     margin: 0 auto;
     text-align: left;
     border: 5px solid #292a37;
-    border-radius: 20px;
+    border-radius: 30px;
     width: 100%; }
-    .login-wrapper .login-container hr {
+    .auth-wrapper .login-container hr, .auth-wrapper .register-container hr {
       width: 30px;
       height: 4px;
       border-radius: 10px;
       opacity: 100%; }
-    .login-wrapper .login-container .l-content {
-      padding: 20px;
+    .auth-wrapper .login-container .l-content, .auth-wrapper .register-container .l-content {
+      padding: 30px 50px;
       background: #676eff;
       overflow: hidden;
-      border-radius: 20px;
+      border-radius: 30px;
       position: relative; }
-      .login-wrapper .login-container .l-content .logo {
+      .auth-wrapper .login-container .l-content .logo, .auth-wrapper .register-container .l-content .logo {
         max-height: 35px; }
-      .login-wrapper .login-container .l-content hr {
+      .auth-wrapper .login-container .l-content hr, .auth-wrapper .register-container .l-content hr {
         background-color: #eeeeee; }
-      .login-wrapper .login-container .l-content .text {
+      .auth-wrapper .login-container .l-content .text, .auth-wrapper .register-container .l-content .text {
         font-size: 14px;
         font-weight: 400px; }
-      .login-wrapper .login-container .l-content .ellipse {
+      .auth-wrapper .login-container .l-content .ellipse, .auth-wrapper .register-container .l-content .ellipse {
         height: 100px;
         position: absolute;
         bottom: 30px;
         right: -40px; }
-    .login-wrapper .login-container .r-content {
-      padding: 20px;
-      /* Hide default HTML checkbox */
-      /* The slider */
-      /* Rounded sliders */ }
-      .login-wrapper .login-container .r-content hr {
+    .auth-wrapper .login-container .r-content, .auth-wrapper .register-container .r-content {
+      padding: 30px 50px;
+      position: relative;
+      /* The slider */ }
+      .auth-wrapper .login-container .r-content hr, .auth-wrapper .register-container .r-content hr {
         background-color: #676eff; }
-      .login-wrapper .login-container .r-content .login-wrapper {
+      .auth-wrapper .login-container .r-content .login-wrapper, .auth-wrapper .register-container .r-content .login-wrapper {
         position: relative; }
-      .login-wrapper .login-container .r-content .input-container label {
-        color: #8a8a8f;
+      .auth-wrapper .login-container .r-content .lock, .auth-wrapper .register-container .r-content .lock {
         position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 10px;
-        transition: all .2s;
-        pointer-events: none; }
-      .login-wrapper .login-container .r-content .input-container label.focus {
-        top: 12px;
-        font-size: 12px; }
-      .login-wrapper .login-container .r-content .input-container input {
-        color: #8a8a8f;
-        background-color: #8a8a8f10;
-        outline: none;
-        border: none;
-        border-radius: 6px;
-        height: 60px;
-        padding: 0 10px;
-        padding-top: 14px; }
-      .login-wrapper .login-container .r-content .switch {
+        right: -25px;
+        top: 135px; }
+      .auth-wrapper .login-container .r-content #rememberLabel, .auth-wrapper .register-container .r-content #rememberLabel {
+        position: absolute;
+        right: -110px;
+        top: 4px; }
+      .auth-wrapper .login-container .r-content .switch, .auth-wrapper .register-container .r-content .switch {
         position: relative;
         display: inline-block;
         width: 60px;
-        height: 34px; }
-      .login-wrapper .login-container .r-content .switch input {
+        height: 34px;
+        margin-top: 15px; }
+      .auth-wrapper .login-container .r-content .switch input, .auth-wrapper .register-container .r-content .switch input {
         opacity: 0;
         width: 0;
         height: 0; }
-      .login-wrapper .login-container .r-content #rememberLabel {
-        padding-top: 4px; }
-      .login-wrapper .login-container .r-content .slider {
+      .auth-wrapper .login-container .r-content .slider, .auth-wrapper .register-container .r-content .slider {
         position: absolute;
         cursor: pointer;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: #ccc;
+        background-color: #8a8a8f10;
         -webkit-transition: .25s;
         transition: .25s; }
-      .login-wrapper .login-container .r-content .slider:before {
+      .auth-wrapper .login-container .r-content .slider:before, .auth-wrapper .register-container .r-content .slider:before {
         position: absolute;
         content: "";
         height: 26px;
         width: 26px;
         left: 4px;
         bottom: 4px;
-        background-color: white;
+        background-color: #eeeeee;
         -webkit-transition: .25s;
         transition: .25s; }
-      .login-wrapper .login-container .r-content input:checked + .slider {
-        background-color: #2196F3; }
-      .login-wrapper .login-container .r-content input:focus + .slider {
-        box-shadow: 0 0 1px #2196F3; }
-      .login-wrapper .login-container .r-content input:checked + .slider:before {
+      .auth-wrapper .login-container .r-content .slider.round, .auth-wrapper .register-container .r-content .slider.round {
+        border-radius: 34px; }
+      .auth-wrapper .login-container .r-content .slider.round:before, .auth-wrapper .register-container .r-content .slider.round:before {
+        border-radius: 50%; }
+      .auth-wrapper .login-container .r-content input:checked + .slider, .auth-wrapper .register-container .r-content input:checked + .slider {
+        background-color: #676eff; }
+      .auth-wrapper .login-container .r-content input:checked + .slider:before, .auth-wrapper .register-container .r-content input:checked + .slider:before {
         -webkit-transform: translateX(26px);
         -ms-transform: translateX(26px);
         transform: translateX(26px); }
-      .login-wrapper .login-container .r-content .slider.round {
-        border-radius: 34px; }
-      .login-wrapper .login-container .r-content .slider.round:before {
-        border-radius: 50%; }
-      .login-wrapper .login-container .r-content .main-btn {
-        margin: 20px 0; }
-      .login-wrapper .login-container .r-content a {
+      .auth-wrapper .login-container .r-content .main-btn, .auth-wrapper .register-container .r-content .main-btn {
+        margin: 30px 0;
+        padding: 10px 36px !important; }
+      .auth-wrapper .login-container .r-content a, .auth-wrapper .register-container .r-content a {
         color: #eeeeee;
         text-decoration: underline;
         text-decoration-style: dotted;
@@ -523,33 +508,42 @@ footer {
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-top: 16px; }
+  margin-top: 22px; }
+  .input-container label {
+    font-size: 18px;
+    line-height: 16px;
+    font-weight: 500;
+    color: #8a8a8f;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 16px;
+    transition: all .2s;
+    pointer-events: none; }
+  .input-container label.focus {
+    top: 12px;
+    font-size: 12px; }
+  .input-container input {
+    color: #8a8a8f;
+    background-color: #8a8a8f10;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    height: 60px;
+    max-width: 380px;
+    padding: 0 16px;
+    padding-top: 14px;
+    font-size: 16px; }
+  .input-container .hide {
+    top: -8px;
+    left: 0;
+    font-size: 12px;
+    pointer-events: all; }
 
-.label {
-  font-size: 16px;
-  line-height: 16px;
-  font-weight: 500; }
+.login-wrapper .main-btn, .register-wrapper .main-btn {
+  padding: 10px 40px !important; }
 
-.input {
-  height: 30px;
-  max-width: 100px;
-  padding: 8px 4px;
-  font-size: 16px; }
-
-.input:-webkit-autofill {
-  animation-name: onAutoFillStart;
-  transition: background-color 50000s ease-in-out 0s; }
-
-.input:not(:-webkit-autofill) {
-  animation-name: onAutoFillCancel; }
-
-.hide {
-  top: -8px;
-  left: 0;
-  font-size: 12px;
-  pointer-events: all; }
-
-@keyframes onAutoFillStart {}@keyframes onAutoFillCancel {}/* Button */
+/* Button */
 .main-btn {
   padding: 10px 20px !important;
   background-color: transparent;

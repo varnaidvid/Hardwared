@@ -2,7 +2,7 @@ from re import S
 from this import d
 from django.urls import reverse
 from rest_framework.serializers import Serializer
-from .serializers import ComputerSerializer, LoginSerializer, RegisterSerializer, UserSerializer
+from .serializers import ComputerSerializer, LoginSerializer, RegisterSerializer, UserSerializer, ProfileSerializer
 from .models import Computer, Profile
 from django.contrib.auth.models import User
 
@@ -38,9 +38,11 @@ class UserAuth(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data
+        profile = Profile.objects.get(user=user)
         token, created = Token.objects.get_or_create(user=user)
         return Response({
             "user": UserSerializer(user).data,
+            "profile": ProfileSerializer(profile).data,
             "token": token.key
         })
 

@@ -8,6 +8,11 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ("id", "username", "email")
 
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ("birth_date", "country", "avatar")
+
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User

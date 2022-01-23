@@ -31,8 +31,10 @@ export default function Register(props) {
         })
         .then((response) => { 
             console.log(response)
-            toast.success("Sikeres regisztrálás!")
-            history.push("/bejelentkezes")
+            if (response.data.isCreated === "true"){
+                toast.success("Sikeres regisztrálás!")
+                history.push("/bejelentkezes")
+            }
         })
         .catch((error) => {
             console.log(error)

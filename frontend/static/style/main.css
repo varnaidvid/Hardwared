@@ -243,102 +243,105 @@ footer {
   position: absolute;
   bottom: 0; }
 
+.auth-bg-text {
+  z-index: -2 !important;
+  top: 400px;
+  left: 75px;
+  transform: rotate(5deg); }
+
+#rememberLabel, #showPwdLabel {
+  position: absolute;
+  right: -110px;
+  top: 4px; }
+
+#showPwdLabel {
+  right: -130px; }
+
 .auth-wrapper {
-  max-width: 850px;
-  margin: 150px auto; }
+  margin: 0 auto;
+  max-width: 550px;
+  max-height: 1000px;
+  overflow: visible;
+  border: 5px solid #292a37;
+  border-radius: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: -110px;
+  margin-bottom: -5px;
+  z-index: -1;
+  background-color: #23232e; }
   .auth-wrapper .login-container, .auth-wrapper .register-container {
-    margin: 0 auto;
-    text-align: left;
-    border: 5px solid #292a37;
-    border-radius: 30px;
-    width: 100%; }
-    .auth-wrapper .login-container hr, .auth-wrapper .register-container hr {
-      width: 30px;
-      height: 4px;
-      border-radius: 10px;
-      opacity: 100%; }
-    .auth-wrapper .login-container .l-content, .auth-wrapper .register-container .l-content {
-      padding: 30px 50px;
-      background: #676eff;
-      overflow: hidden;
-      border-radius: 30px;
-      position: relative; }
-      .auth-wrapper .login-container .l-content .logo, .auth-wrapper .register-container .l-content .logo {
-        max-height: 35px; }
-      .auth-wrapper .login-container .l-content hr, .auth-wrapper .register-container .l-content hr {
-        background-color: #eeeeee; }
-      .auth-wrapper .login-container .l-content .text, .auth-wrapper .register-container .l-content .text {
-        font-size: 14px;
-        font-weight: 400px; }
-      .auth-wrapper .login-container .l-content .ellipse, .auth-wrapper .register-container .l-content .ellipse {
-        height: 100px;
-        position: absolute;
-        bottom: 30px;
-        right: -40px; }
-    .auth-wrapper .login-container .r-content, .auth-wrapper .register-container .r-content {
-      padding: 30px 50px;
+    margin: 200px 50px;
+    text-align: center;
+    position: relative; }
+    .auth-wrapper .login-container .or-login, .auth-wrapper .register-container .or-login {
+      background-color: #676eff;
+      padding: 10px 30px;
+      width: 100%;
+      text-align: center;
+      border-radius: 8px;
       position: relative;
-      /* The slider */ }
-      .auth-wrapper .login-container .r-content hr, .auth-wrapper .register-container .r-content hr {
-        background-color: #676eff; }
-      .auth-wrapper .login-container .r-content .login-wrapper, .auth-wrapper .register-container .r-content .login-wrapper {
-        position: relative; }
-      .auth-wrapper .login-container .r-content .lock, .auth-wrapper .register-container .r-content .lock {
+      border: 3px solid #292a37;
+      margin-bottom: 100px; }
+      .auth-wrapper .login-container .or-login .l-bar, .auth-wrapper .login-container .or-login .r-bar, .auth-wrapper .register-container .or-login .l-bar, .auth-wrapper .register-container .or-login .r-bar {
         position: absolute;
-        right: -25px;
-        top: 135px; }
-      .auth-wrapper .login-container .r-content #rememberLabel, .auth-wrapper .register-container .r-content #rememberLabel {
-        position: absolute;
-        right: -110px;
-        top: 4px; }
-      .auth-wrapper .login-container .r-content .switch, .auth-wrapper .register-container .r-content .switch {
-        position: relative;
-        display: inline-block;
         width: 60px;
-        height: 34px;
-        margin-top: 15px; }
-      .auth-wrapper .login-container .r-content .switch input, .auth-wrapper .register-container .r-content .switch input {
-        opacity: 0;
-        width: 0;
-        height: 0; }
-      .auth-wrapper .login-container .r-content .slider, .auth-wrapper .register-container .r-content .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #8a8a8f10;
-        -webkit-transition: .25s;
-        transition: .25s; }
-      .auth-wrapper .login-container .r-content .slider:before, .auth-wrapper .register-container .r-content .slider:before {
-        position: absolute;
-        content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 4px;
+        height: 35px;
+        background-color: #676eff;
+        top: 50px;
+        border: 2px solid #292a37; }
+      .auth-wrapper .login-container .or-login .l-bar, .auth-wrapper .register-container .or-login .l-bar {
+        left: -60px;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px; }
+      .auth-wrapper .login-container .or-login .r-bar, .auth-wrapper .register-container .or-login .r-bar {
+        right: -60px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px; }
+      .auth-wrapper .login-container .or-login h5, .auth-wrapper .register-container .or-login h5 {
+        font-size: 18px;
+        font-weight: 400; }
+      .auth-wrapper .login-container .or-login hr, .auth-wrapper .register-container .or-login hr {
         background-color: #eeeeee;
-        -webkit-transition: .25s;
-        transition: .25s; }
-      .auth-wrapper .login-container .r-content .slider.round, .auth-wrapper .register-container .r-content .slider.round {
-        border-radius: 34px; }
-      .auth-wrapper .login-container .r-content .slider.round:before, .auth-wrapper .register-container .r-content .slider.round:before {
-        border-radius: 50%; }
-      .auth-wrapper .login-container .r-content input:checked + .slider, .auth-wrapper .register-container .r-content input:checked + .slider {
-        background-color: #676eff; }
-      .auth-wrapper .login-container .r-content input:checked + .slider:before, .auth-wrapper .register-container .r-content input:checked + .slider:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px); }
-      .auth-wrapper .login-container .r-content .main-btn, .auth-wrapper .register-container .r-content .main-btn {
-        margin: 30px 0;
-        padding: 10px 36px !important; }
-      .auth-wrapper .login-container .r-content a, .auth-wrapper .register-container .r-content a {
-        color: #eeeeee;
-        text-decoration: underline;
-        text-decoration-style: dotted;
-        text-underline-offset: 2px; }
+        height: 4px; }
+      .auth-wrapper .login-container .or-login button, .auth-wrapper .register-container .or-login button {
+        height: 40px;
+        width: 100%;
+        border-radius: 8px;
+        outline: none;
+        margin: 20px 0;
+        border: 0.5px solid black; }
+      .auth-wrapper .login-container .or-login button img, .auth-wrapper .register-container .or-login button img {
+        height: 20px; }
+      .auth-wrapper .login-container .or-login .login-with-google, .auth-wrapper .register-container .or-login .login-with-google {
+        background-color: white; }
+      .auth-wrapper .login-container .or-login .login-with-facebook, .auth-wrapper .register-container .or-login .login-with-facebook {
+        background-color: #4267B2; }
+        .auth-wrapper .login-container .or-login .login-with-facebook img, .auth-wrapper .register-container .or-login .login-with-facebook img {
+          height: 15px; }
+      .auth-wrapper .login-container .or-login .login-with-apple, .auth-wrapper .register-container .or-login .login-with-apple {
+        background-color: black; }
+    .auth-wrapper .login-container .title-hr, .auth-wrapper .login-container hr, .auth-wrapper .register-container .title-hr, .auth-wrapper .register-container hr {
+      width: 32px;
+      height: 5px;
+      border-radius: 10px;
+      opacity: 1;
+      margin: 0 auto;
+      background-color: #676eff; }
+    .auth-wrapper .login-container .lock, .auth-wrapper .register-container .lock {
+      position: absolute;
+      right: -80px;
+      height: 75px;
+      top: 110px; }
+    .auth-wrapper .login-container .main-btn, .auth-wrapper .register-container .main-btn {
+      margin: 50px 0; }
+    .auth-wrapper .login-container a, .auth-wrapper .register-container a {
+      color: #eeeeee;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 2px; }
+    .auth-wrapper .login-container .sliders, .auth-wrapper .register-container .sliders {
+      margin-top: 10px; }
 
 #app,
 body,
@@ -432,22 +435,62 @@ p {
 .nav-link {
   color: #8a8a8f;
   text-decoration: none;
-  font-size: 16px; }
+  font-size: 16px;
+  transition: all .2s; }
 
 .nav-link.active,
-.nav-link:hover {
+.nav-link:hover,
+.user-dropdown:hover::after {
   color: #eeeeee; }
 
 .nav-logo {
   width: 130px;
   margin-left: -5px; }
 
+.nav-hr {
+  opacity: 1;
+  margin: 0 10px;
+  overflow: hidden;
+  width: 2px;
+  background-color: #8a8a8f;
+  height: 20px !important; }
+
+.user-dropdown::after {
+  color: #8a8a8f;
+  transition: all .2s; }
+
+.user-dropdown {
+  background: none;
+  outline: none;
+  border: none; }
+
+.user-dropdown-menu {
+  margin-top: 5px !important;
+  padding: 4px 0;
+  border-radius: 10px;
+  background-color: #1d1d29;
+  border: 2px solid #292a37; }
+  .user-dropdown-menu .dropdown-item {
+    color: #8a8a8f; }
+  .user-dropdown-menu .dropdown-divider {
+    border-top: 2px solid #292a37;
+    opacity: 1; }
+  .user-dropdown-menu .dropdown-item.active {
+    color: #eeeeee;
+    background-color: transparent; }
+  .user-dropdown-menu .signout, .user-dropdown-menu .signout.active {
+    color: #8a8a8f;
+    transition: all .2s; }
+  .user-dropdown-menu .signout:hover, .user-dropdown-menu .signout.active:hover {
+    color: #FF7575; }
+
 /* Footer */
 footer {
   background-color: #1d1d29;
   position: relative;
   bottom: 0;
-  width: 100%; }
+  width: 100%;
+  border-top: 5px solid #292a37; }
   footer .support {
     display: flex;
     position: relative; }
@@ -520,17 +563,30 @@ footer {
     left: 16px;
     transition: all .2s;
     pointer-events: none; }
+    .input-container label img {
+      height: 16px;
+      margin-right: 6px;
+      transition: all .2s; }
+    .input-container label img.long {
+      height: 16px;
+      width: 14px; }
   .input-container label.focus {
     top: 12px;
-    font-size: 12px; }
+    font-size: 12px;
+    font-weight: 700; }
+    .input-container label.focus img {
+      height: 8px; }
+    .input-container label.focus img.long {
+      height: 10px;
+      width: 8px; }
   .input-container input {
     color: #8a8a8f;
     background-color: #8a8a8f10;
     outline: none;
     border: none;
     border-radius: 12px;
-    height: 60px;
-    max-width: 380px;
+    height: 55px;
+    max-width: 425px;
     padding: 0 16px;
     padding-top: 14px;
     font-size: 16px; }
@@ -543,6 +599,130 @@ footer {
 .login-wrapper .main-btn, .register-wrapper .main-btn {
   padding: 10px 40px !important; }
 
+.submit-wrapper {
+  position: relative; }
+
+.submit-btn {
+  color: #676eff !important;
+  font-weight: 600;
+  width: 100%;
+  transition: all .3s;
+  text-transform: uppercase; }
+  .submit-btn:hover {
+    background-color: #676eff;
+    color: #eeeeee !important; }
+  .submit-btn:active {
+    letter-spacing: 2px; }
+  .submit-btn span {
+    opacity: 1;
+    visibility: visible;
+    transition: all .2s; }
+
+.submit-btn.loading {
+  border-radius: 50%;
+  margin: 0 auto;
+  background-color: transparent;
+  padding: 0 !important;
+  border: 6px solid #8a8a8f10 !important;
+  border-left: 6px solid #676eff !important;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite; }
+  .submit-btn.loading span {
+    display: none; }
+
+.submit-success, .submit-error {
+  transform: rotate(0deg) scale(0);
+  display: none;
+  font-size: 20px;
+  transition: all .5s; }
+
+.submit-success.active, .submit-error.active {
+  display: block;
+  transform: rotate(720deg) scale(1); }
+  .submit-success.active i, .submit-error.active i {
+    color: white !important; }
+
+.submit-btn.error {
+  background-color: #FF7575;
+  border: none;
+  animation: shake 1s linear both; }
+  .submit-btn.error span {
+    display: none; }
+
+.submit-btn.success {
+  background-color: #78FF9E;
+  border: none; }
+  .submit-btn.success span {
+    display: none; }
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-2px, 0, 0); }
+  20%,
+  80% {
+    transform: translate3d(3px, 0, 0); }
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-5px, 0, 0); }
+  40%,
+  60% {
+    transform: translate3d(5px, 0, 0); } }
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+
+/* Slider input */
+.switch {
+  position: relative;
+  width: 60px;
+  height: 34px;
+  margin-top: 15px;
+  float: left; }
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0; }
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #8a8a8f10;
+  -webkit-transition: .25s;
+  transition: .25s; }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #eeeeee;
+    -webkit-transition: .25s;
+    transition: .25s; }
+
+.slider.round {
+  border-radius: 34px; }
+
+.slider.round:before {
+  border-radius: 50%; }
+
+input:checked + .slider {
+  background-color: #676eff; }
+
+input:checked + .slider:before {
+  transform: translateX(26px); }
+
 /* Button */
 .main-btn {
   padding: 10px 20px !important;
@@ -554,27 +734,26 @@ footer {
   cursor: pointer;
   position: relative;
   display: inline-block;
-  text-decoration: none;
+  text-decoration: none; }
+
+.main-btn-anim {
   transition: all 0.4s; }
-
-.main-btn:hover:not(.nav-link) {
-  color: #eeeeee;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
-
-.main-btn::after:not(.nav-link) {
-  content: "";
-  height: 100%;
-  width: 100%;
-  border-radius: 100px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: all 0.4s; }
-
-.main-btn:active:not(.nav-link) {
-  transform: translateY(-1px); }
+  .main-btn-anim:hover {
+    color: #eeeeee;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+  .main-btn-anim::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s; }
+  .main-btn-anim:active {
+    transform: translateY(-1px); }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
@@ -588,7 +767,7 @@ footer {
   border-radius: 20px;
   border: 6px solid transparent;
   background-clip: content-box;
-  transform: all 0.2s; }
+  transition: all 0.2s; }
 
 @media (min-width: 768px) {
   #main {

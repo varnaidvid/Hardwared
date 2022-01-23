@@ -20,31 +20,38 @@ class ComputerView(generics.ListAPIView):
 
 class UserCreate(generics.GenericAPIView):
     serializer_class = RegisterSerializer
+    permission_classes = (AllowAny,)
+    http_method_names = ["post"]
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, format="json", *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user = serializer.save()
-        token, created = Token.objects.get_or_create(user=user)
-        return Response({
-            "user": UserSerializer(user).data,
-            "token": token.key
-        })
+        if serializer.is_valid():
+            user = serializer.save()
+            if user:
+                token, created = Token.objects.get_or_create(user=user)
+                return Response({"isCreated": "true"}, status=status.HTTP_201_CREATED)
+            
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class UserAuth(generics.GenericAPIView):
     serializer_class = LoginSerializer
+    permission_classes = (AllowAny,)
+    http_method_names = ["post"]
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data
-        profile = Profile.objects.get(user=user)
-        token, created = Token.objects.get_or_create(user=user)
-        return Response({
-            "user": UserSerializer(user).data,
-            "profile": ProfileSerializer(profile).data,
-            "token": token.key
-        })
+        if serializer.is_valid():
+            user = serializer.validated_data
+            profile = Profile.objects.get(user=user)
+            token, created = Token.objects.get_or_create(user=user)
+            return Response({
+                "user": UserSerializer(user).data,
+                "profile": ProfileSerializer(profile).data,
+                "token": token.key
+            })
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class GetUser(generics.GenericAPIView):
     permission_classes = (IsAuthenticated,)

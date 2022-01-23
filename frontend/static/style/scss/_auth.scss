@@ -3,119 +3,105 @@ footer {
     bottom: 0;
 }
 
-.auth-wrapper {
-    max-width: 850px;
-    margin: 150px auto;
-    .login-container, .register-container {
-        margin: 0 auto;
-        text-align: left;
-        border: 5px solid $lightGray2;
-        border-radius: 30px;
-        width: 100%;
-        hr {
-            width: 30px;
-            height: 4px;
-            border-radius: 10px;
-            opacity: 100%;
-        }
-        .l-content {
-            padding: 30px 50px;
-            background: $main;
-            overflow: hidden;
-            border-radius: 30px;
-            position: relative;
-            .logo {
-                max-height: 35px;
-            }
-            hr {
-                background-color: $white;
-            }
-            .text {
-                font-size: 14px;
-                font-weight: 400px;
-            }
-            .ellipse {
-                height: 100px;
-                position: absolute;
-                bottom: 30px;
-                right: -40px;
-            }
-        }
-        .r-content {
-            padding: 30px 50px;
-            position: relative;
-            hr {
-                background-color: $main;
-            }
-            .login-wrapper {
-                position: relative;
-            }
-            .lock {
-              position: absolute;
-              right: -25px;
-              top: 135px;
-            }
 
-            /* The slider */
-            #rememberLabel {
-              position: absolute;
-              right: -110px;
-              top: 4px;
-            }
-            .switch {
-              position: relative;
-              display: inline-block;
-              width: 60px;
-              height: 34px;
-              margin-top: 15px;
-            }
-            
-            .switch input {
-              opacity: 0;
-              width: 0;
-              height: 0;
-            }
-            .slider {
-              position: absolute;
-              cursor: pointer;
-              top: 0;
-              left: 0;
-              right: 0;
-              bottom: 0;
-              background-color: #8a8a8f10;
-              -webkit-transition: .25s;
-              transition: .25s;
-            }
-            .slider:before {
-              position: absolute;
-              content: "";
-              height: 26px;
-              width: 26px;
-              left: 4px;
-              bottom: 4px;
-              background-color: $white;
-              -webkit-transition: .25s;
-              transition: .25s;
-            }
-            .slider.round { border-radius: 34px; }
-            .slider.round:before { border-radius: 50%; }
-            input:checked + .slider { background-color: $main; }
-            input:checked + .slider:before {
-              -webkit-transform: translateX(26px);
-              -ms-transform: translateX(26px);
-              transform: translateX(26px);
-            }
-            
-              .main-btn {
-                margin: 30px 0;
-                padding: 10px 36px !important;
-            }
-            a {
-                color: $white;
-                text-decoration: underline;
-                text-decoration-style: dotted;
-                text-underline-offset: 2px;
-            }
-        }
+.auth-bg-text{
+  z-index: -2 !important;
+  top: 400px;
+  left: 75px;
+  transform: rotate(5deg);
+}
+#rememberLabel, #showPwdLabel {
+  position: absolute;
+  right: -110px;
+  top: 4px;
+}
+#showPwdLabel {
+  right: -130px;
+}
+.auth-wrapper {
+  margin: 0 auto;
+  max-width: 550px;
+  max-height: 1000px;
+  overflow: visible;
+  border: 5px solid $lightGray2;
+  border-radius: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: -110px;
+  margin-bottom: -5px;
+  z-index: -1;
+  background-color: $gray;
+  .login-container, .register-container  {
+    margin: 200px 50px;
+    text-align: center;
+    position: relative;
+
+    .or-login {
+      background-color: $main;
+      padding: 10px 30px;
+      width: 100%;
+      text-align: center;
+      border-radius: 8px;
+      position: relative;
+      border: 3px solid $lightGray2;
+      margin-bottom: 100px;
+      .l-bar, .r-bar {
+        position: absolute;
+        width: 60px;
+        height: 35px;
+        background-color: $main;
+        top: 50px;
+        border: 2px solid $lightGray2;
+      }
+      .l-bar { left: -60px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; }
+      .r-bar { right: -60px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; }
+      h5 {
+        font-size: 18px;
+        font-weight: 400;
+      }
+      hr { 
+        background-color: $white;
+        height: 4px;
+      }
+      button {
+        height: 40px;
+        width: 100%;
+        border-radius: 8px;
+        outline: none;
+        margin: 20px 0;
+        border: 0.5px solid black;
+      }
+      button img {
+        height: 20px;
+      }
+      .login-with-google { background-color: white; }
+      .login-with-facebook { background-color: $blue; img { height: 15px; } }
+      .login-with-apple { background-color: black; }
     }
+
+    .title-hr, hr {
+      width: 32px;
+      height: 5px;
+      border-radius: 10px;
+      opacity: 1;
+      margin: 0 auto;
+      background-color: $main;
+    }
+    .lock {
+      position: absolute;
+      right: -80px;
+      height: 75px;
+      top: 110px;
+    }
+    .main-btn {
+      margin: 50px 0;
+    }
+    a {
+      color: $white;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 2px;
+    }
+    .sliders { margin-top: 10px; }
+  }
 }

@@ -9,6 +9,8 @@ import {
 
 export default function Register(props) {
     
+    const history = useHistory()
+
     const [username, setUsername] = useState("")
     const [uidFocus, setUidFocus] = useState(false)
 
@@ -17,98 +19,194 @@ export default function Register(props) {
 
     const [password, setPassword] = useState("")
     const [pwdFocus, setPwdFocus] = useState(false)
-
+    const [showPwd, setShowPwd] = useState(false)
     const [password1, setPassword1] = useState("")
     const [pwd1Focus, setPwd1Focus] = useState(false)
+
+    const [birth, setBirth] = useState("")
+    const [birthFocus, setBirthFocus] = useState(false)
+
+    const [country, setCountry] = useState("")
+    const [countryFocus, setCountryFocus] = useState(false)
+
+    const [address, setAddress] = useState("")
+    const [addressFocus, setAddressFocus] = useState(false)
+
+    const [submitState, setSubmitState] = useState("normal")
 
     const handleSubmit = event => {
         event.preventDefault()
 
-        axios.post("http://localhost:3000/api/user/register/", {
-            username: username,
-            email: email,
-            password: password
-        })
-        .then((response) => { 
-            console.log(response)
-            if (response.data.isCreated === "true"){
-                toast.success("Sikeres regisztrálás!")
-                history.push("/bejelentkezes")
-            }
-        })
-        .catch((error) => {
-            console.log(error)
-            toast.error("Hiba történt regisztrálás közben!")
-        })
+        const fd = new FormData()
+        fd.append("csrfmiddlewaretoken", CSRFToken)
+        fd.append("username", username)
+        fd.append("email", email)
+        fd.append("password", password)
+        fd.append("birth_date", birth)
+        fd.append("country", country)
+        fd.append("address", address)
+        fd.append("avatar", document.getElementById("pfp").files[0])
+
+
+        // axios.post("http://localhost:3000/api/user/register/", {
+        //     username: username,
+        //     email: email,
+        //     password: password,
+        // })
+        // .then((response) => { 
+        //     console.log(response)
+        //     if (response.data.isCreated === "true"){
+        //         toast.success("Sikeres regisztrálás!")
+        //         history.push("/bejelentkezes")
+        //     }
+        // })
+        // .catch((error) => {
+        //     console.log(error)
+        //     toast.error("Hiba történt regisztrálás közben!")
+        // })
         
     }
 
     return (
-        <div className="auth-wrapper">
+        <>
+        <h1 className="bg-text auth-bg-text">Felhasználó</h1>
+        <div className="auth-wrapper register-auth-wrapper">
             <div className="register-container">
-                <div className="row">
-                    <div className="d-none d-md-block col-12 col-md-4 l-content">
-                        <img className="logo" src='/static/images/white_logo.png' alt="Hardwared" title="Hardwared"/>
-                        <hr/>
-                        <div className="text">
-                            Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                        </div>   
-                        <img className="ellipse" src="/static/images/svg/ellipse.svg"/>                 
+                <h1>Regisztráció</h1>
+                <hr className="title-hr"/>
+                <img className="lock" src="/static/images/svg/lock.svg"/>
+                <form method="POST" onSubmit={handleSubmit} action="/fiok" encType="multipart/form-data">
+                    <input type="hidden" name="csrfmiddlewaretoken" value={CSRFToken}/>
+
+                    <div className="input-wrapper">
+                    <div className="input-container">
+                        <label id="uidLabel" className={ uidFocus ? "focus" : "" }><img className="long" src="/static/images/svg/user.svg"/>{ uidFocus ? "Felhasználónév:" : "Felhasználónév..."}</label>
+                        <input name="username" type="text" id="username"
+                            value={username}
+                            onFocus={() => setUidFocus(true)}
+                            onBlur={event => {if (event.target.value === ""){setUidFocus(false)} else {setUidFocus(true)}}}
+                            onChange={event => setUsername(event.target.value)}
+                        />
                     </div>
-                    <div className="col-12 col-md-8 r-content">
-                        <h1>Regisztráció</h1>
-                        <hr/>
-                        <form method="POST" onSubmit={handleSubmit} action="/bejelentkezes">
-                            <input type="hidden" name="csrfmiddlewaretoken" value={CSRFToken}/>
+                    </div>
 
-                            <div className="input-wrapper">
-                                <div className="input-container">
-                                    <label id="uidLabel" className={ uidFocus ? "focus" : "" }>{ uidFocus ? "Felhasználónév:" : "Felhasználónév..." }</label>
-                                    <input name="username" type="text" id="username" 
-                                        value={username} 
-                                        onFocus={() => setUidFocus(true)} 
-                                        onBlur={event => {if (event.target.value === "") {setUidFocus(false)} else {setUidFocus(true)} }}  
-                                        onChange={event => setUsername(event.target.value)}
-                                    />
-                                </div>                                
-                                
-                                <div className="input-container mb-4">
-                                    <label id="emailLabel" className={ emailFocus ? "focus" : "" }>{ emailFocus ? "Email cím:" : "Email cím..." }</label>
-                                    <input name="email" type="email" id="email"
-                                        value={email} 
-                                        onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} 
-                                        onBlur={event => { if (event.target.value === "") {setEmailFocus(false)} else {setEmailFocus(true)} }}  
-                                        onChange={event => setEmail(event.target.value)}
-                                    />
-                                </div>
+                    <div className="input-wrapper">
+                    <div className="input-container">
+                            <label id="emailLabel" className={ emailFocus ? "focus" : "" }><img className="long" src="/static/images/svg/at.svg"/>{ emailFocus ? "Email cím:" : "Email cím..." }</label>
+                            <input name="email" type="email" id="email"
+                                value={email} 
+                                onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} 
+                                onBlur={event => { if (event.target.value === "") {setEmailFocus(false)} else {setEmailFocus(true)} }}  
+                                onChange={event => setEmail(event.target.value)}
+                            />
+                    </div>
+                    </div>
 
-                                <div className="input-container mb-4">
-                                    <label id="pwdLabel" className={ pwdFocus ? "focus" : "" }>{ pwdFocus ? "Jelszó:" : "Jelszó..." }</label>
-                                    <input name="password" type="password" id="password"
-                                        value={password} 
-                                        onFocus={() => setPwdFocus(true)} onBlur={() => setPwdFocus(false)} 
-                                        onBlur={event => { if (event.target.value === "") {setPwdFocus(false)} else {setPwdFocus(true)} }}  
-                                        onChange={event => setPassword(event.target.value)}
-                                    />
-                                </div>
+                    <div className="input-wrapper">
+                    <div className="input-container">
+                        <label id="pwdLabel" className={ pwdFocus ? "focus" : "" }><img src="/static/images/svg/key.svg"/>{ pwdFocus ? "Jelszó:" : "Jelszó..."}</label>
+                        <input name="password" type={ showPwd ? "text" : "password" } id="password"
+                            value={password}
+                            onFocus={() => setPwdFocus(true)}
+                            onBlur={event => {if (event.target.value === ""){setPwdFocus(false)} else {setPwdFocus(true)}}}
+                            onChange={event => setPassword(event.target.value)}
+                        />
+                    </div>
+                    </div>
 
-                                <div className="input-container mb-4">
-                                    <label id="pwd1Label" className={ pwd1Focus ? "focus" : "" }>{ pwd1Focus ? "Jelszó megerősítése:" : "Jelszó megerősítése..." }</label>
-                                    <input name="password1" type="password" id="password1"
-                                        value={password1} 
-                                        onFocus={() => setPwd1Focus(true)} onBlur={() => setPwd1Focus(false)} 
-                                        onBlur={event => { if (event.target.value === "") {setPwd1Focus(false)} else {setPwd1Focus(true)} }}  
-                                        onChange={event => setPassword1(event.target.value)}
-                                    />
-                                </div>
+                    <div className="input-wrapper">
+                    <div className="input-container">
+                        <label id="pwdLabel" className={ pwd1Focus ? "focus" : "" }><img src="/static/images/svg/key.svg"/>{ pwd1Focus ? "Jelszó megerősítés:" : "Jelszó megerősítés..."}</label>
+                        <input name="password" type={ showPwd ? "text" : "password" } id="password"
+                            value={password1}
+                            onFocus={() => setPwd1Focus(true)}
+                            onBlur={event => {if (event.target.value === ""){setPwd1Focus(false)} else {setPwd1Focus(true)}}}
+                            onChange={event => setPassword1(event.target.value)}
+                        />
+                    </div>
+                    </div>
+
+                    <div className="switch-container">
+                    <label className="switch">
+                        <input type="checkbox" name="pwdShow" onChange={event => {
+                            if (event.target.checked === true) {
+                                setShowPwd(true)
+                            } else {
+                            setShowPwd(false)
+                        }
+                        }} checked={showPwd} value={showPwd}/>
+                        <span class="slider round"></span>
+                        <label for="pwdShow" id="showPwdLabel">Jelszó mutatása</label>
+                    </label>
+                    </div>
+
+                    <hr className="register-divider"/>
+
+                    <div className="input-wrapper">
+                    <div className="input-container">
+                        <label id="birthLabel" className={ birthFocus ? "focus" : "" }><img src="/static/images/svg/calendar.svg"/>{ birthFocus ? "Születési dátum:" : "Születési dátum..."}</label>
+                        <span className="birth-picker">
+                            <input name="birth" type={ birthFocus ? "date" : "text" } id="birth" className={ birthFocus ? "active" : "" }
+                                value={birth}
+                                onFocus={() => setBirthFocus(true)}
+                                onBlur={event => {if (event.target.value === ""){setBirthFocus(false)} else {setBirthFocus(true)}}}
+                                onChange={event => setBirth(event.target.value)}
+                            />                        
+                        </span>
+                    </div>
+                    </div>
+
+                    <div className="input-wrapper">
+                    <div className="input-container">
+                        <label id="countryLabel" className={ countryFocus ? "focus" : "" }><img src="/static/images/svg/flag.svg"/>{ countryFocus ? "Ország:" : "Ország..."}</label>
+                        <input name="country" type="text" id="country"
+                            value={country}
+                            onFocus={() => setCountryFocus(true)}
+                            onBlur={event => {if (event.target.value === ""){setCountryFocus(false)} else {setCountryFocus(true)}}}
+                            onChange={event => setCountry(event.target.value)}
+                        />
+                    </div>
+                    </div>
+
+                    <div className="input-wrapper">
+                    <div className="input-container">
+                        <label id="addressLabel" className={ addressFocus ? "focus" : "" }><img src="/static/images/svg/marker.svg"/>{ addressFocus ? "Cím:" : "Cím..."}</label>
+                        <input name="address" type="text" id="address"
+                            value={address}
+                            onFocus={() => setAddressFocus(true)}
+                            onBlur={event => {if (event.target.value === ""){setAddressFocus(false)} else {setAddressFocus(true)}}}
+                            onChange={event => setAddress(event.target.value)}
+                        />
+                    </div>
+                    </div>
+
+                    <div className="input-wrapper">
+                    <div className="input-container">
+                        <label id="pfpLabel" className={ addressFocus ? "focus" : "" }><img src="/static/images/svg/user-circle.svg"/>Profil kép</label>
+                        <input name="pfp" type="file" accept="image/*" id="pfp"/>
+                    </div>
+                    </div>
+
+                    <div className="submit-wrapper">
+                        <button className={ submitState === "loading" ? "main-btn submit-btn loading" : submitState === "success" ? "main-btn submit-btn success" : submitState === "error" ? "main-btn submit-btn error" : "main-btn submit-btn"} type="submit" id="submit">
+                            <span>Belépés.</span>
+                            <div className={ submitState === "success" ? "submit-success active" : "submit-success" }>
+                                <i className="fas fa-check"></i>
                             </div>
-                            <input className="main-btn" type="submit" value="Regisztrálás."/>
-                        </form>
+                            <div className={ submitState === "error" ? "submit-error active" : "submit-error" }>
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div className="to-login">
                         <NavLink to="/bejelentkezes">Regisztrált már? Kattintson ide!</NavLink>
                     </div>
-                </div>
+
+                </form>
             </div>
         </div>
+        </>
     )
 
 }

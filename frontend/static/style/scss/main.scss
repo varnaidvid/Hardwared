@@ -33,12 +33,9 @@ html {
   opacity: 1;
 }
 
-@media (max-width: 991px) {
+@media (min-width: 1200px) {
   .navbar-nav {
     flex-direction: row !important;
-    li {
-      margin-right: 18px;
-    }
   }
 }
 
@@ -119,6 +116,7 @@ p {
   text-decoration: none;
   font-size: 16px;
   transition: all .2s;
+  margin-right: 20px;
 }
 .nav-link.active,
 .nav-link:hover,
@@ -129,13 +127,30 @@ p {
   width: 130px;
   margin-left: -5px;
 }
+.nav-icon {
+  .nav-link i{
+    color: $lightGray1;
+    transition: all .2s;
+    font-size: 18px;
+    &:hover {
+      color: $white;
+    }
+  }
+  a {
+    margin-right: 6px !important;
+  }
+}
+.nav-cart a {
+  margin-left: 20px !important;
+}
 .nav-hr {
   opacity: 1;
   margin: 0 10px;
   overflow: hidden;
   width: 2px;
-  background-color: $lightGray1;
   height: 20px !important;
+  background-color: transparent;
+  border-left: 3px dashed $lightGray1;
 }
 .user-dropdown::after {
   color: $lightGray1;
@@ -307,6 +322,7 @@ footer {
   width: 100%;
   transition: all .3s;
   text-transform: uppercase;
+  border-radius: 16px !important;
   &:hover {
     background-color: $main;
     color: $white !important;

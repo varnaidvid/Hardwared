@@ -1,14 +1,8 @@
-footer {
-    position: absolute;
-    bottom: 0;
-}
-
-
 .auth-bg-text{
   z-index: -2 !important;
   top: 400px;
-  left: 75px;
-  transform: rotate(5deg);
+  left: 50%;
+  transform: translateX(-50%) rotate(-5deg);
 }
 #rememberLabel, #showPwdLabel {
   position: absolute;
@@ -17,6 +11,9 @@ footer {
 }
 #showPwdLabel {
   right: -130px;
+}
+.register-auth-wrapper {
+  max-height: 1400px !important;
 }
 .auth-wrapper {
   margin: 0 auto;
@@ -31,37 +28,40 @@ footer {
   margin-bottom: -5px;
   z-index: -1;
   background-color: $gray;
+  display: block;
+  position: relative;
   .login-container, .register-container  {
     margin: 200px 50px;
     text-align: center;
     position: relative;
 
+    h5 {
+      font-size: 18px;
+      font-weight: 400;
+    }
+    .or-login-hr { 
+      background-color: $white;
+      height: 4px;
+      margin-bottom: 20px;
+    }
     .or-login {
       background-color: $main;
-      padding: 10px 30px;
-      width: 100%;
+      padding: 0 20px;
+      width: 125%;
       text-align: center;
       border-radius: 8px;
       position: relative;
       border: 3px solid $lightGray2;
       margin-bottom: 100px;
-      .l-bar, .r-bar {
+      margin-left: -55px;
+      .or-login-wrapper {
+        width: 80%;
+        margin: 0 auto;
+      }
+      .symbol {
         position: absolute;
-        width: 60px;
-        height: 35px;
-        background-color: $main;
-        top: 50px;
-        border: 2px solid $lightGray2;
-      }
-      .l-bar { left: -60px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; }
-      .r-bar { right: -60px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; }
-      h5 {
-        font-size: 18px;
-        font-weight: 400;
-      }
-      hr { 
-        background-color: $white;
-        height: 4px;
+        left: -100px;
+        top: -85px;
       }
       button {
         height: 40px;
@@ -103,5 +103,45 @@ footer {
       text-underline-offset: 2px;
     }
     .sliders { margin-top: 10px; }
+  }
+
+  .birth-picker {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    input {
+      width: 425px;      
+      float: left;
+      &::-webkit-calendar-picker-indicator {
+        color: #676eff;
+      }
+      &::-webkit-datetime-edit-year-field,
+      &::-webkit-datetime-edit-month-field,
+      &::-webkit-datetime-edit-day-field {
+        transition: all .3s;
+      }
+      &::-webkit-datetime-edit-year-field:focus,
+      &::-webkit-datetime-edit-month-field:focus,
+      &::-webkit-datetime-edit-day-field:focus {
+        background-color: #676eff;
+        border-radius: 10px;
+        padding: 4px;
+      }
+    }
+
+  }
+
+  .register-container {
+    .register-divider {
+      width: 95% !important;
+      background-color: transparent !important;
+      border-bottom: 3px dashed $lightGray2 !important;
+      margin: 30px auto !important;
+      margin-top: 80px !important;
+    }
+    .switch-container {
+      margin-top: 10px
+    }
   }
 }

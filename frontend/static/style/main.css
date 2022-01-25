@@ -239,15 +239,11 @@
 #main .fourth-section .title {
   font-size: 22px; }
 
-footer {
-  position: absolute;
-  bottom: 0; }
-
 .auth-bg-text {
   z-index: -2 !important;
   top: 400px;
-  left: 75px;
-  transform: rotate(5deg); }
+  left: 50%;
+  transform: translateX(-50%) rotate(-5deg); }
 
 #rememberLabel, #showPwdLabel {
   position: absolute;
@@ -256,6 +252,9 @@ footer {
 
 #showPwdLabel {
   right: -130px; }
+
+.register-auth-wrapper {
+  max-height: 1400px !important; }
 
 .auth-wrapper {
   margin: 0 auto;
@@ -269,41 +268,37 @@ footer {
   margin-top: -110px;
   margin-bottom: -5px;
   z-index: -1;
-  background-color: #23232e; }
+  background-color: #23232e;
+  display: block;
+  position: relative; }
   .auth-wrapper .login-container, .auth-wrapper .register-container {
     margin: 200px 50px;
     text-align: center;
     position: relative; }
+    .auth-wrapper .login-container h5, .auth-wrapper .register-container h5 {
+      font-size: 18px;
+      font-weight: 400; }
+    .auth-wrapper .login-container .or-login-hr, .auth-wrapper .register-container .or-login-hr {
+      background-color: #eeeeee;
+      height: 4px;
+      margin-bottom: 20px; }
     .auth-wrapper .login-container .or-login, .auth-wrapper .register-container .or-login {
       background-color: #676eff;
-      padding: 10px 30px;
-      width: 100%;
+      padding: 0 20px;
+      width: 125%;
       text-align: center;
       border-radius: 8px;
       position: relative;
       border: 3px solid #292a37;
-      margin-bottom: 100px; }
-      .auth-wrapper .login-container .or-login .l-bar, .auth-wrapper .login-container .or-login .r-bar, .auth-wrapper .register-container .or-login .l-bar, .auth-wrapper .register-container .or-login .r-bar {
+      margin-bottom: 100px;
+      margin-left: -55px; }
+      .auth-wrapper .login-container .or-login .or-login-wrapper, .auth-wrapper .register-container .or-login .or-login-wrapper {
+        width: 80%;
+        margin: 0 auto; }
+      .auth-wrapper .login-container .or-login .symbol, .auth-wrapper .register-container .or-login .symbol {
         position: absolute;
-        width: 60px;
-        height: 35px;
-        background-color: #676eff;
-        top: 50px;
-        border: 2px solid #292a37; }
-      .auth-wrapper .login-container .or-login .l-bar, .auth-wrapper .register-container .or-login .l-bar {
-        left: -60px;
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px; }
-      .auth-wrapper .login-container .or-login .r-bar, .auth-wrapper .register-container .or-login .r-bar {
-        right: -60px;
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px; }
-      .auth-wrapper .login-container .or-login h5, .auth-wrapper .register-container .or-login h5 {
-        font-size: 18px;
-        font-weight: 400; }
-      .auth-wrapper .login-container .or-login hr, .auth-wrapper .register-container .or-login hr {
-        background-color: #eeeeee;
-        height: 4px; }
+        left: -100px;
+        top: -85px; }
       .auth-wrapper .login-container .or-login button, .auth-wrapper .register-container .or-login button {
         height: 40px;
         width: 100%;
@@ -342,6 +337,30 @@ footer {
       text-underline-offset: 2px; }
     .auth-wrapper .login-container .sliders, .auth-wrapper .register-container .sliders {
       margin-top: 10px; }
+  .auth-wrapper .birth-picker {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 100%; }
+    .auth-wrapper .birth-picker input {
+      width: 425px;
+      float: left; }
+      .auth-wrapper .birth-picker input::-webkit-calendar-picker-indicator {
+        color: #676eff; }
+      .auth-wrapper .birth-picker input::-webkit-datetime-edit-year-field, .auth-wrapper .birth-picker input::-webkit-datetime-edit-month-field, .auth-wrapper .birth-picker input::-webkit-datetime-edit-day-field {
+        transition: all .3s; }
+      .auth-wrapper .birth-picker input::-webkit-datetime-edit-year-field:focus, .auth-wrapper .birth-picker input::-webkit-datetime-edit-month-field:focus, .auth-wrapper .birth-picker input::-webkit-datetime-edit-day-field:focus {
+        background-color: #676eff;
+        border-radius: 10px;
+        padding: 4px; }
+  .auth-wrapper .register-container .register-divider {
+    width: 95% !important;
+    background-color: transparent !important;
+    border-bottom: 3px dashed #292a37 !important;
+    margin: 30px auto !important;
+    margin-top: 80px !important; }
+  .auth-wrapper .register-container .switch-container {
+    margin-top: 10px; }
 
 #app,
 body,
@@ -371,11 +390,9 @@ html {
   background-color: #292a37;
   opacity: 1; }
 
-@media (max-width: 991px) {
+@media (min-width: 1200px) {
   .navbar-nav {
-    flex-direction: row !important; }
-    .navbar-nav li {
-      margin-right: 18px; } }
+    flex-direction: row !important; } }
 
 @media (min-width: 767px) {
   #footer-2row {
@@ -436,7 +453,8 @@ p {
   color: #8a8a8f;
   text-decoration: none;
   font-size: 16px;
-  transition: all .2s; }
+  transition: all .2s;
+  margin-right: 20px; }
 
 .nav-link.active,
 .nav-link:hover,
@@ -447,13 +465,27 @@ p {
   width: 130px;
   margin-left: -5px; }
 
+.nav-icon .nav-link i {
+  color: #8a8a8f;
+  transition: all .2s;
+  font-size: 18px; }
+  .nav-icon .nav-link i:hover {
+    color: #eeeeee; }
+
+.nav-icon a {
+  margin-right: 6px !important; }
+
+.nav-cart a {
+  margin-left: 20px !important; }
+
 .nav-hr {
   opacity: 1;
   margin: 0 10px;
   overflow: hidden;
   width: 2px;
-  background-color: #8a8a8f;
-  height: 20px !important; }
+  height: 20px !important;
+  background-color: transparent;
+  border-left: 3px dashed #8a8a8f; }
 
 .user-dropdown::after {
   color: #8a8a8f;
@@ -607,7 +639,8 @@ footer {
   font-weight: 600;
   width: 100%;
   transition: all .3s;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  border-radius: 16px !important; }
   .submit-btn:hover {
     background-color: #676eff;
     color: #eeeeee !important; }

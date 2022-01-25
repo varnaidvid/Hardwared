@@ -1,7 +1,6 @@
-import React, { Component, useEffect, useState, useContext } from "react"
+import React, { Component, useEffect, useState, useContext, useRef } from "react"
 import { NavLink } from "react-router-dom"
 import { MainContext } from "../App"
-
 import { signOut } from "../views/Account"
 
 export default function NavBar(props){
@@ -40,6 +39,12 @@ export default function NavBar(props){
                         { user ? (
                             <>
                             <hr className="nav-hr"/>
+                            <li className="nav-item nav-icon nav-cart">
+                                <NavLink to="/" className="nav-link" activeClassName="active"><i class="fas fa-shopping-cart"></i></NavLink>
+                            </li>
+                            <li className="nav-item nav-icon">
+                                <NavLink to="/" className="nav-link" activeClassName="active"><i class="fas fa-comment-dots"></i></NavLink>
+                            </li>
                             <li className="nav-item">
                                 <div className="dropdown">
                                     <button className="dropdown-toggle user-dropdown" aria-expanded="false" data-bs-toggle="dropdown" type="button"><img src={user.profile.avatar} className="rounded-circle" height="30" alt="Avatar" title="Avatar"/></button>

@@ -2,7 +2,7 @@ import React, {Component} from "react"
 
 export const SlideShow = () => {
     return (
-        <div id="mainCarousel" className="carousel slide" data-bs-ride="carousel">
+        <div id="mainCarousel" className="carousel slide carousel-fade" data-bs-ride="carousel">
             <div className="carousel-inner">
                 <div className="carousel-item active">
                     <img src="/static/images/pcs/pc1.png" className="d-block w-100" alt="Gép 1" title="Gép 1"/>

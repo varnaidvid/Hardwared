@@ -1,7 +1,10 @@
+import { motion, transform } from "framer-motion"
 import React, {Component} from "react"
 
 export default function ContactUs(){
     return (
-        <h1>Conact Us</h1>
+        <>
+            <h1>Contact Us</h1>
+      </>
     )
 }

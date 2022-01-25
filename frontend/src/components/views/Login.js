@@ -40,15 +40,15 @@ export default function Login(){
                 sessionStorage.setItem("user", JSON.stringify(response.data))
             }
 
-            setUser(response.data)
             axios.defaults.headers.common["Authorization"] = `Token ${response.data.token}`
             
             setSubmitState("success")
 
             setTimeout(() => {
+                setUser(response.data)
                 toast.success("Sikeres bejelentkezés!")
                 history.push("/fiok")                
-            }, 2000)
+            }, 1000)
         })
         .catch((error) => {
             const pwdInput = document.getElementById("password")
@@ -155,23 +155,25 @@ export default function Login(){
                             </div>
                         </button>
                     </div>
+    
+                    <h5>Vagy lépjen be...</h5>
+                    <hr className="or-login-hr"/>
 
                     <div className="or-login">
-                        <h5>Vagy lépjen be...</h5>
-                        <hr/>
-                        <div className="row">
-                            <div className="col-12 col-md-6 col-lg-4">
-                                <button className="login-with-google" type="button"><img src="/static/images/google.png"/></button>
-                            </div>
-                            <div className="col-12 col-md-6 col-lg-4">
-                                <button className="login-with-facebook" type="button"><img src="/static/images/facebook.png"/></button>
-                            </div>
-                            <div className="col-12 col-md-6 col-lg-4">
-                                <button className="login-with-apple" type="button"><img src="/static/images/apple.png"/></button>
+                        <img className="symbol" src="/static/images/svg/login.svg"/>
+                        <div className="or-login-wrapper">
+                            <div className="row">
+                                <div className="col-12 col-md-6 col-lg-4">
+                                    <button className="login-with-google" type="button"><img src="/static/images/google.png"/></button>
+                                </div>
+                                <div className="col-12 col-md-6 col-lg-4">
+                                    <button className="login-with-facebook pb-2" type="button"><img src="/static/images/facebook.png"/></button>
+                                </div>
+                                <div className="col-12 col-md-6 col-lg-4">
+                                    <button className="login-with-apple" type="button"><img src="/static/images/apple.png"/></button>
+                                </div>
                             </div>
                         </div>
-                        <div className="r-bar"/>
-                        <div className="l-bar"/>
                     </div>
 
                 </form>

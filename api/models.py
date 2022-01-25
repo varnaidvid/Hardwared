@@ -42,8 +42,8 @@ def create_user_profile(sender, instance, created, **kwargs):
     if created:
         profile = Profile.objects.create(user=instance)
         token = Token.objects.create(user=instance)
-    profile.save()
-    token.save()
+        profile.save()
+        token.save()
 
 class Computer(models.Model):
     generation = models.CharField(max_length=8, default="")

@@ -346,7 +346,7 @@
       width: 425px;
       float: left; }
       .auth-wrapper .birth-picker input::-webkit-calendar-picker-indicator {
-        color: #676eff; }
+        filter: invert(0.8); }
       .auth-wrapper .birth-picker input::-webkit-datetime-edit-year-field, .auth-wrapper .birth-picker input::-webkit-datetime-edit-month-field, .auth-wrapper .birth-picker input::-webkit-datetime-edit-day-field {
         transition: all .3s; }
       .auth-wrapper .birth-picker input::-webkit-datetime-edit-year-field:focus, .auth-wrapper .birth-picker input::-webkit-datetime-edit-month-field:focus, .auth-wrapper .birth-picker input::-webkit-datetime-edit-day-field:focus {

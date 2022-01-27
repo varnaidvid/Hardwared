@@ -114,7 +114,7 @@
       width: 425px;      
       float: left;
       &::-webkit-calendar-picker-indicator {
-        color: #676eff;
+        filter: invert(0.8);
       }
       &::-webkit-datetime-edit-year-field,
       &::-webkit-datetime-edit-month-field,

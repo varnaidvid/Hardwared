@@ -6,11 +6,62 @@ import { signOut } from "../views/Account"
 export default function NavBar(props){
     const [user, setUser] = useContext(MainContext)
 
+    const [expanded, setExpanded] = useState("")
+
+     const toggleNav = () => {
+        const toggler = document.getElementById("navbar-toggler")
+        if (toggler.ariaExpanded == "true") {
+
+            setTimeout(() => { 
+                toggler.classList.add("toggled")
+             }, 300)
+
+             setTimeout(() => {
+                toggler.animate([
+                    {left: '0'},
+                    {left: '100px'},
+                    {left: '200px'},
+                ], {
+                    duration: 200,
+                    iterations: 1,
+                })
+            }, 100)
+
+        } else {
+
+            setTimeout(() => {
+                toggler.classList.remove("toggled")
+            }, 200)
+            
+            toggler.animate([
+                {left: '200px'},
+                {left: '100px'},
+                {left: '0'},
+            ], {
+                duration: 200,
+                iterations: 1,
+            }) 
+
+        }
+    }
+
     return (
         <div className="main-wrapper custom-wrapper">
             <nav className="navbar navbar-expand-xl navbar-dark">
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
+                <button 
+                    className={"navbar-toggler collapsed"} 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#navBar" 
+                    aria-controls="navBar" 
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation" 
+                    id="navbar-toggler" 
+                    onClick={() => {setExpanded(expanded ? "" : " show"); toggleNav()}}
+                >
+                    <span className="icon-bar top-bar"></span>
+                    <span className="icon-bar middle-bar"></span>
+                    <span className="icon-bar bottom-bar"></span>
                 </button>
 
                 <div className="collapse navbar-collapse" id="navBar">
@@ -22,23 +73,27 @@ export default function NavBar(props){
                         </li>
                     </ul>
 
-                    <ul className="navbar-nav d-flex align-items-center mt-3">
+                    <ul className="navbar-nav d-flex mt-3">
                         <li className="nav-item">
+                            <i class="fas fa-home d-xl-none d-flex"></i>
                             <NavLink exact to="/" className="nav-link" activeClassName="active">Kezdőlap.</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="/termekek" className="nav-link" activeClassName="active">Termékek.</NavLink>
+                            <i class="fas fa-laptop d-xl-none d-flex"></i>
+                            <NavLink to="/termekek" className="nav-link" activeClassName="active" onClick={() => setExpanded("")}>Termékek.</NavLink>
                         </li>
                         <li className="nav-item">
+                            <i class="fas fa-network-wired d-xl-none d-flex"></i>
                             <NavLink to="/szolgaltatasok" className="nav-link" activeClassName="active">Szolgáltatások.</NavLink>
                         </li>
                         <li className="nav-item">
+                            <i class="fas fa-globe-europe d-xl-none d-flex"></i>
                             <NavLink to="/elerhetoseg" className="nav-link before-btn" activeClassName="active">Elérhetőség.</NavLink>
                         </li>
 
                         { user ? (
                             <>
-                            <hr className="nav-hr"/>
+                            <hr className="nav-hr d-none d-xl-block"/>
                             <li className="nav-item nav-icon nav-cart">
                                 <NavLink to="/" className="nav-link" activeClassName="active"><i class="fas fa-shopping-cart"></i></NavLink>
                             </li>

@@ -10,6 +10,7 @@ const nullInput = (item) => {
     ], {
         duration: 850,
         iterations: 1,
-    })}
+    })
+}
 
 export default nullInput

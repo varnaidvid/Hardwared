@@ -167,6 +167,14 @@
     }
   }
 
+  @media (max-width: 768px) {
+    .first-section {
+      .main-btn {
+        margin-top: 40px !important;
+      }
+    }
+  }
+
   @media (max-width: 500px) {
     .main-title {
       font-size: 30px !important;
@@ -175,6 +183,11 @@
       .main-btn {
         margin-top: 10px !important;
         margin-bottom: 15px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      .col-lg-7 {
+        text-align: center;
       }
     }
     .carousel-control-next {

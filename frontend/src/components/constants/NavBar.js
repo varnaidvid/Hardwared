@@ -6,58 +6,16 @@ import { signOut } from "../views/Account"
 export default function NavBar(props){
     const [user, setUser] = useContext(MainContext)
 
-    const [expanded, setExpanded] = useState("")
-
-     const toggleNav = () => {
-        const toggler = document.getElementById("navbar-toggler")
-        if (toggler.ariaExpanded == "true") {
-
-            setTimeout(() => { 
-                toggler.classList.add("toggled")
-             }, 300)
-
-             setTimeout(() => {
-                toggler.animate([
-                    {left: '0'},
-                    {left: '100px'},
-                    {left: '200px'},
-                ], {
-                    duration: 200,
-                    iterations: 1,
-                })
-            }, 100)
-
-        } else {
-
-            setTimeout(() => {
-                toggler.classList.remove("toggled")
-            }, 200)
-            
-            toggler.animate([
-                {left: '200px'},
-                {left: '100px'},
-                {left: '0'},
-            ], {
-                duration: 200,
-                iterations: 1,
-            }) 
-
-        }
-    }
-
     return (
         <div className="main-wrapper custom-wrapper">
             <nav className="navbar navbar-expand-xl navbar-dark">
                 <button 
-                    className={"navbar-toggler collapsed"} 
+                    className="navbar-toggler collapsed" 
                     type="button" 
                     data-bs-toggle="collapse" 
-                    data-bs-target="#navBar" 
-                    aria-controls="navBar" 
-                    aria-expanded="false" 
-                    aria-label="Toggle navigation" 
+                    data-bs-target="#navBar"
+                    aria-expanded="false"
                     id="navbar-toggler" 
-                    onClick={() => {setExpanded(expanded ? "" : " show"); toggleNav()}}
                 >
                     <span className="icon-bar top-bar"></span>
                     <span className="icon-bar middle-bar"></span>
@@ -80,7 +38,7 @@ export default function NavBar(props){
                         </li>
                         <li className="nav-item">
                             <i class="fas fa-laptop d-xl-none d-flex"></i>
-                            <NavLink to="/termekek" className="nav-link" activeClassName="active" onClick={() => setExpanded("")}>Termékek.</NavLink>
+                            <NavLink to="/termekek" className="nav-link" activeClassName="active">Termékek.</NavLink>
                         </li>
                         <li className="nav-item">
                             <i class="fas fa-network-wired d-xl-none d-flex"></i>
@@ -112,9 +70,11 @@ export default function NavBar(props){
                             </li>
                             </>
                         ) : (
-                            <li className="nav-item">
-                                <NavLink to="/bejelentkezes" className="nav-link main-btn" activeClassName="active">Bejelentkezés.</NavLink>
-                            </li>
+                            <>
+                                <li className="nav-item">
+                                    <NavLink to="/bejelentkezes" className="nav-link main-btn"  activeClassName="active">Bejelentkezés.</NavLink>
+                                </li>
+                            </>
                         )}
 
                     </ul>

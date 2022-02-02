@@ -1,3 +1,21 @@
+@media (max-width: 767px) {
+  .auth-wrapper {
+    z-index: 1 !important;
+    border: none !important;
+  }
+}
+@media (max-width: 520px) {
+  .switch-container {
+    .slider {
+      transform: translateX(60%);
+    }
+    #rememberLabel, #showPwdLabel {
+      margin-top: 40px;
+      right: -65px;
+    }
+  }
+}
+
 .auth-bg-text{
   z-index: -2 !important;
   top: 400px;

@@ -82,7 +82,7 @@ export default function Login(){
             <div className="login-container">
                 <h1>Bejelentkezés</h1>
                 <hr className="title-hr"/>
-                <img className="lock" src="/static/images/svg/lock.svg"/>
+                <img className="lock d-none d-md-absolute" src="/static/images/svg/lock.svg"/>
                 <form method="POST" onSubmit={handleSubmit} action="/fiok">
                     <input type="hidden" name="csrfmiddlewaretoken" value={CSRFToken}/>
 

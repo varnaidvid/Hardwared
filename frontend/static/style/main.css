@@ -247,17 +247,50 @@
 #main .fourth-section .title {
   font-size: 22px; }
 
+@media (max-width: 991px) {
+  .or-login button {
+    margin: 10px 0 !important; } }
+
 @media (max-width: 767px) {
   .auth-wrapper {
     z-index: 1 !important;
-    border: none !important; } }
+    border: none !important;
+    margin: 0 auto !important; }
+    .auth-wrapper .register-container {
+      margin: 100px 50px !important; }
+  .symbol {
+    display: none; }
+  .lock {
+    display: none !important; } }
 
 @media (max-width: 520px) {
+  footer {
+    z-index: 2 !important; }
+  .or-login-hr {
+    display: none !important; }
+  h5 {
+    margin-bottom: 10px; }
+  .main-btn {
+    margin-top: 55px !important;
+    margin-bottom: 25px !important; }
+  .or-login-wrapper {
+    width: 95% !important; }
+  .or-login {
+    margin-bottom: 20px !important;
+    width: 100% !important;
+    margin-left: unset !important;
+    background-color: transparent !important;
+    border: none !important; }
   .switch-container .slider {
     transform: translateX(60%); }
   .switch-container #rememberLabel, .switch-container #showPwdLabel {
     margin-top: 40px;
-    right: -65px; } }
+    right: -65px; }
+  .register-container .birth-picker input {
+    width: 100% !important; }
+  .register-container #showPwdLabel {
+    top: -35px !important;
+    right: -175px !important; } }
 
 .auth-bg-text {
   z-index: -2 !important;
@@ -344,6 +377,7 @@
       margin: 0 auto;
       background-color: #676eff; }
     .auth-wrapper .login-container .lock, .auth-wrapper .register-container .lock {
+      display: block;
       position: absolute;
       right: -80px;
       height: 75px;
@@ -376,11 +410,26 @@
   .auth-wrapper .register-container .register-divider {
     width: 95% !important;
     background-color: transparent !important;
-    border-bottom: 3px dashed #292a37 !important;
+    border-bottom: 5px dotted #292a37 !important;
     margin: 30px auto !important;
     margin-top: 80px !important; }
   .auth-wrapper .register-container .switch-container {
     margin-top: 10px; }
+  .auth-wrapper .register-container #pfp {
+    display: none; }
+  .auth-wrapper .register-container #get-pfp {
+    background-color: #8a8a8f10;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    height: 55px;
+    max-width: 425px;
+    padding: 0 16px;
+    padding-top: 14px;
+    text-align: left;
+    font-size: 16px; }
+  .auth-wrapper .register-container #pfpName {
+    color: #8a8a8f; }
 
 #app,
 body,
@@ -393,10 +442,9 @@ html {
   margin: 0; }
 
 #main {
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  min-width: 100vw;
   position: relative;
-  display: block;
   overflow-y: overlay;
   overflow-x: hidden;
   color: #eeeeee;
@@ -458,8 +506,6 @@ html {
     padding: 0 !important;
     margin: 0 !important; }
   #navBar {
-    background-color: #1d1d29;
-    border-top: 5px solid #292a37;
     border-bottom: 5px solid #292a37;
     padding: 0 50px;
     width: 100vw; }
@@ -474,8 +520,11 @@ html {
       display: flex;
       align-items: center;
       align-self: center; }
+      #navBar .navbar-nav .nav-item a {
+        display: flex; }
       #navBar .navbar-nav .nav-item i {
-        margin-right: 6px; }
+        margin-right: 6px;
+        margin-top: 4px; }
     #navBar .navbar-nav .main-btn {
       margin: 30px 0; }
   .navbar-toggler {

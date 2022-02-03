@@ -1,10 +1,51 @@
+@media (max-width: 991px) {
+  .or-login {
+    button {
+      margin: 10px 0 !important;
+    }
+  }
+}
+
 @media (max-width: 767px) {
   .auth-wrapper {
     z-index: 1 !important;
     border: none !important;
+    margin: 0 auto !important;
+    .register-container {
+      margin: 100px 50px !important;
+    }
+  }
+  .symbol {
+    display: none;
+  }
+  .lock {
+    display: none !important;
   }
 }
 @media (max-width: 520px) {
+  footer{
+    z-index: 2 !important;
+   }
+  .or-login-hr {
+    display: none !important;
+  }
+  h5 {
+    margin-bottom: 10px;
+  }
+  .main-btn {
+    margin-top: 55px !important;
+    margin-bottom: 25px !important;    
+  }
+  .or-login-wrapper {
+    width: 95% !important;
+  }
+  .or-login {
+    margin-bottom: 20px !important;
+    width: 100% !important;
+    margin-left: unset !important;
+    background-color: transparent !important;
+    border: none !important;
+  }
   .switch-container {
     .slider {
       transform: translateX(60%);
@@ -12,6 +53,15 @@
     #rememberLabel, #showPwdLabel {
       margin-top: 40px;
       right: -65px;
+    }
+  }
+  .register-container {
+    .birth-picker input {
+      width: 100% !important;
+    }
+    #showPwdLabel {
+      top: -35px !important;
+      right: -175px !important;
     }
   }
 }
@@ -106,6 +156,7 @@
       background-color: $main;
     }
     .lock {
+      display: block;
       position: absolute;
       right: -80px;
       height: 75px;
@@ -154,12 +205,30 @@
     .register-divider {
       width: 95% !important;
       background-color: transparent !important;
-      border-bottom: 3px dashed $lightGray2 !important;
+      border-bottom: 5px dotted $lightGray2 !important;
       margin: 30px auto !important;
       margin-top: 80px !important;
     }
     .switch-container {
       margin-top: 10px
+    }
+    #pfp {
+      display: none;
+    }
+    #get-pfp {
+      background-color: #8a8a8f10;
+      outline: none;
+      border: none;
+      border-radius: 12px;
+      height: 55px;
+      max-width: 425px;
+      padding: 0 16px;
+      padding-top: 14px;
+      text-align: left;
+      font-size: 16px;
+    }
+    #pfpName {
+      color: $lightGray1;
     }
   }
 }

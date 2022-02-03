@@ -82,7 +82,6 @@ export default function Login(){
             <div className="login-container">
                 <h1>Bejelentkezés</h1>
                 <hr className="title-hr"/>
-                <img className="lock d-none d-md-absolute" src="/static/images/svg/lock.svg"/>
                 <form method="POST" onSubmit={handleSubmit} action="/fiok">
                     <input type="hidden" name="csrfmiddlewaretoken" value={CSRFToken}/>
 
@@ -169,7 +168,7 @@ export default function Login(){
                                 <div className="col-12 col-md-6 col-lg-4">
                                     <button className="login-with-facebook pb-2" type="button"><img src="/static/images/facebook.png"/></button>
                                 </div>
-                                <div className="col-12 col-md-6 col-lg-4">
+                                <div className="col-12 col-md-12 col-lg-4">
                                     <button className="login-with-apple" type="button"><img src="/static/images/apple.png"/></button>
                                 </div>
                             </div>

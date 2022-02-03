@@ -33,20 +33,26 @@ export default function NavBar(props){
 
                     <ul className="navbar-nav d-flex mt-3">
                         <li className="nav-item">
-                            <i class="fas fa-home d-xl-none d-flex"></i>
-                            <NavLink exact to="/" className="nav-link" activeClassName="active">Kezdőlap.</NavLink>
+                            <NavLink exact to="/" className="nav-link" activeClassName="active">
+                                <i class="fas fa-home d-xl-none d-flex"></i>Kezdőlap.
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <i class="fas fa-laptop d-xl-none d-flex"></i>
-                            <NavLink to="/termekek" className="nav-link" activeClassName="active">Termékek.</NavLink>
+                            <NavLink to="/termekek" className="nav-link" activeClassName="active">
+                                <i class="fas fa-laptop d-xl-none d-flex"></i>Termékek.
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <i class="fas fa-network-wired d-xl-none d-flex"></i>
-                            <NavLink to="/szolgaltatasok" className="nav-link" activeClassName="active">Szolgáltatások.</NavLink>
+                            
+                            <NavLink to="/szolgaltatasok" className="nav-link" activeClassName="active">
+                                <i class="fas fa-network-wired d-xl-none d-flex"></i> Szolgáltatások.
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <i class="fas fa-globe-europe d-xl-none d-flex"></i>
-                            <NavLink to="/elerhetoseg" className="nav-link before-btn" activeClassName="active">Elérhetőség.</NavLink>
+                            
+                            <NavLink to="/elerhetoseg" className="nav-link before-btn" activeClassName="active">
+                                <i class="fas fa-globe-europe d-xl-none d-flex"></i>Elérhetőség.
+                            </NavLink>
                         </li>
 
                         { user ? (

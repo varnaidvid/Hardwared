@@ -14,10 +14,9 @@ html {
 }
 
 #main {
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  min-width: 100vw;
   position: relative;
-  display: block;
   overflow-y: overlay;
   overflow-x: hidden;
   color: $white;
@@ -103,8 +102,6 @@ html {
     margin: 0 !important;
   }
   #navBar {
-    background-color: $darkGray;
-    border-top: 5px solid $lightGray2;
     border-bottom: 5px solid $lightGray2;
     padding: 0 50px;
     width: 100vw;
@@ -121,8 +118,12 @@ html {
         display: flex;
         align-items: center;
         align-self: center;
+        a {
+          display: flex;
+        }
         i {
           margin-right: 6px;
+          margin-top: 4px;
         }
       }
       .main-btn {
@@ -377,16 +378,16 @@ footer {
       img.long { height: 10px; width: 8px; }
   }
   input {
-      color: $lightGray1;
-      background-color: #8a8a8f10;
-      outline: none;
-      border: none;
-      border-radius: 12px;
-      height: 55px;
-      max-width: 425px;
-      padding: 0 16px;
-      padding-top: 14px;
-      font-size: 16px;
+    color: $lightGray1;
+    background-color: #8a8a8f10;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    height: 55px;
+    max-width: 425px;
+    padding: 0 16px;
+    padding-top: 14px;
+    font-size: 16px;
   }
   .hide {
     top: -8px;

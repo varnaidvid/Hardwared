@@ -32,6 +32,8 @@ export default function Register(props) {
     const [address, setAddress] = useState("")
     const [addressFocus, setAddressFocus] = useState(false)
 
+    const [pfp, setPfp] = useState(false)
+
     const [submitState, setSubmitState] = useState("normal")
 
     const handleSubmit = event => {
@@ -182,14 +184,23 @@ export default function Register(props) {
 
                     <div className="input-wrapper">
                     <div className="input-container">
-                        <label id="pfpLabel" className={ addressFocus ? "focus" : "" }><img src="/static/images/svg/user-circle.svg"/>Profil kép</label>
-                        <input name="pfp" type="file" accept="image/*" id="pfp"/>
+                        <button onClick={() => document.getElementById("pfp").click()} id="get-pfp">
+                            <label id="pfpLabel" className={ pfp ? "focus" : "" }><img src="/static/images/svg/user-circle.svg"/>{ pfp ? "Profil kép:" : "Profil kép..." }</label>
+                            <span id="pfpName">{ pfp ? document.getElementById("pfp").files[0].name : ""}</span>
+                        </button>
+                        <input name="pfp" type="file" accept="image/*" id="pfp" onChange={() => {
+                            if (pfp) {
+                                setPfp(false)
+                            } else {
+                                setPfp(true)
+                            }
+                        }}/>
                     </div>
                     </div>
 
                     <div className="submit-wrapper">
                         <button className={ submitState === "loading" ? "main-btn submit-btn loading" : submitState === "success" ? "main-btn submit-btn success" : submitState === "error" ? "main-btn submit-btn error" : "main-btn submit-btn"} type="submit" id="submit">
-                            <span>Belépés.</span>
+                            <span>Létrehozás.</span>
                             <div className={ submitState === "success" ? "submit-success active" : "submit-success" }>
                                 <i className="fas fa-check"></i>
                             </div>

@@ -33,7 +33,7 @@
     margin-bottom: 10px;
   }
   .main-btn {
-    margin-top: 55px !important;
+    margin-top: 65px !important;
     margin-bottom: 25px !important;    
   }
   .or-login-wrapper {
@@ -41,6 +41,7 @@
   }
   .or-login {
     margin-bottom: 20px !important;
+    padding: 0 !important;
     width: 100% !important;
     margin-left: unset !important;
     background-color: transparent !important;
@@ -92,18 +93,27 @@
   border-radius: 0;
   width: 100%;
   height: 100%;
-  margin-top: -110px;
+  margin-top: -130px;
   margin-bottom: -5px;
   z-index: -1;
   background-color: $gray;
   display: block;
   position: relative;
   .login-container, .register-container  {
-    margin: 200px 50px;
+    margin: 100px 50px;
+    margin-top: 150px !important;
     text-align: center;
     position: relative;
 
+    .sub-input-text {
+      margin: 0 !important;
+      padding: 0 !important;
+      font-size: 12px;
+      font-weight: 400;
+      color: $lightGray1;
+    }
     h5 {
+      margin: 20px 0;
       font-size: 18px;
       font-weight: 400;
     }
@@ -180,10 +190,13 @@
     width: 100%;
     height: 100%;
     input {
-      width: 425px;      
-      float: left;
+      width: 425px;
+      -webkit-appearance: none;
       &::-webkit-calendar-picker-indicator {
         filter: invert(0.8);
+      }
+      &::-webkit-date-and-time-value {
+        text-align: left;
       }
       &::-webkit-datetime-edit-year-field,
       &::-webkit-datetime-edit-month-field,
@@ -194,6 +207,7 @@
       &::-webkit-datetime-edit-month-field:focus,
       &::-webkit-datetime-edit-day-field:focus {
         background-color: #676eff;
+        color: $white;
         border-radius: 10px;
         padding: 4px;
       }
@@ -202,6 +216,15 @@
   }
 
   .register-container {
+    #birth {
+      color: transparent;
+      &:hover, &:focus, &:not([value=""]) {
+        color: $lightGray1;
+      }
+    }
+    .input-container {
+      margin-top: 18px !important;
+    }
     .register-divider {
       width: 95% !important;
       background-color: transparent !important;

@@ -47,6 +47,8 @@ html {
   }
   #main {
     margin: 0 auto;
+    min-height: unset;
+    min-width: unset;
     width: 90vw;
     height: 90vh;
     border: 5px solid $lightGray2;
@@ -344,6 +346,9 @@ footer {
 }
 
 /* Input */
+.input-wrapper {
+  text-align: left;
+}
 .input-container {
   position: relative;
   display: flex;
@@ -388,6 +393,7 @@ footer {
     padding: 0 16px;
     padding-top: 14px;
     font-size: 16px;
+    overflow: auto;
   }
   .hide {
     top: -8px;

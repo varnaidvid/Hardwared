@@ -49,6 +49,13 @@ export default function Register(props) {
         fd.append("address", address)
         fd.append("avatar", document.getElementById("pfp").files[0])
 
+        axios.post("http://localhost:3000/api/user/register/", fd)
+        .then((response) => {
+            console.log(response)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
 
         // axios.post("http://localhost:3000/api/user/register/", {
         //     username: username,
@@ -90,6 +97,7 @@ export default function Register(props) {
                             onChange={event => setUsername(event.target.value)}
                         />
                     </div>
+                    <span className="sub-input-text">* Kötelező</span>
                     </div>
 
                     <div className="input-wrapper">
@@ -102,6 +110,7 @@ export default function Register(props) {
                                 onChange={event => setEmail(event.target.value)}
                             />
                     </div>
+                    <span className="sub-input-text">* Kötelező</span>
                     </div>
 
                     <div className="input-wrapper">
@@ -114,6 +123,7 @@ export default function Register(props) {
                             onChange={event => setPassword(event.target.value)}
                         />
                     </div>
+                    <span className="sub-input-text">* Kötelező</span>
                     </div>
 
                     <div className="input-wrapper">
@@ -126,6 +136,7 @@ export default function Register(props) {
                             onChange={event => setPassword1(event.target.value)}
                         />
                     </div>
+                    <span className="sub-input-text">* Kötelező</span>
                     </div>
 
                     <div className="switch-container">
@@ -148,15 +159,17 @@ export default function Register(props) {
                     <div className="input-container">
                         <label id="birthLabel" className={ birthFocus ? "focus" : "" }><img src="/static/images/svg/calendar.svg"/>{ birthFocus ? "Születési dátum:" : "Születési dátum..."}</label>
                         <span className="birth-picker">
-                            <input name="birth" type={ birthFocus ? "date" : "text" } id="birth" className={ birthFocus ? "active" : "" }
+                            <input name="birth" type="date" id="birth" className={ birthFocus ? "active" : "" }
                                 value={birth}
                                 onFocus={() => setBirthFocus(true)}
                                 onBlur={event => {if (event.target.value === ""){setBirthFocus(false)} else {setBirthFocus(true)}}}
                                 onChange={event => setBirth(event.target.value)}
+                                max="2022-12-31"
                             />                        
                         </span>
                     </div>
                     </div>
+
 
                     <div className="input-wrapper">
                     <div className="input-container">

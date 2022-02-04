@@ -19,16 +19,17 @@ class ComputerView(generics.ListAPIView):
     serializer_class = ComputerSerializer
 
 class UserCreate(generics.GenericAPIView):
-    serializer_class = RegisterSerializer
+    serializer_class = RegisterSerializer, ProfileSerializer
     permission_classes = (AllowAny,)
     http_method_names = ["post"]
 
     def post(self, request, format="json", *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
+        serializer = RegisterSerializer(data={"username": request.data["username"], "email": request.data["email"], "password": request.data["password"]})
         if serializer.is_valid():
             user = serializer.save()
             if user:
                 token, created = Token.objects.get_or_create(user=user)
+                # profile = Profile.objects.get_or_create(user=user).update(birth_date=)
                 return Response({"isCreated": "true"}, status=status.HTTP_201_CREATED)
             
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

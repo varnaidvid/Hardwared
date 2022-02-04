@@ -271,12 +271,13 @@
   h5 {
     margin-bottom: 10px; }
   .main-btn {
-    margin-top: 55px !important;
+    margin-top: 65px !important;
     margin-bottom: 25px !important; }
   .or-login-wrapper {
     width: 95% !important; }
   .or-login {
     margin-bottom: 20px !important;
+    padding: 0 !important;
     width: 100% !important;
     margin-left: unset !important;
     background-color: transparent !important;
@@ -318,17 +319,25 @@
   border-radius: 0;
   width: 100%;
   height: 100%;
-  margin-top: -110px;
+  margin-top: -130px;
   margin-bottom: -5px;
   z-index: -1;
   background-color: #23232e;
   display: block;
   position: relative; }
   .auth-wrapper .login-container, .auth-wrapper .register-container {
-    margin: 200px 50px;
+    margin: 100px 50px;
+    margin-top: 150px !important;
     text-align: center;
     position: relative; }
+    .auth-wrapper .login-container .sub-input-text, .auth-wrapper .register-container .sub-input-text {
+      margin: 0 !important;
+      padding: 0 !important;
+      font-size: 12px;
+      font-weight: 400;
+      color: #8a8a8f; }
     .auth-wrapper .login-container h5, .auth-wrapper .register-container h5 {
+      margin: 20px 0;
       font-size: 18px;
       font-weight: 400; }
     .auth-wrapper .login-container .or-login-hr, .auth-wrapper .register-container .or-login-hr {
@@ -398,15 +407,24 @@
     height: 100%; }
     .auth-wrapper .birth-picker input {
       width: 425px;
-      float: left; }
+      -webkit-appearance: none; }
       .auth-wrapper .birth-picker input::-webkit-calendar-picker-indicator {
         filter: invert(0.8); }
+      .auth-wrapper .birth-picker input::-webkit-date-and-time-value {
+        text-align: left; }
       .auth-wrapper .birth-picker input::-webkit-datetime-edit-year-field, .auth-wrapper .birth-picker input::-webkit-datetime-edit-month-field, .auth-wrapper .birth-picker input::-webkit-datetime-edit-day-field {
         transition: all .3s; }
       .auth-wrapper .birth-picker input::-webkit-datetime-edit-year-field:focus, .auth-wrapper .birth-picker input::-webkit-datetime-edit-month-field:focus, .auth-wrapper .birth-picker input::-webkit-datetime-edit-day-field:focus {
         background-color: #676eff;
+        color: #eeeeee;
         border-radius: 10px;
         padding: 4px; }
+  .auth-wrapper .register-container #birth {
+    color: transparent; }
+    .auth-wrapper .register-container #birth:hover, .auth-wrapper .register-container #birth:focus, .auth-wrapper .register-container #birth:not([value=""]) {
+      color: #8a8a8f; }
+  .auth-wrapper .register-container .input-container {
+    margin-top: 18px !important; }
   .auth-wrapper .register-container .register-divider {
     width: 95% !important;
     background-color: transparent !important;
@@ -468,6 +486,8 @@ html {
     bottom: 0; }
   #main {
     margin: 0 auto;
+    min-height: unset;
+    min-width: unset;
     width: 90vw;
     height: 90vh;
     border: 5px solid #292a37;
@@ -719,6 +739,9 @@ footer {
   background-color: #1d1d29 !important; }
 
 /* Input */
+.input-wrapper {
+  text-align: left; }
+
 .input-container {
   position: relative;
   display: flex;
@@ -761,7 +784,8 @@ footer {
     max-width: 425px;
     padding: 0 16px;
     padding-top: 14px;
-    font-size: 16px; }
+    font-size: 16px;
+    overflow: auto; }
   .input-container .hide {
     top: -8px;
     left: 0;

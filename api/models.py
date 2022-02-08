@@ -38,11 +38,9 @@ class Profile(models.Model):
         return f"{self.user}'s profile"
 
 @receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
+def create_user_token(sender, instance, created, **kwargs):
     if created:
-        profile = Profile.objects.create(user=instance)
         token = Token.objects.create(user=instance)
-        profile.save()
         token.save()
 
 class Computer(models.Model):

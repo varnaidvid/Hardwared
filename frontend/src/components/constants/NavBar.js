@@ -56,25 +56,24 @@ export default function NavBar(props){
                         </li>
 
                         { user ? (
-                            <>
-                            <hr className="nav-hr d-none d-xl-block"/>
-                            <li className="nav-item nav-icon nav-cart">
-                                <NavLink to="/" className="nav-link" activeClassName="active"><i class="fas fa-shopping-cart"></i></NavLink>
-                            </li>
-                            <li className="nav-item nav-icon">
-                                <NavLink to="/" className="nav-link" activeClassName="active"><i class="fas fa-comment-dots"></i></NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <div className="dropdown">
-                                    <button className="dropdown-toggle user-dropdown" aria-expanded="false" data-bs-toggle="dropdown" type="button"><img src={user.profile.avatar} className="rounded-circle" height="30" alt="Avatar" title="Avatar"/></button>
-                                    <ul className="dropdown-menu dropdown-menu-end user-dropdown-menu" aria-labelledby="dropdown">
-                                        <li><NavLink className="dropdown-item" activeClassName="active" to="/fiok">Fiók.</NavLink></li>
-                                        <hr className="dropdown-divider"/>
-                                        <li><NavLink className="dropdown-item signout" to="/" onClick={() => {signOut(); setUser()}}><img src="/static/images/svg/signout.svg" height="15"/> Kijelentkezés</NavLink></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            </>
+                            <div className="user-nav justify-content-center mx-auto self-align-center text-center d-flex">
+                                <li className="nav-item nav-icon nav-cart">
+                                    <NavLink to="/" className="nav-link" activeClassName="active"><i class="fas fa-shopping-cart"></i></NavLink>
+                                </li>
+                                <li className="nav-item nav-icon">
+                                    <NavLink to="/" className="nav-link" activeClassName="active"><i class="fas fa-comment-dots"></i></NavLink>
+                                </li>
+                                <li className="nav-item nav-user-avatar">
+                                    <div className="dropdown">
+                                        <button className="dropdown-toggle user-dropdown mt-1" aria-expanded="false" data-bs-toggle="dropdown" type="button"><img src={user.profile.avatar} className="rounded-circle" height="30" width="30" alt="Avatar" title="Avatar"/></button>
+                                        <ul className="dropdown-menu dropdown-menu-end user-dropdown-menu" aria-labelledby="dropdown">
+                                            <li><NavLink className="dropdown-item" activeClassName="active" to="/fiok">Fiók.</NavLink></li>
+                                            <hr className="dropdown-divider"/>
+                                            <li><NavLink className="dropdown-item signout" to="/" onClick={() => {signOut(); setUser()}}><img src="/static/images/svg/signout.svg" height="15"/> Kijelentkezés</NavLink></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </div>
                         ) : (
                             <>
                                 <li className="nav-item">

@@ -1,4 +1,3 @@
-from unittest.util import _MAX_LENGTH
 from wsgiref import validate
 from rest_framework import serializers, validators
 from .models import Computer, Profile
@@ -15,19 +14,10 @@ class ProfileSerializer(serializers.ModelSerializer):
     birth_date = serializers.DateField(required=True)
     country = serializers.CharField(required=True, max_length=50)
     address = serializers.CharField(required=True, max_length=50)
-    avatar = serializers.ImageField()
-
-    def create(self, validated_data):
-        profile = Profile.objects.get_or_create(user=user)
-        profile.birth_date = validated_data["birth_date"]
-        profile.country = validated_data["country"]
-        profile.address = validated_data["address"]
-        profile.avatar = validated_data["avatar"]
-        profile.save()
 
     class Meta:
         model = Profile
-        fields = ("birth_date", "country", "address" "avatar")
+        fields = ("birth_date", "country", "address", "avatar")
 
 class RegisterSerializer(serializers.ModelSerializer):
     email  = serializers.EmailField(required=True, validators=[UniqueValidator(queryset=User.objects.all())])
@@ -35,7 +25,10 @@ class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(min_length=6, max_length=100, write_only=True)
 
     def create(self, validated_data):
-        user = User(username=validated_data["username"], email=validated_data["email"])
+        user = User.objects.create(
+            username = validated_data["username"],
+            email = validated_data["email"],
+        )
         user.set_password(validated_data["password"])
         user.save()
 

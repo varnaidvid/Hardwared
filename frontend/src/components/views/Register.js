@@ -32,50 +32,52 @@ export default function Register(props) {
     const [address, setAddress] = useState("")
     const [addressFocus, setAddressFocus] = useState(false)
 
+    const [avatar, setAvatar] = useState(null)
     const [pfp, setPfp] = useState(false)
+
 
     const [submitState, setSubmitState] = useState("normal")
 
     const handleSubmit = event => {
         event.preventDefault()
 
+        setSubmitState("loading")
+
         const fd = new FormData()
-        fd.append("csrfmiddlewaretoken", CSRFToken)
         fd.append("username", username)
         fd.append("email", email)
         fd.append("password", password)
+        
         fd.append("birth_date", birth)
         fd.append("country", country)
         fd.append("address", address)
-        fd.append("avatar", document.getElementById("pfp").files[0])
-
-        axios.post("http://localhost:3000/api/user/register/", fd)
+        fd.append("avatar", avatar)
+        
+        axios.post("http://localhost:3000/api/user/register/", fd, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        })          
         .then((response) => {
-            console.log(response)
+            setTimeout(() => {
+                if (response.data.isCreated === "true") {
+                    setSubmitState("success")
+                    toast.success("Sikeres regisztrálás!")
+                    setTimeout(() => {
+                        history.push("/bejelentkezes")
+                    }, 200)
+                }
+            }, 500)
         })
         .catch((error) => {
-            console.log(error)
+            setTimeout(() => {
+                toast.error("Hiba történt!")
+                setSubmitState("error")
+            }, 200)
+
         })
-
-        // axios.post("http://localhost:3000/api/user/register/", {
-        //     username: username,
-        //     email: email,
-        //     password: password,
-        // })
-        // .then((response) => { 
-        //     console.log(response)
-        //     if (response.data.isCreated === "true"){
-        //         toast.success("Sikeres regisztrálás!")
-        //         history.push("/bejelentkezes")
-        //     }
-        // })
-        // .catch((error) => {
-        //     console.log(error)
-        //     toast.error("Hiba történt regisztrálás közben!")
-        // })
-        
     }
-
+        
     return (
         <>
         <h1 className="bg-text auth-bg-text">Felhasználó</h1>
@@ -197,11 +199,12 @@ export default function Register(props) {
 
                     <div className="input-wrapper">
                     <div className="input-container">
-                        <button onClick={() => document.getElementById("pfp").click()} id="get-pfp">
+                        <button onClick={() => document.getElementById("pfp").click()} id="get-pfp" type="button">
                             <label id="pfpLabel" className={ pfp ? "focus" : "" }><img src="/static/images/svg/user-circle.svg"/>{ pfp ? "Profil kép:" : "Profil kép..." }</label>
                             <span id="pfpName">{ pfp ? document.getElementById("pfp").files[0].name : ""}</span>
                         </button>
-                        <input name="pfp" type="file" accept="image/*" id="pfp" onChange={() => {
+                        <input name="pfp" type="file" accept="image/*" id="pfp" onChange={event => {
+                            setAvatar(event.target.files[0])
                             if (pfp) {
                                 setPfp(false)
                             } else {
@@ -212,7 +215,16 @@ export default function Register(props) {
                     </div>
 
                     <div className="submit-wrapper">
-                        <button className={ submitState === "loading" ? "main-btn submit-btn loading" : submitState === "success" ? "main-btn submit-btn success" : submitState === "error" ? "main-btn submit-btn error" : "main-btn submit-btn"} type="submit" id="submit">
+                        <button 
+                            className=
+                            { submitState === "loading" ? "main-btn submit-btn loading" : 
+                            submitState === "success" ? "main-btn submit-btn success" : 
+                            submitState === "error" ? "main-btn submit-btn error" : 
+                            "main-btn submit-btn" } 
+                            type={ submitState === "error" ? "button" : "submit" } 
+                            onClick={() => {if (submitState === "error"){ setSubmitState("normal") }} }
+                            id="submit"
+                        >
                             <span>Létrehozás.</span>
                             <div className={ submitState === "success" ? "submit-success active" : "submit-success" }>
                                 <i className="fas fa-check"></i>

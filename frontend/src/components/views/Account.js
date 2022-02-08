@@ -1,9 +1,8 @@
 import React, { Component, useContext } from "react"
-import { NavLink } from "react-router-dom"
+import { NavLink, Redirect } from "react-router-dom"
 import { MainContext } from "../App"
 import toast from "react-hot-toast"
 import axios from "axios"
-
 
 export const signOut = () => {
     toast.success("Sikeres kijelentkezés!")
@@ -14,6 +13,8 @@ export const signOut = () => {
 
 export default function Account(){
     const [user, setUser] = useContext(MainContext)
+
+    if (!user) return <Redirect to="/bejelentkezes"/>
 
     return (
         <div>

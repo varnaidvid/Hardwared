@@ -81,18 +81,13 @@
 #showPwdLabel {
   right: -130px;
 }
-.register-auth-wrapper {
-  max-height: 1400px !important;
-}
 .auth-wrapper {
   margin: 0 auto;
   max-width: 550px;
-  max-height: 1000px;
   overflow: visible;
   border: 5px solid $lightGray2;
   border-radius: 0;
   width: 100%;
-  height: 100%;
   margin-top: -130px;
   margin-bottom: -5px;
   z-index: -1;

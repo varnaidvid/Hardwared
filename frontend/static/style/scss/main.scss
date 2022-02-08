@@ -132,6 +132,15 @@ html {
         margin: 30px 0;
       }
     }
+    .user-nav {
+      margin-bottom: 24px !important;
+      .nav-icon {
+        margin: 4px 6px;
+      }
+      .nav-user-avatar {
+        margin-right: 24px !important;
+      }
+    }
   }
   .navbar-toggler {
     position: absolute;
@@ -233,15 +242,6 @@ p {
   .nav-cart a {
     margin-left: 20px !important;
   }
-  .nav-hr {
-    opacity: 1;
-    margin: 0 10px;
-    overflow: hidden;
-    width: 2px;
-    height: 20px !important;
-    background-color: transparent;
-    border-left: 3px dashed $lightGray1;
-  }
   .user-dropdown::after {
     color: $lightGray1;
     transition: all .2s;
@@ -250,6 +250,11 @@ p {
     background: none;
     outline: none;
     border: none;
+  }
+  .user-nav {
+    .nav-icon {
+      text-align: center;
+    }
   }
   .user-dropdown-menu {
     margin-top: 5px !important;
@@ -276,6 +281,11 @@ footer {
   .support {
     display: flex;
     position: relative;
+    img {
+      width: 16px;
+      height: 16px;
+      align-self: center;
+    }
     p {
       margin-top: 13px;
       margin-left: 10px;

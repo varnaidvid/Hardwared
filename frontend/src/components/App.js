@@ -5,7 +5,6 @@ import toast, { Toaster } from "react-hot-toast"
 import { 
     HomePage, 
     AboutUs, 
-    Services, 
     Products, 
     ContactUs, 
     ViewBase, 
@@ -13,7 +12,7 @@ import {
     Footer, 
     Login, 
     Register, 
-    Account 
+    Account
 } from "./views"
 
 // CSRFToken
@@ -74,11 +73,6 @@ export default function App() {
                         <Route path="/rolunk">
                             <NavBar/>
                             <AboutUs/>
-                            <Footer/>
-                        </Route>
-                        <Route path="/szolgaltatasok">
-                            <NavBar/>
-                            <Services/>
                             <Footer/>
                         </Route>
                         <Route path="/termekek">

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import axios from "axios"
 import { CSRFToken, MainContext } from "../App"
-import { NavLink, useHistory } from "react-router-dom"
+import { NavLink, useHistory, Redirect } from "react-router-dom"
 import toast from "react-hot-toast"
 import {
     nullInput,
@@ -10,6 +10,8 @@ import $ from "jquery"
 
 export default function Login(){
     const [user, setUser] = useContext(MainContext)
+
+    if (user) return <Redirect to="/fiok"/>
 
     const history = useHistory()
 

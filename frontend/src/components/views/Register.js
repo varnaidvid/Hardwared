@@ -1,14 +1,17 @@
 import React, { useContext, useEffect, useState } from "react"
 import axios from "axios"
 import { CSRFToken, MainContext } from "../App"
-import { NavLink, useHistory } from "react-router-dom"
+import { NavLink, useHistory, Redirect } from "react-router-dom"
 import toast from "react-hot-toast"
 import {
     nullInput,
 } from "../constants"
 
 export default function Register(props) {
-    
+    const [user, setUser] = useContext(MainContext)
+
+    if (user) return <Redirect to="/fiok"/>
+
     const history = useHistory()
 
     const [username, setUsername] = useState("")

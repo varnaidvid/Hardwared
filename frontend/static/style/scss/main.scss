@@ -262,6 +262,8 @@ p {
     border-radius: 10px;
     background-color: $darkGray;
     border: 2px solid $lightGray2;
+    position: absolute;
+    transition: all .2s;
     .dropdown-item { color: $lightGray1; }
     .dropdown-divider { border-top: 2px solid $lightGray2; opacity: 1; }
     .dropdown-item.active { color: $white; background-color: transparent; }

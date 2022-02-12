@@ -44,7 +44,7 @@ export default function NavBar(props){
                         </li>
                         <li className="nav-item">
                             
-                            <NavLink to="/szolgaltatasok" className="nav-link" activeClassName="active">
+                            <NavLink to="/rolunk" className="nav-link" activeClassName="active">
                                 <i class="fas fa-network-wired d-xl-none d-flex"></i> Rólunk.
                             </NavLink>
                         </li>

@@ -88,7 +88,6 @@ export default function Register(props) {
             <div className="register-container">
                 <h1>Regisztráció</h1>
                 <hr className="title-hr"/>
-                <img className="lock" src="/static/images/svg/lock.svg"/>
                 <form method="POST" onSubmit={handleSubmit} action="/fiok" encType="multipart/form-data">
                     <input type="hidden" name="csrfmiddlewaretoken" value={CSRFToken}/>
 

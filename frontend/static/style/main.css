@@ -286,6 +286,8 @@
     margin-left: unset !important;
     background-color: transparent !important;
     border: none !important; }
+  .to-login {
+    width: 135% !important; }
   .switch-container .slider {
     transform: translateX(60%); }
   .switch-container #rememberLabel, .switch-container #showPwdLabel {
@@ -457,6 +459,43 @@
       border-radius: 10px;
       margin-top: 20px; }
 
+.pr-section-1 {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 80px; }
+  .pr-section-1 .pr-bg-text {
+    bottom: -100px; }
+  .pr-section-1 .pr-title {
+    text-transform: unset !important;
+    font-weight: 600 !important; }
+
+.pr-card {
+  border: 5px solid #292a37;
+  position: absolute;
+  bottom: -230px;
+  background-color: #23232e;
+  border-radius: 30px;
+  padding: 30px; }
+  .pr-card .pr-card-img {
+    position: absolute;
+    top: -50px;
+    right: 20px; }
+  .pr-card .main-btn {
+    margin-top: 75px; }
+
+.right {
+  margin-left: 40px; }
+
+.left {
+  margin-right: 40px; }
+
+.pr-hr {
+  opacity: 1;
+  width: 100%;
+  margin-bottom: 200px;
+  background-color: #292a37;
+  height: 5px !important; }
+
 #app,
 body,
 html {
@@ -483,6 +522,9 @@ html {
   height: 5px !important;
   background-color: #292a37;
   opacity: 1; }
+
+.d-relative {
+  position: relative !important; }
 
 @media (min-width: 767px) {
   #footer-2row {
@@ -554,7 +596,8 @@ html {
         margin-right: 6px;
         margin-top: 4px; }
     #navBar .navbar-nav .main-btn {
-      margin: 30px 0; }
+      margin-top: 20px;
+      margin-bottom: 30px; }
     #navBar .user-nav {
       margin-bottom: 24px !important; }
       #navBar .user-nav .nav-icon {

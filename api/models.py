@@ -1,3 +1,5 @@
+from email.policy import default
+from random import choices
 from statistics import quantiles
 from django.db import models
 from django.contrib.auth.models import User
@@ -45,10 +47,56 @@ def create_user_token(sender, instance, created, **kwargs):
 
 class Computer(models.Model):
     generation = models.CharField(max_length=8, default="")
-    name = models.CharField(max_length=12, unique=True)
-    price = models.IntegerField(null=False)
-    stock = models.IntegerField()
+    name = models.CharField(max_length=30, unique=True)
+    sale = models.IntegerField(null=True, blank=True, default=None)
+    sale_duration = models.DateTimeField(blank=True, null=True, default=None)
+    price = models.IntegerField(null=False, blank=False)
+    stock = models.IntegerField(blank=False, null=False)
     created_at = models.DateTimeField(default=timezone.now)
+
+    gpu_choices = (
+        ("NVIDIA", "NVIDIA"),
+        ("AMD", "AMD")
+    )
+    cpu_choices = (
+        ("INTEL", "INTEL"),
+        ("AMD", "AMD")
+    )
+    memory_choices = (
+        ("8 GB", "8 GB"),
+        ("16 GB", "16 GB"),
+        ("32 GB", "32 GB"),
+        ("64 GB", "64 GB"),
+    )
+    storage_choices = (
+        ("SSD", "SSD"),
+        ("HDD", "HDD"),
+        ("SSD & HDD", "SSD & HDD")
+    )
+
+    gpu = models.CharField(max_length=20, null=False)
+    gpu_type = models.CharField(max_length=20, null=False, choices=gpu_choices)
+    cpu = models.CharField(max_length=20, null=False)
+    cpu_type = models.CharField(max_length=10, null=False, choices=cpu_choices)
+    memory = models.CharField(max_length=10, null=False, choices=memory_choices)
+    storage = models.CharField(max_length=20, null=False)
+    storage_type = models.CharField(max_length=10, null=False, choices=storage_choices)
 
     def __str__(self):
         return f"{self.name}"
+
+class ComputerReview(models.Model):
+    ratings = (
+        (5, 5),
+        (4.5, 4.5),
+        (4, 4),
+        (3.5, 3.5),
+        (3, 3),
+        (2.5, 2.5),
+        (2, 2),
+        (1.5, 1.5),
+        (1, 1),
+    )
+    computer = models.ForeignKey(Computer, related_name="reviews", on_delete=models.CASCADE)
+    name = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.IntegerField(choices=ratings, null=False)

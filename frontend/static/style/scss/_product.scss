@@ -1,3 +1,12 @@
+
+.pr-hr {
+    opacity: 1;
+    width: 100%;
+    margin-bottom: 200px;
+    background-color: $lightGray2;
+    height: 5px !important;
+}
+
 .pr-section-1 {
     position: relative;
     margin-top: 20px;
@@ -8,32 +17,78 @@
     .pr-title {
         text-transform: unset !important;     
         font-weight: 600 !important;
+        font-size: 46px;
     }
-}
-
-.pr-card {
-    border: 5px solid $lightGray2;
-    position: absolute;
-    bottom: -230px;
-    .pr-card-img {
+    .pr-featured {
         position: absolute;
-        top: -50px;
-        right: 20px;
+        bottom: -250px;
+        left: 0;
+        right: 0;
+        .pr-card {
+            border: 5px solid $lightGray2;
+            position: relative;
+            width: 70%;
+            margin: 0 auto;
+            .pr-card-img {
+                position: absolute;
+                top: -75px;
+                right: 60px;
+            }
+            .main-btn {
+                margin-top: 75px;
+                margin-left: 0px;
+                transition: all .2s;
+                i {
+                    color: $lightGray1;
+                    margin-left: 3px;
+                    transition: all .2s;
+                }
+                &:hover {
+                    color: $white;
+                    i {
+                        color: $white;
+                    }
+                }
+                &:focus {
+                    transform: translateY(-3px);
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                    i {
+                        margin-left: 6px;
+                    }
+                }
+            }
+            .sup-title {
+                margin-bottom: 0 !important;
+                padding-bottom: 0 !important;
+            }
+            .pr-card-title {
+                font-weight: 500;
+                font-size:  36px;
+                margin-top: 0 !important;
+                padding-top: 0 !important;
+            }
+            .d-flex {
+                img { 
+                    align-self: center;
+                    margin-right: 5px;
+                }
+            }
+            background-color: $gray;
+            border-radius: 30px;
+            padding: 30px 40px;
+        }
     }
-    .main-btn {
-        margin-top: 75px;
-    }
-    background-color: $gray;
-    border-radius: 30px;
-    padding: 30px;
 }
-.right { margin-left: 40px; }
-.left { margin-right: 40px; }
 
-.pr-hr {
-    opacity: 1;
-    width: 100%;
-    margin-bottom: 200px;
-    background-color: $lightGray2;
-    height: 5px !important;
+.pr-section-2 {
+    .sorting {
+        background-color: $lightGray2;
+        border-radius: 30px;
+    }
+    .content {
+        background-color: $gray;
+        border: 5px solid $lightGray2;
+        border-radius: 30px;
+        margin-left: -12px;
+    }
 }

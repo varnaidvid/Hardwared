@@ -14,9 +14,11 @@ from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 
-class ComputerView(generics.ListAPIView):
-    queryset = Computer.objects.all()
+class ComputerView(generics.GenericAPIView):
     serializer_class = ComputerSerializer
+
+    def get(self, *args, **kwargs):
+        return Response(ComputerSerializer(Computer.objects.all(), many=True).data)
 
 class UserCreate(generics.GenericAPIView):
     serializer_class = RegisterSerializer, ProfileSerializer

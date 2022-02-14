@@ -1,6 +1,6 @@
 from wsgiref import validate
 from rest_framework import serializers, validators
-from .models import Computer, Profile
+from .models import Computer, Profile, Rating
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from rest_framework.validators import UniqueValidator

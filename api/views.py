@@ -5,6 +5,8 @@ from rest_framework.serializers import Serializer
 from .serializers import ComputerSerializer, LoginSerializer, RegisterSerializer, UserSerializer, ProfileSerializer
 from .models import Computer, Profile
 from django.contrib.auth.models import User
+from django.db.models import Avg
+from django.core import serializers
 
 from rest_framework import generics, status, authentication, exceptions
 from rest_framework.views import APIView
@@ -16,9 +18,13 @@ from rest_framework.authtoken.models import Token
 
 class ComputerView(generics.GenericAPIView):
     serializer_class = ComputerSerializer
+    serializer = ComputerSerializer(Computer.objects.all(), many=True)
+    
+    for i in serializer.data:
+        i.update({"rating": Computer.objects.filter(id=i["id"]).aggregate(Avg("ratings__rating"))})
 
     def get(self, *args, **kwargs):
-        return Response(ComputerSerializer(Computer.objects.all(), many=True).data)
+        return Response(self.serializer.data)
 
 class UserCreate(generics.GenericAPIView):
     serializer_class = RegisterSerializer, ProfileSerializer

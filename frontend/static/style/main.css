@@ -484,7 +484,7 @@
     .pr-section-1 .pr-featured .pr-card {
       border: 5px solid #292a37;
       position: relative;
-      width: 70%;
+      width: 100%;
       margin: 0 auto;
       background-color: #23232e;
       border-radius: 30px;
@@ -506,7 +506,7 @@
           .pr-section-1 .pr-featured .pr-card .main-btn:hover i {
             color: #eeeeee; }
         .pr-section-1 .pr-featured .pr-card .main-btn:focus {
-          transform: translateY(-3px);
+          transform: translateY(-2px);
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); }
           .pr-section-1 .pr-featured .pr-card .main-btn:focus i {
             margin-left: 6px; }
@@ -514,7 +514,7 @@
         margin-bottom: 0 !important;
         padding-bottom: 0 !important; }
       .pr-section-1 .pr-featured .pr-card .pr-card-title {
-        font-weight: 500;
+        font-weight: 600;
         font-size: 36px;
         margin-top: 0 !important;
         padding-top: 0 !important; }
@@ -531,6 +531,17 @@
   border: 5px solid #292a37;
   border-radius: 30px;
   margin-left: -12px; }
+  .pr-section-2 .content .wrapper {
+    padding: 50px;
+    width: 100%; }
+    .pr-section-2 .content .wrapper .pr-item {
+      border: 5px solid #292a37;
+      border-radius: 20px;
+      background-color: #23232e;
+      margin: 20px 0;
+      padding: 10px 20px; }
+      .pr-section-2 .content .wrapper .pr-item .main-img {
+        align-self: center; }
 
 #app,
 body,

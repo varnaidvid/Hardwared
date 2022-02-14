@@ -5,6 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.db.models.signals import post_save
+from django.db.models import Avg
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 
@@ -20,7 +21,7 @@ def make_avatar(avatar, size, uid):
     thumb_io = BytesIO()
     avatar.save(thumb_io, "JPEG", quality=100)
     avatar = File(thumb_io, name=f"{uid}_pfp.jpeg",)
-    return avatar
+    return avatar    
 
 class Profile(models.Model):
     def user_directory_path(self, filename):
@@ -45,7 +46,7 @@ def create_user_token(sender, instance, created, **kwargs):
         token = Token.objects.create(user=instance)
         token.save()
 
-class Computer(models.Model):
+class Computer(models.Model):     
     generation = models.CharField(max_length=8, default="")
     name = models.CharField(max_length=30, unique=True)
     sale = models.IntegerField(null=True, blank=True, default=None)
@@ -85,18 +86,17 @@ class Computer(models.Model):
     def __str__(self):
         return f"{self.name}"
 
-class ComputerReview(models.Model):
-    ratings = (
-        (5, 5),
-        (4.5, 4.5),
-        (4, 4),
-        (3.5, 3.5),
-        (3, 3),
-        (2.5, 2.5),
-        (2, 2),
-        (1.5, 1.5),
-        (1, 1),
-    )
-    computer = models.ForeignKey(Computer, related_name="reviews", on_delete=models.CASCADE)
-    name = models.ForeignKey(User, on_delete=models.CASCADE)
-    rating = models.IntegerField(choices=ratings, null=False)
+    def get_rating(self):
+        return self.__class__.objects.filter(pk=self.pk).aggregate(Avg("ratings__rating"))
+
+    class Meta:
+        ordering = ["created_at"]
+
+class Rating(models.Model):
+    computer = models.ForeignKey(Computer, related_name="ratings", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.FloatField(null=False)
+
+    def __str__(self):
+        return f"{self.user.username} on {self.computer}"
+    

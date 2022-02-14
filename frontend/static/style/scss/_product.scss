@@ -27,7 +27,7 @@
         .pr-card {
             border: 5px solid $lightGray2;
             position: relative;
-            width: 70%;
+            width: 100%;
             margin: 0 auto;
             .pr-card-img {
                 position: absolute;
@@ -50,7 +50,7 @@
                     }
                 }
                 &:focus {
-                    transform: translateY(-3px);
+                    transform: translateY(-2px);
                     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
                     i {
                         margin-left: 6px;
@@ -62,7 +62,7 @@
                 padding-bottom: 0 !important;
             }
             .pr-card-title {
-                font-weight: 500;
+                font-weight: 600;
                 font-size:  36px;
                 margin-top: 0 !important;
                 padding-top: 0 !important;
@@ -90,5 +90,19 @@
         border: 5px solid $lightGray2;
         border-radius: 30px;
         margin-left: -12px;
+        .wrapper {
+            padding: 50px;
+            width: 100%;
+            .pr-item {
+                border: 5px solid $lightGray2;
+                border-radius: 20px;
+                background-color: $gray;
+                margin: 20px 0;
+                padding: 10px 20px;
+                .main-img {
+                    align-self: center;
+                }
+            }
+        }
     }
 }

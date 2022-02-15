@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.db.models.signals import post_save
-from django.db.models import Avg
+from django.db.models import Avg, Count
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 
@@ -87,7 +87,11 @@ class Computer(models.Model):
         return f"{self.name}"
 
     def get_rating(self):
+        self.refresh_from_db()
         return self.__class__.objects.filter(pk=self.pk).aggregate(Avg("ratings__rating"))
+
+    def get_rating_len(self):
+        return self.__class__.objects.filter(pk=self.pk).aggregate(Count("ratings__rating"))
 
     class Meta:
         ordering = ["created_at"]

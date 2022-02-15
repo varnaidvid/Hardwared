@@ -19,11 +19,12 @@ from rest_framework.authtoken.models import Token
 class ComputerView(generics.GenericAPIView):
     serializer_class = ComputerSerializer
     serializer = ComputerSerializer(Computer.objects.all(), many=True)
-    
-    for i in serializer.data:
-        i.update({"rating": Computer.objects.filter(id=i["id"]).aggregate(Avg("ratings__rating"))})
 
     def get(self, *args, **kwargs):
+        for i in self.serializer.data:
+            i.update({"rating": Computer.objects.get(id=i["id"]).get_rating()})
+            i.update({"rating_len": Computer.objects.get(id=i["id"]).get_rating_len()})
+
         return Response(self.serializer.data)
 
 class UserCreate(generics.GenericAPIView):

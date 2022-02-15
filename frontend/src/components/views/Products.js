@@ -1,7 +1,8 @@
 import axios from "axios"
 import React, {Component, useState, useEffect} from "react"
+import StarHandler from "../constants/StarHandler"
 
-function ProductItem({...props}){
+function ProductItem(props){
     return (
         <div className="pr-item">
             <div className="row">
@@ -12,24 +13,37 @@ function ProductItem({...props}){
                 <div className="col-9">
                     <h5 className="sup-title">Akár 2 napon belül</h5>
                     <h1>{props.name}</h1>
-                    <h1>{props.price}</h1>
                     <div className="d-flex">
 
-                        {props.rating.ratings__rating__avg}
-                        {/* Work in progress */}
-                        <img src="/static/images/svg/filled-star.svg" height="15"/>
-                        <img src="/static/images/svg/filled-star.svg" height="15"/>
-                        <img src="/static/images/svg/filled-star.svg" height="15"/>
-                        <img src="/static/images/svg/filled-star.svg" height="15"/>
-                        <img src="/static/images/svg/unfilled-star.svg" height="15"/>
-                        (45)
-
-
+                        { 
+                            props.rating.ratings__rating__avg > 4.6 ? <StarHandler type={"10"}/> :
+                            props.rating.ratings__rating__avg > 4.2 ? <StarHandler type="9"/> :
+                            props.rating.ratings__rating__avg > 3.6 ? <StarHandler type="8"/> :
+                            props.rating.ratings__rating__avg > 3.2 ? <StarHandler type="7"/> :
+                            props.rating.ratings__rating__avg > 2.6 ? <StarHandler type="6"/> :
+                            props.rating.ratings__rating__avg > 2.2 ? <StarHandler type="5"/> :
+                            props.rating.ratings__rating__avg > 1.8 ? <StarHandler type="4"/> :
+                            props.rating.ratings__rating__avg > 1.2 ? <StarHandler type="3"/> :
+                            props.rating.ratings__rating__avg > 0.8 ? <StarHandler type="2"/> :
+                            props.rating.ratings__rating__avg > 0 ? <StarHandler type="1"/> : "No review"
+                        }
+                        <span>({props.rating_len.ratings__rating__count})</span>
                     </div>
-                    <span>{props.cpu} - {props.gpu} - {props.memory} RAM - {props.storage}</span>
+                    <h5 className="desc">{props.cpu} - {props.gpu} - {props.memory} RAM - {props.storage}</h5>
                     
                     {/* Add Discount Handler */}
-                    <h4><img src="/static/images/svg/money.svg" height="12"/> {props.price}</h4>
+                    {
+                        props.sale ?
+                        <div className="discount-wrapper">
+                            <div className="off">
+                                    {Math.abs(((props.sale / props.price - 1) * 100)).toFixed(1)}% OFF
+                                </div>
+                            <div className="discount">
+                                <h4><img src="/static/images/svg/money.svg" height="12"/> {props.sale} HUF</h4>
+                            </div>
+                        </div>
+                        : <h4><img src="/static/images/svg/money.svg" height="12"/> {props.price} HUF</h4>
+                    }
                 </div>
             </div>
         </div>
@@ -42,7 +56,6 @@ export default function Products(){
     useEffect(() => {
         axios.get("http://localhost:3000/api/products/")
         .then((response) => {
-            console.log(response.data)
             setProduct(response.data)
         })
     }, [])

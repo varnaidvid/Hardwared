@@ -102,6 +102,59 @@
                 .main-img {
                     align-self: center;
                 }
+                .sup-title {
+                    margin-bottom: -2px;
+                    padding-bottom: 0;
+                    font-size: 14px;
+                }
+                h1 {
+                    padding-top: 0;
+                    margin-top: 0;
+                    font-size: 28px;
+                }
+                .d-flex {
+                    span {
+                        color: $lightGray1;
+                        margin-top: -5px;
+                        margin-left: 5px;
+                        font-weight: 500;
+                    }
+                }
+                .desc {
+                    margin: 14px 0;
+                    font-size: 16px;
+                    font-weight: 300;
+                }
+                img {
+                    display: inline-block;
+                    align-self: center;
+                    align-content: center;
+                    vertical-align: middle;
+                }
+                h4 {
+                    font-size: 18px;
+                    font-weight: 600;
+                }
+                .discount-wrapper {
+                    display: flex;
+                }
+                .discount {
+                    border: 1px solid $error;
+                    padding: 6px 16px;
+                    padding-left: 20px;
+                    border-radius: 10px;
+                }
+                .off {
+                    background-color: $error;
+                    border-radius: 10px;
+                    margin-right: -14px;
+                    font-size: 12px;
+                    padding: 2px 10px;
+                    font-weight: 500;
+                    height: 22px;
+                    z-index: 2;
+                    margin-top: 10px;
+                }
             }
         }
     }

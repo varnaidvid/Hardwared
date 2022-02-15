@@ -542,6 +542,48 @@
       padding: 10px 20px; }
       .pr-section-2 .content .wrapper .pr-item .main-img {
         align-self: center; }
+      .pr-section-2 .content .wrapper .pr-item .sup-title {
+        margin-bottom: -2px;
+        padding-bottom: 0;
+        font-size: 14px; }
+      .pr-section-2 .content .wrapper .pr-item h1 {
+        padding-top: 0;
+        margin-top: 0;
+        font-size: 28px; }
+      .pr-section-2 .content .wrapper .pr-item .d-flex span {
+        color: #8a8a8f;
+        margin-top: -5px;
+        margin-left: 5px;
+        font-weight: 500; }
+      .pr-section-2 .content .wrapper .pr-item .desc {
+        margin: 14px 0;
+        font-size: 16px;
+        font-weight: 300; }
+      .pr-section-2 .content .wrapper .pr-item img {
+        display: inline-block;
+        align-self: center;
+        align-content: center;
+        vertical-align: middle; }
+      .pr-section-2 .content .wrapper .pr-item h4 {
+        font-size: 18px;
+        font-weight: 600; }
+      .pr-section-2 .content .wrapper .pr-item .discount-wrapper {
+        display: flex; }
+      .pr-section-2 .content .wrapper .pr-item .discount {
+        border: 1px solid #FF7575;
+        padding: 6px 16px;
+        padding-left: 20px;
+        border-radius: 10px; }
+      .pr-section-2 .content .wrapper .pr-item .off {
+        background-color: #FF7575;
+        border-radius: 10px;
+        margin-right: -14px;
+        font-size: 12px;
+        padding: 2px 10px;
+        font-weight: 500;
+        height: 22px;
+        z-index: 2;
+        margin-top: 10px; }
 
 #app,
 body,

@@ -31,7 +31,6 @@ function ProductItem(props){
                     </div>
                     <h5 className="desc">{props.cpu} - {props.gpu} - {props.memory} RAM - {props.storage}</h5>
                     
-                    {/* Add Discount Handler */}
                     {
                         props.sale ?
                         <div className="discount-wrapper">
@@ -58,7 +57,26 @@ export default function Products(){
         .then((response) => {
             setProduct(response.data)
         })
+        .catch((error) => {
+            console.log(error)
+        })
     }, [])
+
+    const params = new URLSearchParams()
+    const newQuery = (type, value) => {
+        params.append(type, value)
+        const request = {
+            params: params
+        }
+        axios.get("http://localhost:3000/api/products/", request)
+        .then((response) => {
+            setProduct(response.data)
+            console.log(response.data)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
 
     return (
         <>
@@ -115,6 +133,7 @@ export default function Products(){
             <div className="row justify-content-center w-100">
                 <div className="col-3 sorting">
                     <h1>Specify</h1>
+                    <input type="number" min="100000" max="1000000" name="price" onChange={event => newQuery(event.target.name, event.target.value)}/>
                 </div>
                 <div className="col-9 content">
                     <div className="wrapper">

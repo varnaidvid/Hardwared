@@ -50,11 +50,13 @@ function ProductItem(props){
 }
 
 export default function Products(){
+
     const [product, setProduct] = useState([])
 
     useEffect(() => {
         axios.get("http://localhost:3000/api/products/")
         .then((response) => {
+            console.log(response.data)
             setProduct(response.data)
         })
         .catch((error) => {
@@ -62,8 +64,10 @@ export default function Products(){
         })
     }, [])
 
-    const params = new URLSearchParams()
+
     const newQuery = (type, value) => {
+        const params = new URLSearchParams()
+
         params.append(type, value)
         const request = {
             params: params

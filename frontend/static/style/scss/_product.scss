@@ -84,6 +84,23 @@
     .sorting {
         background-color: $lightGray2;
         border-radius: 30px;
+        padding: 20px 30px;
+        h1 {
+            font-size: 22px;
+            font-weight: 600;
+        }
+        h2 {
+            color: $lightGray1;
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .sorting-hr {
+            opacity: 1;
+            height: 5px;
+            background-color: $main;
+            width: 20px;
+        }
     }
     .content {
         background-color: $gray;
@@ -93,6 +110,11 @@
         .wrapper {
             padding: 50px;
             width: 100%;
+            .top-content {
+                h3 {
+                    font-size: 20px;
+                }
+            }
             .pr-item {
                 border: 5px solid $lightGray2;
                 border-radius: 20px;

@@ -75,7 +75,7 @@ export default function Products(){
         axios.get("http://localhost:3000/api/products/", request)
         .then((response) => {
             setProduct(response.data)
-            console.log(response.data)
+            console.log(product)
         })
         .catch((error) => {
             console.log(error)
@@ -136,12 +136,39 @@ export default function Products(){
         <div className="pr-section-2 main-wrapper">
             <div className="row justify-content-center w-100">
                 <div className="col-3 sorting">
-                    <h1>Specify</h1>
-                    <input type="number" min="100000" max="1000000" name="price" onChange={event => newQuery(event.target.name, event.target.value)}/>
+                    <h1>Preferencia</h1>
+                    <hr className="sorting-hr"/>
+                    <h2>Általános</h2>
+
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">Készleten</span>
+                            <input type="checkbox"/>
+                            <span className="checkmark"></span>
+                        </label>
+
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">Gyors kiszállítás</span>
+                            <input type="checkbox"/>
+                            <span className="checkmark"></span>
+                        </label>
+
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">Leárazás</span>
+                            <input type="checkbox"/>
+                            <span className="checkmark"></span>
+                        </label>
+
+                    <input type="number" min="100000" max="1000000" name="price" onBlur={event => newQuery(event.target.name, event.target.value)}/>
                 </div>
                 <div className="col-9 content">
                     <div className="wrapper">
-                        {   product ?  
+                        {/* <div className="top-content">
+                            <div className="d-flex">
+                                <h3>{ product.length } találat</h3>
+                                <span>Rendezés: <a className="main-btn">Csökkenő ár</a></span>
+                            </div>
+                        </div> */}
+                        {   product.length != 0 ?  
                                 product.map(item => <ProductItem key={item.id} {...item}/>)    
                             : <h1>Nincsenek termékeink!</h1>
                         }

@@ -1,4 +1,3 @@
-import { motion, transform } from "framer-motion"
 import React, {Component} from "react"
 
 export default function ContactUs(){

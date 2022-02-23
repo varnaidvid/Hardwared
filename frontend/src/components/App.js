@@ -14,6 +14,7 @@ import {
     Register, 
     Account
 } from "./views"
+import { SkeletonTheme } from "react-loading-skeleton"
 
 // CSRFToken
 function getCookie(name) {
@@ -52,62 +53,64 @@ export default function App() {
 
     return (
         <MainContext.Provider value={[user, setUser]}>
-            <ViewBase>
-                <Toaster toastOptions={{
-                    className: "alert",
-                    duration: 2500,
-                    error: {
-                        iconTheme: {
-                            primary: "#FF7575"
+            <SkeletonTheme baseColor="#292a37" highlightColor="#23232e" height={8}>
+                <ViewBase>
+                    <Toaster toastOptions={{
+                        className: "alert",
+                        duration: 2500,
+                        error: {
+                            iconTheme: {
+                                primary: "#FF7575"
+                            },
                         },
-                    },
-                    success: {
-                        iconTheme: {
-                            primary: "#78FF9E"
+                        success: {
+                            iconTheme: {
+                                primary: "#78FF9E"
+                            },
                         },
-                    },
-   
-                }}/>
-                <Router>
-                    <Switch>
-                        <Route path="/rolunk">
-                            <NavBar/>
-                            <AboutUs/>
-                            <Footer/>
-                        </Route>
-                        <Route path="/termekek">
-                            <NavBar/>
-                            <Products/>
-                            <Footer/>
-                        </Route>
-                        <Route path="/elerhetoseg">
-                            <NavBar/>
-                            <ContactUs/>
-                            <Footer/>
-                        </Route>
-                        <Route path="/regisztracio">
-                            <NavBar/>
-                            <Register/>
-                            <Footer/>
-                        </Route>
-                        <Route path="/bejelentkezes">
-                            <NavBar/>
-                            <Login/>
-                            <Footer/>
-                        </Route>
-                        <Route path="/fiok">
-                            <NavBar/>
-                            <Account/>
-                            <Footer/>
-                        </Route>
-                        <Route path="/">
-                            <NavBar/>
-                            <HomePage/>
-                            <Footer/>
-                        </Route>
-                    </Switch>
-                </Router>
-            </ViewBase>
+    
+                    }}/>
+                    <Router>
+                        <Switch>
+                            <Route path="/rolunk">
+                                <NavBar/>
+                                <AboutUs/>
+                                <Footer/>
+                            </Route>
+                            <Route path="/termekek">
+                                <NavBar/>
+                                <Products/>
+                                <Footer/>
+                            </Route>
+                            <Route path="/elerhetoseg">
+                                <NavBar/>
+                                <ContactUs/>
+                                <Footer/>
+                            </Route>
+                            <Route path="/regisztracio">
+                                <NavBar/>
+                                <Register/>
+                                <Footer/>
+                            </Route>
+                            <Route path="/bejelentkezes">
+                                <NavBar/>
+                                <Login/>
+                                <Footer/>
+                            </Route>
+                            <Route path="/fiok">
+                                <NavBar/>
+                                <Account/>
+                                <Footer/>
+                            </Route>
+                            <Route path="/">
+                                <NavBar/>
+                                <HomePage/>
+                                <Footer/>
+                            </Route>
+                        </Switch>
+                    </Router>
+                </ViewBase>
+            </SkeletonTheme>
         </MainContext.Provider>
     )
 }

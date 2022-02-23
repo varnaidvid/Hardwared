@@ -502,7 +502,8 @@
           margin-left: 3px;
           transition: all .2s; }
         .pr-section-1 .pr-featured .pr-card .main-btn:hover {
-          color: #eeeeee; }
+          color: #eeeeee;
+          background-color: #676eff; }
           .pr-section-1 .pr-featured .pr-card .main-btn:hover i {
             color: #eeeeee; }
         .pr-section-1 .pr-featured .pr-card .main-btn:focus {

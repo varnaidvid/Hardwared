@@ -2,7 +2,10 @@ import axios from "axios"
 import React, {Component, useState, useEffect} from "react"
 import StarHandler from "../constants/StarHandler"
 
-function ProductItem(props){
+import Skeleton from "react-loading-skeleton"
+import "react-loading-skeleton/dist/skeleton.css"
+
+const ProductItem = (props) => {
     return (
         <div className="pr-item">
             <div className="row">
@@ -52,16 +55,29 @@ function ProductItem(props){
 export default function Products(){
 
     const [product, setProduct] = useState([])
+    const [isFectch, setIsFetch] = useState(false)
 
-    useEffect(() => {
-        axios.get("http://localhost:3000/api/products/")
+    const getProducts = (req) => {
+        setIsFetch(true)
+
+        axios.get("http://localhost:3000/api/products/", req)
         .then((response) => {
             console.log(response.data)
             setProduct(response.data)
+            setTimeout(() => {
+                setIsFetch(false)                
+            }, 750);
         })
         .catch((error) => {
             console.log(error)
+            setTimeout(() => {
+                setIsFetch(false)                
+            }, 750);        
         })
+    }
+
+    useEffect(() => {
+        getProducts()
     }, [])
 
 
@@ -72,14 +88,8 @@ export default function Products(){
         const request = {
             params: params
         }
-        axios.get("http://localhost:3000/api/products/", request)
-        .then((response) => {
-            setProduct(response.data)
-            console.log(product)
-        })
-        .catch((error) => {
-            console.log(error)
-        })
+        
+        return getProducts(request)
     }
 
     return (
@@ -162,16 +172,18 @@ export default function Products(){
                 </div>
                 <div className="col-9 content">
                     <div className="wrapper">
-                        {/* <div className="top-content">
+                        <div className="top-content">
                             <div className="d-flex">
-                                <h3>{ product.length } találat</h3>
-                                <span>Rendezés: <a className="main-btn">Csökkenő ár</a></span>
+                                <h3>{ product.length == 0 ? "Nincs találat" : product.length + " találat" } </h3>                         
                             </div>
-                        </div> */}
-                        {   product.length != 0 ?  
-                                product.map(item => <ProductItem key={item.id} {...item}/>)    
-                            : <h1>Nincsenek termékeink!</h1>
+                        </div>
+                        {
+                            product.length == 0 ? 
+                                isFectch ? <Skeleton count={3}/> : 
+                                    "" : 
+                            product.map(item => <ProductItem key={item.id} {...item}/>)
                         }
+
                     </div>
                 </div>
             </div>

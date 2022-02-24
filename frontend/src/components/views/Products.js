@@ -54,15 +54,17 @@ const ProductItem = (props) => {
 
 export default function Products(){
 
+
+    // API
     const [product, setProduct] = useState([])
     const [isFectch, setIsFetch] = useState(false)
 
     const getProducts = (req) => {
         setIsFetch(true)
 
-        axios.get("http://localhost:3000/api/products/", req)
+        axios.get("http://localhost:3000/api/products/", {params: req})
         .then((response) => {
-            console.log(response.data)
+            // console.log(response.data)
             setProduct(response.data)
             setTimeout(() => {
                 setIsFetch(false)                
@@ -81,16 +83,18 @@ export default function Products(){
     }, [])
 
 
+    const params = new URLSearchParams()
     const newQuery = (type, value) => {
-        const params = new URLSearchParams()
-
-        params.append(type, value)
-        const request = {
-            params: params
+        if (params.get(type) !== null) {
+            params.delete(type)
+        } else {
+            params.append(type, value)
         }
-        
-        return getProducts(request)
+
+        getProducts(params)
     }
+
+
 
     return (
         <>
@@ -152,7 +156,7 @@ export default function Products(){
 
                         <label className="checkbox-container">
                             <span className="checkbox-title">Készleten</span>
-                            <input type="checkbox"/>
+                            <input type="checkbox" id="stock" value="true" onChange={event => newQuery(event.target.id, event.target.value)}/>
                             <span className="checkmark"></span>
                         </label>
 
@@ -174,7 +178,7 @@ export default function Products(){
                     <div className="wrapper">
                         <div className="top-content">
                             <div className="d-flex">
-                                <h3>{ product.length == 0 ? "Nincs találat" : product.length + " találat" } </h3>                         
+                                <h3>{ product.length == 0 ? !isFectch ?  "Nincs találat" : "" : product.length + " találat" } </h3>                         
                             </div>
                         </div>
                         {

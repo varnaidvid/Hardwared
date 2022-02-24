@@ -20,14 +20,27 @@ class ComputerView(generics.GenericAPIView):
     serializer_class = ComputerSerializer
 
     def get(self, request, *args, **kwargs):
-        if request.GET != None:
-            serializer = ComputerSerializer(Computer.objects.all().filter(**request.GET.dict()), many=True)
+        getDict = request.GET.copy()
+
+        if "stock" in getDict:
+            objects = Computer.objects.all().filter(stock__gt=0)
+            getDict.pop("stock")
+
+        if getDict != None:
+            try:
+                serializer = ComputerSerializer(objects.filter(**getDict.dict()), many=True)
+            except NameError:
+                serializer = ComputerSerializer(Computer.objects.all().filter(**getDict.dict()), many=True)
         else:
-            serializer = ComputerSerializer(Computer.objects.all(), many=True)
+            try:
+                serializer = ComputerSerializer(objects, many=True)
+            except NameError:
+                serializer = ComputerSerializer(Computer.objects.all(), many=True)
 
         for i in serializer.data:
             i.update({"rating": Computer.objects.get(id=i["id"]).get_rating()})
             i.update({"rating_len": Computer.objects.get(id=i["id"]).get_rating_len()})
+
         return Response(serializer.data)
 
 class UserCreate(generics.GenericAPIView):

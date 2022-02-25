@@ -37,7 +37,6 @@ export const CSRFToken = getCookie('csrftoken');
 export const MainContext = createContext()
 
 
-
 // Main App
 export default function App() {
 

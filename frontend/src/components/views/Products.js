@@ -1,6 +1,7 @@
 import axios from "axios"
 import React, {Component, useState, useEffect} from "react"
 import StarHandler from "../constants/StarHandler"
+import toast from "react-hot-toast"
 
 import Skeleton from "react-loading-skeleton"
 import "react-loading-skeleton/dist/skeleton.css"
@@ -56,45 +57,47 @@ export default function Products(){
 
 
     // API
-    const [product, setProduct] = useState([])
+    const [products, setProducts] = useState([])
     const [isFectch, setIsFetch] = useState(false)
 
-    const getProducts = (req) => {
-        setIsFetch(true)
-
-        axios.get("http://localhost:3000/api/products/", {params: req})
-        .then((response) => {
-            // console.log(response.data)
-            setProduct(response.data)
-            setTimeout(() => {
-                setIsFetch(false)                
-            }, 750);
-        })
-        .catch((error) => {
-            console.log(error)
-            setTimeout(() => {
-                setIsFetch(false)                
-            }, 750);        
-        })
-    }
+    const [isStock, setIsStock] = useState(false)
+    const [isSale, setIsSale] = useState(false)
 
     useEffect(() => {
-        getProducts()
+        setIsFetch(true)
+
+        axios.get("http://localhost:3000/api/products/")
+        .then(res => {
+            setProducts(res.data)
+            setTimeout(() => {
+                setIsFetch(false)
+            }, 1000)
+        })
+        .catch(err => {
+            setTimeout(() => {
+                toast.error("Valami hiba történt!")
+                setIsFetch(false)
+            }, 1000)
+        })
     }, [])
 
 
-    const params = new URLSearchParams()
-    const newQuery = (type, value) => {
-        if (params.get(type) !== null) {
-            params.delete(type)
-        } else {
-            params.append(type, value)
-        }
-
-        getProducts(params)
+    const filterByStock = (data) => {
+        if (!isStock) return data
+        const filteredData = products.filter(product => product.stock > 0)
+        return filteredData
+    }
+    const filterBySale = (data) => {
+        if (!isSale) return data
+        const filteredData = products.filter(product => product.sale !== null)
+        return filteredData
     }
 
-
+    useEffect(() => {
+        let filteredProducts = filterByStock(products)
+        filteredProducts = filterBySale(filteredProducts)
+        setProducts(products)
+    }, [isStock, isSale])
 
     return (
         <>
@@ -156,7 +159,12 @@ export default function Products(){
 
                         <label className="checkbox-container">
                             <span className="checkbox-title">Készleten</span>
-                            <input type="checkbox" id="stock" value="true" onChange={event => newQuery(event.target.id, event.target.value)}/>
+                            <input 
+                                type="checkbox" 
+                                id="stock" 
+                                value={isStock}
+                                onChange={event => setIsStock(event.target.value)}
+                            />
                             <span className="checkmark"></span>
                         </label>
 
@@ -178,14 +186,21 @@ export default function Products(){
                     <div className="wrapper">
                         <div className="top-content">
                             <div className="d-flex">
-                                <h3>{ product.length == 0 ? !isFectch ?  "Nincs találat" : "" : product.length + " találat" } </h3>                         
+                                <h3>{ products.length == 0 ? !isFectch ?  "Nincs találat" : "" : products.length + " találat" } </h3>                         
                             </div>
                         </div>
                         {
-                            product.length == 0 ? 
-                                isFectch ? <Skeleton count={3}/> : 
+                            products.length == 0 ? 
+                                isFectch ? 
+                                (<>
+                                    <Skeleton count={3}/> 
+                                    <br/> 
+                                    <Skeleton count={3}/>     
+                                    <br/> 
+                                    <Skeleton count={3}/>
+                                </>) : 
                                     "" : 
-                            product.map(item => <ProductItem key={item.id} {...item}/>)
+                            products.map(product => <ProductItem key={product.id} {...product}/>)
                         }
 
                     </div>

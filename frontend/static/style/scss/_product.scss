@@ -44,15 +44,11 @@
                     transition: all .2s;
                 }
                 &:hover {
-                    color: $white;
-                    background-color: $main;
                     i {
                         color: $white;
                     }
                 }
                 &:focus {
-                    transform: translateY(-2px);
-                    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
                     i {
                         margin-left: 6px;
                     }
@@ -84,7 +80,8 @@
 .pr-section-2 {
     .sorting {
         background-color: $lightGray2;
-        border-radius: 30px;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
         padding: 20px 30px;
         h1 {
             font-size: 22px;
@@ -94,6 +91,8 @@
             color: $lightGray1;
             font-weight: 600;
             font-size: 20px;
+            margin-top: 18px;
+            margin-bottom: 8px;
         }
 
         .sorting-hr {
@@ -101,6 +100,37 @@
             height: 5px;
             background-color: $main;
             width: 20px;
+        }
+        .price-btn {
+            outline: none;
+            border: none;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            background-color: transparent;
+            color: $white;
+            font-size: 20px;
+        }
+        .p-relative {
+            input {
+                width: 140px;
+                color: $white;
+                background-color: transparent;
+                border: 2px dotted $main;
+                border-radius: 10px;
+                height: 40px;
+                padding-left: 12px;
+                &::placeholder {
+                    font-weight: 600;
+                }
+                &:focus {
+                    outline: none;
+                }
+                &::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                }
+            }
         }
     }
     .content {

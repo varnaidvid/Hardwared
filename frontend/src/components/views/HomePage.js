@@ -16,11 +16,11 @@ export const SlideShow = () => {
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">Previous</span>
+                <span className="visually-hidden">Előző</span>
             </button>
             <button className="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
                 <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">Next</span>
+                <span className="visually-hidden">Következő</span>
             </button>
         </div>
     )
@@ -58,7 +58,7 @@ export default function HomePage({...props}){
                             <h1 className="bg-text d-none d-md-block">Hardver</h1>
                             <h5 className="sup-title">Várnai Dávid</h5>
                             <h1 className="main-title title">Számítástechnikai<br/>Szaküzlet</h1>
-                            <a className="main-btn main-btn-anim" role="button">Rólunk.</a>
+                            <a className="main-btn filled-btn-anim" role="button">Rólunk.</a>
                         </div>
                         <div className="col-12 col-lg-5">
                             <SlideShow/>
@@ -97,7 +97,7 @@ export default function HomePage({...props}){
                             <h5 className="sup-title">Vásárolj most</h5>
                             <h1 className="title">Rendkívüli<br/>Teljesítmény</h1>
                             <p className="mt-2 mb-3">Több mint 20 éves szakértelmünket adjuk bele a nagy teljesítményű PC-k gyártásában, különös tekintettel a hőtechnikai tervezésre, légáramlatra. Minden alkatrészt optimalizálunk és összehasonlítunk, hogy a teljesítmény új szintjét hozzuk létre, amely több, mint a részek összege.</p>
-                            <a className="main-btn main-btn-anim" role="button">Termékek</a>                        
+                            <a className="main-btn filled-btn-anim" role="button">Termékek</a>                        
                         </div>
                     </div>
                     <div className="row specs">
@@ -123,7 +123,7 @@ export default function HomePage({...props}){
                             <h1 className="bg-text d-none d-sm-block">Teszt</h1>
                             <h5 className="sup-title">Megfelel a költségvetéshez és a teljesítményhez.</h5>
                             <h1 className="title">Egyedi gaming <br/>rendszer</h1>
-                            <a className="main-btn main-btn-anim">Összeállítás.</a>
+                            <a className="main-btn filled-btn-anim">Összeállítás.</a>
                         </div>
 
                         <div className="col-lg-2">
@@ -138,7 +138,7 @@ export default function HomePage({...props}){
                             <h1 className="bg-text d-none d-sm-block">Segíts</h1>
                             <h5 className="sup-title">Kérdése van? Keresse az ügyfélszolgálatot.</h5>
                             <h1 className="title">ügyfélszolgálat</h1>
-                            <a className="main-btn main-btn-anim">Segítség.</a>
+                            <a className="main-btn filled-btn-anim">Segítség.</a>
                         </div>
                     </div>
                 </div>

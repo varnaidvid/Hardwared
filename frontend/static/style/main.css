@@ -501,16 +501,10 @@
           color: #8a8a8f;
           margin-left: 3px;
           transition: all .2s; }
-        .pr-section-1 .pr-featured .pr-card .main-btn:hover {
-          color: #eeeeee;
-          background-color: #676eff; }
-          .pr-section-1 .pr-featured .pr-card .main-btn:hover i {
-            color: #eeeeee; }
-        .pr-section-1 .pr-featured .pr-card .main-btn:focus {
-          transform: translateY(-2px);
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); }
-          .pr-section-1 .pr-featured .pr-card .main-btn:focus i {
-            margin-left: 6px; }
+        .pr-section-1 .pr-featured .pr-card .main-btn:hover i {
+          color: #eeeeee; }
+        .pr-section-1 .pr-featured .pr-card .main-btn:focus i {
+          margin-left: 6px; }
       .pr-section-1 .pr-featured .pr-card .sup-title {
         margin-bottom: 0 !important;
         padding-bottom: 0 !important; }
@@ -525,7 +519,8 @@
 
 .pr-section-2 .sorting {
   background-color: #292a37;
-  border-radius: 30px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
   padding: 20px 30px; }
   .pr-section-2 .sorting h1 {
     font-size: 22px;
@@ -533,12 +528,38 @@
   .pr-section-2 .sorting h2 {
     color: #8a8a8f;
     font-weight: 600;
-    font-size: 20px; }
+    font-size: 20px;
+    margin-top: 18px;
+    margin-bottom: 8px; }
   .pr-section-2 .sorting .sorting-hr {
     opacity: 1;
     height: 5px;
     background-color: #676eff;
     width: 20px; }
+  .pr-section-2 .sorting .price-btn {
+    outline: none;
+    border: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: transparent;
+    color: #eeeeee;
+    font-size: 20px; }
+  .pr-section-2 .sorting .p-relative input {
+    width: 140px;
+    color: #eeeeee;
+    background-color: transparent;
+    border: 2px dotted #676eff;
+    border-radius: 10px;
+    height: 40px;
+    padding-left: 12px; }
+    .pr-section-2 .sorting .p-relative input::placeholder {
+      font-weight: 600; }
+    .pr-section-2 .sorting .p-relative input:focus {
+      outline: none; }
+    .pr-section-2 .sorting .p-relative input::-webkit-inner-spin-button {
+      -webkit-appearance: none; }
 
 .pr-section-2 .content {
   background-color: #23232e;
@@ -1103,7 +1124,7 @@ input:checked + .slider:before {
 /* Create a custom checkbox */
 .checkmark {
   position: absolute;
-  top: 0;
+  top: 6px;
   left: 0;
   height: 25px;
   width: 25px;
@@ -1140,7 +1161,7 @@ input:checked + .slider:before {
   transform: rotate(45deg); }
 
 .checkbox-title {
-  font-size: 18px; }
+  font-size: 17px; }
 
 /* Button */
 .main-btn {
@@ -1173,6 +1194,15 @@ input:checked + .slider:before {
     transition: all 0.4s; }
   .main-btn-anim:active {
     transform: translateY(-1px); }
+
+.filled-btn-anim {
+  transition: all .4s; }
+  .filled-btn-anim:hover {
+    background-color: #676eff;
+    color: white; }
+  .filled-btn-anim:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); }
 
 /* Scrollbar */
 ::-webkit-scrollbar {

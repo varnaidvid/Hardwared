@@ -575,7 +575,7 @@ input:checked + .slider:before { transform: translateX(26px); }
 /* Create a custom checkbox */
 .checkmark {
   position: absolute;
-  top: 0;
+  top: 6px;
   left: 0;
   height: 25px;
   width: 25px;
@@ -612,7 +612,7 @@ input:checked + .slider:before { transform: translateX(26px); }
   transform: rotate(45deg);
 }
 .checkbox-title {
-  font-size: 18px;
+  font-size: 17px;
 }
 
 /* Button */
@@ -651,7 +651,17 @@ input:checked + .slider:before { transform: translateX(26px); }
     transform: translateY(-1px);
   }
 }
-
+.filled-btn-anim {
+  transition: all .4s;
+  &:hover {
+    background-color: $main;
+    color: white;
+  }
+  &:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  }
+}
 
 /* Scrollbar */
 ::-webkit-scrollbar {

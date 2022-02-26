@@ -87,11 +87,30 @@ class Computer(models.Model):
         return f"{self.name}"
 
     def get_rating(self):
-        self.refresh_from_db()
-        return self.__class__.objects.filter(pk=self.pk).aggregate(Avg("ratings__rating"))
+        avg = self.__class__.objects.filter(pk=self.pk).aggregate(Avg("ratings__rating"))
+        
+        num = 0
+        for i in avg.values():
+            if type(i) == float:
+                num = i
+
+        if num >= 4.4:
+            return 5
+        elif num >= 3.4:
+            return 4
+        elif num >= 2.4:
+            return 3
+        elif num >= 1.4:
+            return 2
+        elif num > 0:
+            return 1
+        else:
+            return None
 
     def get_rating_len(self):
-        return self.__class__.objects.filter(pk=self.pk).aggregate(Count("ratings__rating"))
+        return self.__class__.objects.filter(pk=self.pk).aggregate(Count("ratings__rating"))["ratings__rating__count"]
+        
+    
 
     class Meta:
         ordering = ["created_at"]

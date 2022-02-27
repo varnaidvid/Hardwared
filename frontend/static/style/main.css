@@ -459,6 +459,94 @@
       border-radius: 10px;
       margin-top: 20px; }
 
+.country-selector {
+  width: 100%;
+  text-align: left;
+  margin-top: 16px;
+  position: relative; }
+  .country-selector .country-btn {
+    background-color: #292a37;
+    color: #8a8a8f;
+    width: 425px;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    padding: 0 16px;
+    font-size: 16px;
+    text-align: left;
+    height: 55px;
+    font-weight: 500;
+    font-size: 18px; }
+    .country-selector .country-btn img {
+      height: 16px;
+      border-radius: 3px;
+      margin-right: 6px; }
+    .country-selector .country-btn i {
+      float: right;
+      margin-top: 6px;
+      margin-right: 10px; }
+  .country-selector .country-drop {
+    overflow: auto;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    margin-top: 4px;
+    width: 100%;
+    background-color: #23232e;
+    box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.4);
+    max-height: 400px;
+    border-radius: 12px;
+    z-index: 10;
+    list-style-type: none;
+    border: 4px solid #292a37; }
+    .country-selector .country-drop .country-search {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background-color: #23232e;
+      position: relative;
+      margin: 10px 20px;
+      user-select: none; }
+      .country-selector .country-drop .country-search input {
+        width: 100%;
+        outline: none;
+        border-radius: 12px;
+        background-color: #23232e;
+        box-shadow: none;
+        margin: 10px 0;
+        padding: 8px 12px;
+        border: 2px solid #292a37;
+        color: #eeeeee;
+        font-weight: 500; }
+        .country-selector .country-drop .country-search input::placeholder {
+          font-weight: 500; }
+    .country-selector .country-drop hr {
+      width: 100%;
+      background-color: #292a37;
+      height: 3px; }
+    .country-selector .country-drop .country-content {
+      max-width: 90%;
+      text-align: center;
+      margin: 4px auto; }
+      .country-selector .country-drop .country-content ::-webkit-scrollbar {
+        width: 12px; }
+      .country-selector .country-drop .country-content ::-webkit-scrollbar-track {
+        background-color: transparent; }
+      .country-selector .country-drop .country-content ::-webkit-scrollbar-thumb {
+        background-color: #8a8a8f;
+        border-radius: 16px;
+        border: 8px solid transparent;
+        background-clip: content-box;
+        transition: all 0.2s; }
+    .country-selector .country-drop li {
+      color: #8a8a8f;
+      position: relative;
+      padding: 6px 10px;
+      padding-right: 20px;
+      cursor: pointer; }
+      .country-selector .country-drop li .country-flag {
+        height: 30px; }
+
 .pr-hr {
   opacity: 1;
   width: 100%;
@@ -521,7 +609,8 @@
   background-color: #292a37;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
-  padding: 20px 30px; }
+  padding: 20px 30px;
+  margin-right: -32px; }
   .pr-section-2 .sorting h1 {
     font-size: 22px;
     font-weight: 600; }
@@ -530,7 +619,11 @@
     font-weight: 600;
     font-size: 20px;
     margin-top: 18px;
-    margin-bottom: 8px; }
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all .3s; }
+    .pr-section-2 .sorting h2:hover {
+      color: #eeeeee; }
   .pr-section-2 .sorting .sorting-hr {
     opacity: 1;
     height: 5px;
@@ -565,7 +658,7 @@
   background-color: #23232e;
   border: 5px solid #292a37;
   border-radius: 30px;
-  margin-left: -12px; }
+  margin-right: -22px; }
   .pr-section-2 .content .wrapper {
     padding: 50px;
     width: 100%; }
@@ -621,6 +714,51 @@
         height: 22px;
         z-index: 2;
         margin-top: 10px; }
+
+.account-container {
+  margin-top: 60px; }
+  .account-container .account-wrapper {
+    padding: 0 40px; }
+  .account-container .d-flex hr {
+    width: 35%;
+    margin: 0 auto;
+    margin-top: 50px;
+    opacity: 1;
+    background-color: #292a37;
+    height: 5px;
+    border-radius: 8px; }
+  .account-container .d-flex img.rounded-circle {
+    display: block;
+    margin: 0 auto;
+    height: 100px;
+    border: 2px solid #eeeeee; }
+  .account-container .account-menu {
+    margin: 20px auto;
+    text-align: center; }
+    .account-container .account-menu #menu-slider {
+      background-color: #eeeeee;
+      width: 40px;
+      height: 5px;
+      bottom: 0;
+      left: 0;
+      opacity: 1; }
+    .account-container .account-menu #menu-hr {
+      background-color: #292a37;
+      height: 5px;
+      width: 100%;
+      opacity: 1; }
+    .account-container .account-menu a {
+      color: #8a8a8f;
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: 500;
+      margin: 0 45px; }
+      .account-container .account-menu a:hover {
+        color: #eeeeee; }
+    .account-container .account-menu .left-menu {
+      float: left; }
+    .account-container .account-menu .right-menu {
+      float: right; }
 
 #app,
 body,

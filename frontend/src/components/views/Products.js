@@ -2,6 +2,7 @@ import axios from "axios"
 import React, {Component, useState, useEffect} from "react"
 import StarHandler from "../constants/StarHandler"
 import toast, { useToaster } from "react-hot-toast"
+import handleDropAnim from "../constants/handleDropAnim"
 
 import Skeleton from "react-loading-skeleton"
 import "react-loading-skeleton/dist/skeleton.css"
@@ -67,28 +68,34 @@ export default function Products(){
     const [isFetch, setIsFetch] = useState(false)
 
     // GENERIC
+    const [isGenericDrop, setIsGenericDrop] = useState(false)
     const [isStock, setIsStock] = useState(false)
     const [isSale, setIsSale] = useState(false)
     
     // PRICE
+    const [isPriceDrop, setIsPriceDrop] = useState(false)
     const [minPrice, setMinPrice] = useState()
     const [maxPrice, setMaxPrice] = useState()
     
     // GPU
+    const [isGpuDrop, setIsGpuDrop] = useState(false)
     const [isAmd, setIsAmd] = useState(false)
     const [isNvidia, setIsNvidia] = useState(false)
 
     // CPU
+    const [isCpuDrop, setIsCpuDrop] = useState(false)
     const [isAmdCpu, setIsAmdCpu] = useState(false)
     const [isIntel, setIsIntel] = useState(false)
 
     // RAM
+    const [isRamDrop, setIsRamDrop] = useState(false)
     const [isRam8, setIsRam8] = useState("")
     const [isRam16, setIsRam16] = useState("")
     const [isRam32, setIsRam32] = useState("")
     const [isRam64, setIsRam64] = useState("")
 
     // REVIEW
+    const [isStarDrop, setIsStarDrop] = useState(false)
     const [isStar5, setIsStar5] = useState(false)
     const [isStar4, setIsStar4] = useState(false)
     const [isStar3, setIsStar3] = useState(false)
@@ -96,6 +103,7 @@ export default function Products(){
     const [isStar1, setIsStar1] = useState(false)
 
     // STORAGE
+    const [isStorageDrop, setIsStorageDrop] = useState(false)
     const [isSSD, setIsSSD] = useState(false)
     const [isHDD, setIsHDD] = useState(false)
     const [isBothStorage, setIsBothStorage] = useState(false)
@@ -178,6 +186,8 @@ export default function Products(){
             <h1 className="bg-text pr-bg-text">GAMING</h1>
             <h1 className="title pr-title">Játékra alkalmas<br/>rendszerek</h1>
 
+
+            {/* Featured Products */}
             <div className="pr-featured main-wrapper">
             <div className="row justify-content-center mx-auto">
                 <div className="col-6">
@@ -225,254 +235,278 @@ export default function Products(){
 
         <div className="pr-section-2 main-wrapper">
             <div className="row justify-content-center w-100">
+
+
+                {/* Sorting */}
                 <div className="col-3 sorting">
                     <h1>Preferencia</h1>
                     <hr className="sorting-hr"/>
 
-                    <h2>Általános</h2>
-                    <label className="checkbox-container">
-                        <span className="checkbox-title">Készleten</span>
-                        <input 
-                            type="checkbox" 
-                            value={isStock}
-                            onChange={() => !isStock ? setIsStock(true) : setIsStock(false)}
-                        />
-                        <span className="checkmark"></span>
-                    </label>
+                    <h2 href="#genericMenu" data-bs-toggle="collapse" aria-expanded={isGenericDrop} 
+                        onClick={event => {!isGenericDrop ? setIsGenericDrop(true) : setIsGenericDrop(false); handleDropAnim(isGenericDrop ? 2 : 1, "dropGeneric")}}>Általános <i className="fas fa-angle-right" id="dropGeneric"/></h2>
+                    <div className="collapse" id="genericMenu">
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">Készleten</span>
+                            <input 
+                                type="checkbox" 
+                                value={isStock}
+                                onChange={() => !isStock ? setIsStock(true) : setIsStock(false)}
+                            />
+                            <span className="checkmark"></span>
+                        </label>
 
-                    <label className="checkbox-container">
-                        <span className="checkbox-title">Gyors kiszállítás</span>
-                        <input type="checkbox"/>
-                        <span className="checkmark"></span>
-                    </label>
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">Gyors kiszállítás</span>
+                            <input type="checkbox"/>
+                            <span className="checkmark"></span>
+                        </label>
 
-                    <label className="checkbox-container">
-                        <span className="checkbox-title">Leárazás</span>
-                        <input 
-                            type="checkbox"
-                            value={isSale}
-                            onChange={() => !isSale ? setIsSale(true) : setIsSale(false)}                                
-                        />
-                        <span className="checkmark"></span>
-                    </label>
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">Leárazás</span>
+                            <input 
+                                type="checkbox"
+                                value={isSale}
+                                onChange={() => !isSale ? setIsSale(true) : setIsSale(false)}                                
+                            />
+                            <span className="checkmark"></span>
+                        </label>
+                    </div>
                     
-                    <h2>Ár</h2>
-                    <div className="p-relative">
-                        <input 
-                            type="number" 
-                            value={minPrice}
-                            placeholder="Minimum..."
-                            onChange={event => event.target.value ? setMinPrice(event.target.value) : setMinPrice()}
-                        />
+                    <h2 href="#priceMenu" data-bs-toggle="collapse" aria-expanded={isPriceDrop} 
+                        onClick={event => {!isPriceDrop ? setIsPriceDrop(true) : setIsPriceDrop(false); handleDropAnim(isPriceDrop ? 2 : 1, "dropPrice")}}>Ár <i className="fas fa-angle-right" id="dropPrice"/></h2>
+                    <div className="collapse" id="priceMenu">
+                        <div className="p-relative">
+                            <input 
+                                type="number" 
+                                value={minPrice}
+                                placeholder="Minimum..."
+                                onChange={event => event.target.value ? setMinPrice(event.target.value) : setMinPrice()}
+                            />
 
-                        <input 
-                            type="text" 
-                            value={maxPrice}
-                            className="mt-3"
-                            placeholder="Maximum..."
-                            onChange={event => event.target.value ? setMaxPrice(event.target.value) : setMaxPrice()}
-                        />
-                        <button type="button" className="price-btn" onClick={() => {handleFilter(); arrowAnim()}}><i id="priceArrow" className="fas fa-arrow-right"/></button>
+                            <input 
+                                type="text" 
+                                value={maxPrice}
+                                className="mt-3"
+                                placeholder="Maximum..."
+                                onChange={event => event.target.value ? setMaxPrice(event.target.value) : setMaxPrice()}
+                            />
+                            <button type="button" className="price-btn" onClick={() => {handleFilter(); arrowAnim()}}><i id="priceArrow" className="fas fa-arrow-right"/></button>
+                        </div>
                     </div>
 
-                    <h2>Videókártya márka</h2>
-                    <label className="checkbox-container">
-                        <span className="checkbox-title">NVIDIA</span>
-                        <input 
-                            type="checkbox" 
-                            value={isNvidia}
-                            onChange={() => !isNvidia ? setIsNvidia(true) : setIsNvidia(false)}
-                        />
-                        <span className="checkmark"></span>
-                    </label>
+                    <h2 href="#gpuMenu" data-bs-toggle="collapse" aria-expanded={isGpuDrop} 
+                        onClick={event => {!isGpuDrop ? setIsGpuDrop(true) : setIsGpuDrop(false); handleDropAnim(isGpuDrop ? 2 : 1, "dropGpu")}}>Videókártya<br/> márka <i className="fas fa-angle-right" id="dropGpu"/></h2>
+                    <div className="collapse" id="gpuMenu">
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">NVIDIA</span>
+                            <input 
+                                type="checkbox" 
+                                value={isNvidia}
+                                onChange={() => !isNvidia ? setIsNvidia(true) : setIsNvidia(false)}
+                            />
+                            <span className="checkmark"></span>
+                        </label>
 
-                    <label className="checkbox-container">
-                        <span className="checkbox-title">AMD</span>
-                        <input 
-                            type="checkbox" 
-                            value={isAmd}
-                            onChange={() => !isAmd ? setIsAmd(true) : setIsAmd(false)}
-                        />
-                        <span className="checkmark"></span>
-                    </label>
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">AMD</span>
+                            <input 
+                                type="checkbox" 
+                                value={isAmd}
+                                onChange={() => !isAmd ? setIsAmd(true) : setIsAmd(false)}
+                            />
+                            <span className="checkmark"></span>
+                        </label>
+                    </div>
 
-                    <h2>Processzor márka</h2>
-                    <label className="checkbox-container">
-                        <span className="checkbox-title">Intel</span>
-                        <input 
-                            type="checkbox" 
-                            value={isIntel}
-                            onChange={() => !isIntel ? setIsIntel(true) : setIsIntel(false)}
-                        />
-                        <span className="checkmark"></span>
-                    </label>
+                    <h2 href="#cpuMenu" data-bs-toggle="collapse" aria-expanded={isCpuDrop} 
+                        onClick={event => {!isCpuDrop ? setIsCpuDrop(true) : setIsCpuDrop(false); handleDropAnim(isCpuDrop ? 2 : 1, "dropCpu")}}>Processzor<br/> márka <i className="fas fa-angle-right" id="dropCpu"/></h2>
+                    <div className="collapse" id="cpuMenu">
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">Intel</span>
+                            <input 
+                                type="checkbox" 
+                                value={isIntel}
+                                onChange={() => !isIntel ? setIsIntel(true) : setIsIntel(false)}
+                            />
+                            <span className="checkmark"></span>
+                        </label>
 
-                    <label className="checkbox-container">
-                        <span className="checkbox-title">AMD</span>
-                        <input 
-                            type="checkbox" 
-                            value={isAmdCpu}
-                            onChange={() => !isAmdCpu ? setIsAmdCpu(true) : setIsAmdCpu(false)}
-                        />
-                        <span className="checkmark"></span>
-                    </label>
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">AMD</span>
+                            <input 
+                                type="checkbox" 
+                                value={isAmdCpu}
+                                onChange={() => !isAmdCpu ? setIsAmdCpu(true) : setIsAmdCpu(false)}
+                            />
+                            <span className="checkmark"></span>
+                        </label>
+                    </div>
 
-                    <h2>Memória</h2>
-                    <label className="checkbox-container">
-                        <span className="checkbox-title">8 GB</span>
-                        <input 
-                            type="checkbox" 
-                            value={isRam8}
-                            onChange={() => !isRam8 ? setIsRam8("8 GB") : setIsRam8("")}
-                        />
-                        <span className="checkmark"></span>
-                    </label>
+                    <h2 href="#ramMenu" data-bs-toggle="collapse" aria-expanded={isRamDrop} 
+                        onClick={event => {!isRamDrop ? setIsRamDrop(true) : setIsRamDrop(false); handleDropAnim(isRamDrop ? 2 : 1, "dropRam")}}>Memória <i className="fas fa-angle-right" id="dropRam"/></h2>
+                    <div className="collapse" id="ramMenu">
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">8 GB</span>
+                            <input 
+                                type="checkbox" 
+                                value={isRam8}
+                                onChange={() => !isRam8 ? setIsRam8("8 GB") : setIsRam8("")}
+                            />
+                            <span className="checkmark"></span>
+                        </label>
 
-                    <label className="checkbox-container">
-                        <span className="checkbox-title">16 GB</span>
-                        <input 
-                            type="checkbox" 
-                            value={isRam16}
-                            onChange={() => !isRam16 ? setIsRam16("16 GB") : setIsRam16("")}
-                        />
-                        <span className="checkmark"></span>
-                    </label>
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">16 GB</span>
+                            <input 
+                                type="checkbox" 
+                                value={isRam16}
+                                onChange={() => !isRam16 ? setIsRam16("16 GB") : setIsRam16("")}
+                            />
+                            <span className="checkmark"></span>
+                        </label>
 
-                    <label className="checkbox-container">
-                        <span className="checkbox-title">32 GB</span>
-                        <input 
-                            type="checkbox" 
-                            value={isRam32}
-                            onChange={() => !isRam32 ? setIsRam32("32 GB") : setIsRam32("")}
-                        />
-                        <span className="checkmark"></span>
-                    </label>
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">32 GB</span>
+                            <input 
+                                type="checkbox" 
+                                value={isRam32}
+                                onChange={() => !isRam32 ? setIsRam32("32 GB") : setIsRam32("")}
+                            />
+                            <span className="checkmark"></span>
+                        </label>
 
-                    <label className="checkbox-container">
-                        <span className="checkbox-title">64 GB</span>
-                        <input 
-                            type="checkbox" 
-                            value={isRam64}
-                            onChange={() => !isRam64 ? setIsRam64("64 GB") : setIsRam64("")}
-                        />
-                        <span className="checkmark"></span>
-                    </label>
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">64 GB</span>
+                            <input 
+                                type="checkbox" 
+                                value={isRam64}
+                                onChange={() => !isRam64 ? setIsRam64("64 GB") : setIsRam64("")}
+                            />
+                            <span className="checkmark"></span>
+                        </label>
+                    </div>
 
-                    <h2>Értékelés</h2>
-                    <label className="checkbox-container">
-                        <span className="checkbox-title">
-                            <img src="/static/images/svg/filled-star.svg" height="20"/>
-                            <img src="/static/images/svg/filled-star.svg" height="20"/>
-                            <img src="/static/images/svg/filled-star.svg" height="20"/>
-                            <img src="/static/images/svg/filled-star.svg" height="20"/>
-                            <img src="/static/images/svg/filled-star.svg" height="20"/>
-                        </span>
-                        <input 
-                            type="checkbox" 
-                            value={isStar5}
-                            onChange={() => !isStar5 ? setIsStar5(5) : setIsStar5(false)}
-                        />
-                        <span className="checkmark"></span>
-                    </label>
+                    <h2 href="#starMenu" data-bs-toggle="collapse" aria-expanded={isStarDrop} 
+                        onClick={event => {!isStarDrop ? setIsStarDrop(true) : setIsStarDrop(false); handleDropAnim(isStarDrop ? 2 : 1, "dropStar")}}>Értékelés <i className="fas fa-angle-right" id="dropStar"/></h2>
+                    <div className="collapse" id="starMenu">
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">
+                                <img src="/static/images/svg/filled-star.svg" height="20"/>
+                                <img src="/static/images/svg/filled-star.svg" height="20"/>
+                                <img src="/static/images/svg/filled-star.svg" height="20"/>
+                                <img src="/static/images/svg/filled-star.svg" height="20"/>
+                                <img src="/static/images/svg/filled-star.svg" height="20"/>
+                            </span>
+                            <input 
+                                type="checkbox" 
+                                value={isStar5}
+                                onChange={() => !isStar5 ? setIsStar5(5) : setIsStar5(false)}
+                            />
+                            <span className="checkmark"></span>
+                        </label>
 
-                    <label className="checkbox-container">
-                        <span className="checkbox-title">
-                            <img src="/static/images/svg/filled-star.svg" height="20"/>
-                            <img src="/static/images/svg/filled-star.svg" height="20"/>
-                            <img src="/static/images/svg/filled-star.svg" height="20"/>
-                            <img src="/static/images/svg/filled-star.svg" height="20"/>
-                            <img src="/static/images/svg/unfilled-star.svg" height="20"/>
-                        </span>
-                        <input 
-                            type="checkbox" 
-                            value={isStar4}
-                            onChange={() => !isStar4 ? setIsStar4(4) : setIsStar4(false)}
-                        />
-                        <span className="checkmark"></span>
-                    </label>
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">
+                                <img src="/static/images/svg/filled-star.svg" height="20"/>
+                                <img src="/static/images/svg/filled-star.svg" height="20"/>
+                                <img src="/static/images/svg/filled-star.svg" height="20"/>
+                                <img src="/static/images/svg/filled-star.svg" height="20"/>
+                                <img src="/static/images/svg/unfilled-star.svg" height="20"/>
+                            </span>
+                            <input 
+                                type="checkbox" 
+                                value={isStar4}
+                                onChange={() => !isStar4 ? setIsStar4(4) : setIsStar4(false)}
+                            />
+                            <span className="checkmark"></span>
+                        </label>
 
-                    <label className="checkbox-container">
-                        <span className="checkbox-title">
-                            <img src="/static/images/svg/filled-star.svg" height="20"/>
-                            <img src="/static/images/svg/filled-star.svg" height="20"/>
-                            <img src="/static/images/svg/filled-star.svg" height="20"/>
-                            <img src="/static/images/svg/unfilled-star.svg" height="20"/>
-                            <img src="/static/images/svg/unfilled-star.svg" height="20"/>
-                        </span>
-                        <input 
-                            type="checkbox" 
-                            value={isStar3}
-                            onChange={() => !isStar3 ? setIsStar3(3) : setIsStar3(false)}
-                        />
-                        <span className="checkmark"></span>
-                    </label>
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">
+                                <img src="/static/images/svg/filled-star.svg" height="20"/>
+                                <img src="/static/images/svg/filled-star.svg" height="20"/>
+                                <img src="/static/images/svg/filled-star.svg" height="20"/>
+                                <img src="/static/images/svg/unfilled-star.svg" height="20"/>
+                                <img src="/static/images/svg/unfilled-star.svg" height="20"/>
+                            </span>
+                            <input 
+                                type="checkbox" 
+                                value={isStar3}
+                                onChange={() => !isStar3 ? setIsStar3(3) : setIsStar3(false)}
+                            />
+                            <span className="checkmark"></span>
+                        </label>
 
-                    <label className="checkbox-container">
-                        <span className="checkbox-title">
-                            <img src="/static/images/svg/filled-star.svg" height="20"/>
-                            <img src="/static/images/svg/filled-star.svg" height="20"/>
-                            <img src="/static/images/svg/unfilled-star.svg" height="20"/>
-                            <img src="/static/images/svg/unfilled-star.svg" height="20"/>
-                            <img src="/static/images/svg/unfilled-star.svg" height="20"/>
-                        </span>
-                        <input 
-                            type="checkbox" 
-                            value={isStar2}
-                            onChange={() => !isStar2 ? setIsStar2(2) : setIsStar2(false)}
-                        />
-                        <span className="checkmark"></span>
-                    </label>
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">
+                                <img src="/static/images/svg/filled-star.svg" height="20"/>
+                                <img src="/static/images/svg/filled-star.svg" height="20"/>
+                                <img src="/static/images/svg/unfilled-star.svg" height="20"/>
+                                <img src="/static/images/svg/unfilled-star.svg" height="20"/>
+                                <img src="/static/images/svg/unfilled-star.svg" height="20"/>
+                            </span>
+                            <input 
+                                type="checkbox" 
+                                value={isStar2}
+                                onChange={() => !isStar2 ? setIsStar2(2) : setIsStar2(false)}
+                            />
+                            <span className="checkmark"></span>
+                        </label>
 
-                    <label className="checkbox-container">
-                        <span className="checkbox-title">
-                            <img src="/static/images/svg/filled-star.svg" height="20"/>
-                            <img src="/static/images/svg/unfilled-star.svg" height="20"/>
-                            <img src="/static/images/svg/unfilled-star.svg" height="20"/>
-                            <img src="/static/images/svg/unfilled-star.svg" height="20"/>
-                            <img src="/static/images/svg/unfilled-star.svg" height="20"/>
-                        </span>
-                        <input 
-                            type="checkbox" 
-                            value={isStar1}
-                            onChange={() => !isStar1 ? setIsStar1(1) : setIsStar1(false)}
-                        />
-                        <span className="checkmark"></span>
-                    </label>
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">
+                                <img src="/static/images/svg/filled-star.svg" height="20"/>
+                                <img src="/static/images/svg/unfilled-star.svg" height="20"/>
+                                <img src="/static/images/svg/unfilled-star.svg" height="20"/>
+                                <img src="/static/images/svg/unfilled-star.svg" height="20"/>
+                                <img src="/static/images/svg/unfilled-star.svg" height="20"/>
+                            </span>
+                            <input 
+                                type="checkbox" 
+                                value={isStar1}
+                                onChange={() => !isStar1 ? setIsStar1(1) : setIsStar1(false)}
+                            />
+                            <span className="checkmark"></span>
+                        </label>
+                    </div>
 
-                    <h2>Tárhely</h2>
-                    <label className="checkbox-container">
-                        <span className="checkbox-title">SSD</span>
-                        <input 
-                            type="checkbox" 
-                            value={isSSD}
-                            onChange={() => !isSSD ? setIsSSD("SSD") : setIsSSD(false)}
-                        />
-                        <span className="checkmark"></span>
-                    </label>
+                    <h2 href="#storageMenu" data-bs-toggle="collapse" aria-expanded={isStorageDrop} 
+                        onClick={event => {!isStorageDrop ? setIsStorageDrop(true) : setIsStorageDrop(false); handleDropAnim(isStorageDrop ? 2 : 1, "dropStorage")}}>Tárhely <i className="fas fa-angle-right" id="dropStorage"/></h2>
+                    <div className="collapse" id="storageMenu">
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">SSD</span>
+                            <input 
+                                type="checkbox" 
+                                value={isSSD}
+                                onChange={() => !isSSD ? setIsSSD("SSD") : setIsSSD(false)}
+                            />
+                            <span className="checkmark"></span>
+                        </label>
 
-                    <label className="checkbox-container">
-                        <span className="checkbox-title">SSD és HDD</span>
-                        <input 
-                            type="checkbox" 
-                            value={isBothStorage}
-                            onChange={() => !isBothStorage ? setIsBothStorage("SSD & HDD") : setIsBothStorage(false)}
-                        />
-                        <span className="checkmark"></span>
-                    </label>
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">SSD és HDD</span>
+                            <input 
+                                type="checkbox" 
+                                value={isBothStorage}
+                                onChange={() => !isBothStorage ? setIsBothStorage("SSD & HDD") : setIsBothStorage(false)}
+                            />
+                            <span className="checkmark"></span>
+                        </label>
 
-                    <label className="checkbox-container">
-                        <span className="checkbox-title">HDD</span>
-                        <input
-                            type="checkbox"
-                            value={isHDD}
-                            onChange={() => !isHDD ? setIsHDD("HDD") : setIsHDD(false)}
-                        />
-                        <span className="checkmark"></span>
-                    </label>
-                    
-
-
+                        <label className="checkbox-container">
+                            <span className="checkbox-title">HDD</span>
+                            <input
+                                type="checkbox"
+                                value={isHDD}
+                                onChange={() => !isHDD ? setIsHDD("HDD") : setIsHDD(false)}
+                            />
+                            <span className="checkmark"></span>
+                        </label>
+                    </div>
                 </div>
+
+
+                {/* Products */}
                 <div className="col-9 content">
                     <div className="wrapper">
                         <div className="top-content">

@@ -110,8 +110,6 @@ class Computer(models.Model):
     def get_rating_len(self):
         return self.__class__.objects.filter(pk=self.pk).aggregate(Count("ratings__rating"))["ratings__rating__count"]
         
-    
-
     class Meta:
         ordering = ["created_at"]
 

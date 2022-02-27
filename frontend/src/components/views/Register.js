@@ -7,6 +7,9 @@ import {
     nullInput,
 } from "../constants"
 
+import CountrySelector from "../constants/CountrySelector"
+import Countries from "../constants/countries"
+
 export default function Register(props) {
     const [user, setUser] = useContext(MainContext)
 
@@ -80,7 +83,12 @@ export default function Register(props) {
 
         })
     }
-        
+      
+    
+    const [isOpen, setIsOpen] = useState(false)
+    const [countryTest, setCountryTest] = useState("HU")
+
+
     return (
         <>
         <h1 className="bg-text auth-bg-text">Felhasználó</h1>
@@ -174,8 +182,14 @@ export default function Register(props) {
                     </div>
                     </div>
 
-
-                    <div className="input-wrapper">
+                    <CountrySelector
+                        id="countries"
+                        open={isOpen}
+                        onToggle={() => setIsOpen(!isOpen)}
+                        onChange={val => setCountryTest(val)}
+                        selectedValue={Countries.find(option => option.value === countryTest)}
+                    />
+                    {/* <div className="input-wrapper">
                     <div className="input-container">
                         <label id="countryLabel" className={ countryFocus ? "focus" : "" }><img src="/static/images/svg/flag.svg"/>{ countryFocus ? "Ország:" : "Ország..."}</label>
                         <input name="country" type="text" id="country"
@@ -185,7 +199,7 @@ export default function Register(props) {
                             onChange={event => setCountry(event.target.value)}
                         />
                     </div>
-                    </div>
+                    </div> */}
 
                     <div className="input-wrapper">
                     <div className="input-container">

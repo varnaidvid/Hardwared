@@ -1,0 +1,57 @@
+.account-container {
+    margin-top: 60px;
+    .account-wrapper {
+        padding: 0 40px;
+    }
+    .d-flex {
+        hr {
+            width: 35%;
+            margin: 0 auto;
+            margin-top: 50px;
+            opacity: 1;
+            background-color: $lightGray2;
+            height: 5px;
+            border-radius: 8px;
+        }
+        img.rounded-circle {
+            display: block;
+            margin: 0 auto;
+            height: 100px;
+            border: 2px solid $white;
+        }
+    }
+    .account-menu {
+        margin: 20px auto;
+        text-align: center;
+        #menu-slider {
+            background-color: $white;
+            width: 40px;
+            height: 5px;
+            bottom: 0;
+            left: 0;
+            opacity: 1;
+        }
+        #menu-hr {
+            background-color: $lightGray2;
+            height: 5px;
+            width: 100%;
+            opacity: 1;
+        }
+        a {
+            color: $lightGray1;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 500;
+            margin: 0 45px;
+            &:hover {
+                color: $white;
+            }
+        }
+        .left-menu {
+            float: left;
+        }
+        .right-menu {
+            float: right;
+        }
+    }
+}

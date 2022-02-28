@@ -544,10 +544,6 @@ const Countries = [
         value: 'NL',
         },
         {
-        title: 'Netherlands Antilles',
-        value: 'AN',
-        },
-        {
         title: 'New Caledonia',
         value: 'NC',
         },

@@ -32,7 +32,7 @@ export default function Register(props) {
     const [birth, setBirth] = useState("")
     const [birthFocus, setBirthFocus] = useState(false)
 
-    const [country, setCountry] = useState("")
+    const [country, setCountry] = useState("HU")
     const [countryFocus, setCountryFocus] = useState(false)
 
     const [address, setAddress] = useState("")
@@ -83,11 +83,6 @@ export default function Register(props) {
 
         })
     }
-      
-    
-    const [isOpen, setIsOpen] = useState(false)
-    const [countryTest, setCountryTest] = useState("HU")
-
 
     return (
         <>
@@ -180,28 +175,19 @@ export default function Register(props) {
                             />                        
                         </span>
                     </div>
+                    <span className="sub-input-text">* Kötelező</span>
                     </div>
 
                     <CountrySelector
                         id="countries"
-                        open={isOpen}
-                        onToggle={() => setIsOpen(!isOpen)}
-                        onChange={val => setCountryTest(val)}
-                        selectedValue={Countries.find(option => option.value === countryTest)}
+                        open={countryFocus}
+                        onToggle={() => setCountryFocus(countryFocus ? false : true)}
+                        onChange={val => setCountry(val)}
+                        selectedValue={Countries.find(option => option.value === country)}
                     />
-                    {/* <div className="input-wrapper">
-                    <div className="input-container">
-                        <label id="countryLabel" className={ countryFocus ? "focus" : "" }><img src="/static/images/svg/flag.svg"/>{ countryFocus ? "Ország:" : "Ország..."}</label>
-                        <input name="country" type="text" id="country"
-                            value={country}
-                            onFocus={() => setCountryFocus(true)}
-                            onBlur={event => {if (event.target.value === ""){setCountryFocus(false)} else {setCountryFocus(true)}}}
-                            onChange={event => setCountry(event.target.value)}
-                        />
-                    </div>
-                    </div> */}
+                    <span className="sub-input-text country-sub-input-text">* Kötelező</span>
 
-                    <div className="input-wrapper">
+                    <div className="input-wrapper mt-5">
                     <div className="input-container">
                         <label id="addressLabel" className={ addressFocus ? "focus" : "" }><img src="/static/images/svg/marker.svg"/>{ addressFocus ? "Cím:" : "Cím..."}</label>
                         <input name="address" type="text" id="address"
@@ -211,6 +197,7 @@ export default function Register(props) {
                             onChange={event => setAddress(event.target.value)}
                         />
                     </div>
+                    <span className="sub-input-text">* Kötelező</span>
                     </div>
 
                     <div className="input-wrapper">
@@ -228,6 +215,7 @@ export default function Register(props) {
                             }
                         }}/>
                     </div>
+                    <span className="sub-input-text">* Kötelező</span>
                     </div>
 
                     <div className="submit-wrapper">

@@ -14,7 +14,7 @@ const CountrySelector = (props) => {
                 aria-haspopup="listbox"
                 aria-expanded="true"
                 aria-labelledby="listbox-label"
-                onClick={() => {handleDropAnim(props.isOpen ? 2 : 1, "countryDrop"); props.onToggle()}}
+                onClick={props.onToggle}
             >
             <span className="">
                 <img
@@ -43,8 +43,6 @@ const CountrySelector = (props) => {
                     onChange={e => setQuery(e.target.value)}
                   />
               </div>
-
-              <hr />
 
               <div className='country-content'>
                 {Countries.filter(country => country.title.toLowerCase().startsWith(query.toLowerCase())).length ===

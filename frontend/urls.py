@@ -12,4 +12,8 @@ urlpatterns = [
     path('bejelentkezes/', index),
     path('regisztracio/', index),
     path('fiok/', index),
+    path('fiok/beallitasok', index),
+    path('fiok/kosar', index),
+    path('fiok/rendeleseim', index),
+    path('fiok/kedvenceim', index),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

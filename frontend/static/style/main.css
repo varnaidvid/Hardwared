@@ -743,32 +743,119 @@
     height: 100px;
     border: 2px solid #eeeeee; }
   .account-container .account-menu {
-    margin: 20px auto;
-    text-align: center; }
-    .account-container .account-menu #menu-slider {
-      background-color: #eeeeee;
-      width: 40px;
-      height: 5px;
-      bottom: 0;
-      left: 0;
-      opacity: 1; }
-    .account-container .account-menu #menu-hr {
-      background-color: #292a37;
-      height: 5px;
-      width: 100%;
-      opacity: 1; }
+    margin: 0 auto;
+    text-align: center;
+    width: 100%; }
+    .account-container .account-menu .text-left, .account-container .account-menu .left-menu {
+      float: left; }
+    .account-container .account-menu .text-right, .account-container .account-menu .right-menu {
+      float: right; }
+    .account-container .account-menu .left-menu, .account-container .account-menu .right-menu {
+      width: 465px; }
+    .account-container .account-menu .orders {
+      margin-left: 10px; }
     .account-container .account-menu a {
       color: #8a8a8f;
       text-decoration: none;
       font-size: 22px;
-      font-weight: 500;
-      margin: 0 45px; }
+      font-weight: 500; }
       .account-container .account-menu a:hover {
         color: #eeeeee; }
-    .account-container .account-menu .left-menu {
-      float: left; }
-    .account-container .account-menu .right-menu {
-      float: right; }
+    .account-container .account-menu .active {
+      color: #eeeeee !important; }
+
+.main-account {
+  border: 5px solid #292a37;
+  border-bottom-right-radius: 110px;
+  border-bottom-left-radius: 110px;
+  margin-top: 30px;
+  margin-bottom: 75px; }
+  .main-account #account-slider {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 5px;
+    width: 125px;
+    background-color: #eeeeee;
+    border-radius: 10px; }
+  .main-account h1 {
+    margin-top: 50px; }
+  .main-account .signout {
+    position: absolute;
+    right: 50px;
+    top: 60px;
+    font-size: 30px;
+    color: #FF7575; }
+  .main-account .main-account-wrapper {
+    padding: 0 50px; }
+  .main-account .cart {
+    margin: 100px auto;
+    background-color: #1d1d29;
+    height: 200px;
+    border-top: 5px solid #292a37;
+    border-bottom: 5px solid #292a37; }
+    .main-account .cart .continue {
+      position: absolute;
+      top: -35px;
+      right: 40px;
+      color: #8a8a8f; }
+    .main-account .cart .title-block {
+      background-color: #676eff;
+      border: 5px solid #292a37;
+      border-radius: 10px;
+      padding: 6px 16px;
+      padding-top: 10px;
+      position: absolute;
+      top: -50px;
+      left: 100px; }
+      .main-account .cart .title-block h2 {
+        font-size: 22px;
+        font-weight: 600; }
+        .main-account .cart .title-block h2 i {
+          margin-right: 10px; }
+  .main-account .trio {
+    margin: 100px auto;
+    margin-bottom: 300px; }
+    .main-account .trio .trio-card {
+      border: 5px solid #292a37;
+      padding: 20px;
+      padding-left: 80px;
+      height: 150px;
+      border-radius: 12px;
+      margin: 20px; }
+      .main-account .trio .trio-card h2 {
+        font-size: 24px;
+        margin-bottom: 0; }
+      .main-account .trio .trio-card span {
+        font-size: 14px;
+        color: #8a8a8f; }
+      .main-account .trio .trio-card .trio-icon {
+        position: absolute;
+        left: -5px;
+        top: -5px;
+        height: 60px;
+        width: 60px;
+        border-radius: 15px 50% 50% 50%;
+        text-align: center; }
+        .main-account .trio .trio-card .trio-icon.mail {
+          background-color: #78FF9E; }
+        .main-account .trio .trio-card .trio-icon.lock {
+          background-color: #FF7575; }
+        .main-account .trio .trio-card .trio-icon.notification {
+          background-color: #FFFA86; }
+        .main-account .trio .trio-card .trio-icon.mail img {
+          margin-top: 20px; }
+        .main-account .trio .trio-card .trio-icon.lock img {
+          margin-top: 14px; }
+        .main-account .trio .trio-card .trio-icon.notification img {
+          margin-top: 15px; }
+
+#wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%; }
 
 #app,
 body,

@@ -21,37 +21,127 @@
         }
     }
     .account-menu {
-        margin: 20px auto;
+        margin: 0 auto;
         text-align: center;
-        #menu-slider {
-            background-color: $white;
-            width: 40px;
-            height: 5px;
-            bottom: 0;
-            left: 0;
-            opacity: 1;
-        }
-        #menu-hr {
-            background-color: $lightGray2;
-            height: 5px;
-            width: 100%;
-            opacity: 1;
+        width: 100%;
+        .text-left, .left-menu { float: left }
+        .text-right, .right-menu { float: right; }
+        .left-menu, .right-menu { width: 465px; }
+        .orders {
+            margin-left: 10px;
         }
         a {
             color: $lightGray1;
             text-decoration: none;
             font-size: 22px;
             font-weight: 500;
-            margin: 0 45px;
             &:hover {
                 color: $white;
             }
         }
-        .left-menu {
-            float: left;
+        .active { color: $white !important; }
+    }
+}
+
+
+.main-account {
+    border: 5px solid $lightGray2;
+    border-bottom-right-radius: 110px;
+    border-bottom-left-radius: 110px;
+    margin-top: 30px;
+    margin-bottom: 75px;
+    #account-slider {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 5px;
+        width: 125px;
+        background-color: $white;
+        border-radius: 10px;
+    }
+    h1 {
+        margin-top: 50px;
+    }
+    .signout {
+        position: absolute;
+        right: 50px;
+        top: 60px;
+        font-size: 30px;
+        color: $error;
+    }
+    .main-account-wrapper {
+        padding: 0 50px;
+    }
+    .cart {
+        margin: 100px auto;
+        background-color: $darkGray;
+        height: 200px;
+        border-top: 5px solid $lightGray2;
+        border-bottom: 5px solid $lightGray2;
+        .continue {
+            position: absolute;
+            top: -35px;
+            right: 40px;
+            color: $lightGray1;
         }
-        .right-menu {
-            float: right;
+        .title-block {
+            background-color: $main;
+            border: 5px solid $lightGray2;
+            border-radius: 10px;
+            padding: 6px 16px;
+            padding-top: 10px;
+            position: absolute;
+            top: -50px;
+            left: 100px;
+            h2 {
+                font-size: 22px;
+                font-weight: 600;
+                i {
+                    margin-right: 10px;
+                }
+            }
         }
     }
+    .trio {
+        margin: 100px auto;
+        margin-bottom: 300px;
+        .trio-card {
+            border: 5px solid $lightGray2;
+            padding: 20px;
+            padding-left: 80px;
+            height: 150px;
+            border-radius: 12px;
+            margin: 20px;
+            h2 {
+                font-size: 24px;
+                margin-bottom: 0;
+            }
+            span {
+                font-size: 14px;
+                color: $lightGray1;
+            }
+            .trio-icon {
+                position: absolute;
+                left: -5px;
+                top: -5px;
+                height: 60px;
+                width: 60px;
+                border-radius: 15px 50% 50% 50%;
+                text-align: center;
+                &.mail { background-color: $success; }
+                &.lock { background-color: $error; }
+                &.notification { background-color: $yellow; }
+                &.mail img { margin-top: 20px; }
+                &.lock img { margin-top: 14px; }
+                &.notification img { margin-top: 15px; }
+            }
+        }
+    }
+}
+#wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
 }

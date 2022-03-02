@@ -56,7 +56,7 @@ export default function App() {
                 <ViewBase>
                     <Toaster toastOptions={{
                         className: "alert",
-                        duration: 2500,
+                        duration: 3000,
                         error: {
                             iconTheme: {
                                 primary: "#FF7575"

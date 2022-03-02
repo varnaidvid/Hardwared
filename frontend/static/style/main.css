@@ -582,7 +582,7 @@
     .pr-section-1 .pr-featured .pr-card {
       border: 5px solid #292a37;
       position: relative;
-      width: 100%;
+      width: 400px;
       margin: 0 auto;
       background-color: #23232e;
       border-radius: 30px;
@@ -590,11 +590,12 @@
       .pr-section-1 .pr-featured .pr-card .pr-card-img {
         position: absolute;
         top: -75px;
-        right: 60px; }
+        right: 40px; }
       .pr-section-1 .pr-featured .pr-card .main-btn {
-        margin-top: 75px;
-        margin-left: 0px;
-        transition: all .2s; }
+        transition: all .2s;
+        position: absolute;
+        right: 40px;
+        bottom: 40px; }
         .pr-section-1 .pr-featured .pr-card .main-btn i {
           color: #8a8a8f;
           margin-left: 3px;
@@ -672,8 +673,19 @@
   .pr-section-2 .content .wrapper {
     padding: 50px;
     width: 100%; }
-    .pr-section-2 .content .wrapper .top-content h3 {
-      font-size: 20px; }
+    .pr-section-2 .content .wrapper .top-content {
+      border-bottom: 5px dotted #676eff; }
+      .pr-section-2 .content .wrapper .top-content .sort-type {
+        position: absolute;
+        right: 20px;
+        top: -10px; }
+        .pr-section-2 .content .wrapper .top-content .sort-type .main-btn {
+          padding: 4px 20px !important; }
+        .pr-section-2 .content .wrapper .top-content .sort-type span {
+          margin-right: 6px; }
+      .pr-section-2 .content .wrapper .top-content h3 {
+        font-size: 20px;
+        margin-top: 10px; }
     .pr-section-2 .content .wrapper .pr-item {
       border: 5px solid #292a37;
       border-radius: 20px;
@@ -778,6 +790,9 @@
     width: 125px;
     background-color: #eeeeee;
     border-radius: 10px; }
+    .main-account #account-slider.settings {
+      left: unset;
+      right: 0; }
   .main-account h1 {
     margin-top: 50px; }
   .main-account .signout {

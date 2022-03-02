@@ -74,8 +74,8 @@ export default function Products(){
     
     // PRICE
     const [isPriceDrop, setIsPriceDrop] = useState(false)
-    const [minPrice, setMinPrice] = useState()
-    const [maxPrice, setMaxPrice] = useState()
+    const [minPrice, setMinPrice] = useState("")
+    const [maxPrice, setMaxPrice] = useState("")
     
     // GPU
     const [isGpuDrop, setIsGpuDrop] = useState(false)
@@ -189,41 +189,29 @@ export default function Products(){
 
             {/* Featured Products */}
             <div className="pr-featured main-wrapper">
-            <div className="row justify-content-center mx-auto">
-                <div className="col-6">
-                    <div className="pr-card left">
-                        <div className="row justify-content-center mx-auto">
-                            <div className="col-12 col-lg-6">
-                                <h5 className="sup-title">Nap ajánlata</h5>
-                                <h2 className="pr-card-title">Desktop<br/>Slate V1</h2>
-                                <div className="d-flex">
-                                    <img src="/static/images/svg/money.svg" height="14"/>
-                                    <span>289.000 HUF</span>
-                                </div>
-                            </div>
-                            <div className="col-12 col-lg-6">
-                                <img className="pr-card-img" src="/static/images/pcs/pc2.png" height="145"/>
-                                <button type="button" className="main-btn filled-btn-anim">Részletek <i class="fas fa-arrow-right"></i></button>
-                            </div>
+            <div className="row">
+                <div className="col-6 d-none d-lg-flex">
+                    <div className="pr-card">
+                        <h5 className="sup-title">Nap ajánlata</h5>
+                        <h2 className="pr-card-title">Desktop<br/>Slate V1</h2>
+                        <img className="pr-card-img" src="/static/images/pcs/pc2.png" height="145"/>
+                        <div className="d-flex">
+                            <img src="/static/images/svg/money.svg" height="14"/>
+                            <span>289.000 HUF</span>
+                            <button type="button" className="main-btn filled-btn-anim">Részletek <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
                 </div>
 
                 <div className="col-6">
-                    <div className="pr-card right">
-                        <div className="row justify-content-center mx-auto">
-                            <div className="col-12 col-lg-6">
-                                <h5 className="sup-title">Nap ajánlata</h5>
-                                <h2 className="pr-card-title">Desktop<br/>Xtreme</h2>
-                                <div className="d-flex">
-                                    <img src="/static/images/svg/money.svg" height="14"/>
-                                    <span>289.000 HUF</span>
-                                </div>
-                            </div>
-                            <div className="col-12 col-lg-6">
-                                <img className="pr-card-img" src="/static/images/pcs/pc3.png" height="145"/>
-                                <button type="button" className="main-btn filled-btn-anim">Részletek <i class="fas fa-arrow-right"></i></button>
-                            </div>
+                    <div className="pr-card">
+                        <h5 className="sup-title">Kiemelt termék</h5>
+                        <h2 className="pr-card-title">Desktop<br/>Xtreme</h2>
+                        <img className="pr-card-img" src="/static/images/pcs/pc3.png" height="145"/>
+                        <div className="d-flex">
+                            <img src="/static/images/svg/money.svg" height="14"/>
+                            <span>289.000 HUF</span>
+                            <button type="button" className="main-btn filled-btn-anim">Részletek <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
                 </div>
@@ -235,7 +223,6 @@ export default function Products(){
 
         <div className="pr-section-2 main-wrapper">
             <div className="row justify-content-center w-100">
-
 
                 {/* Sorting */}
                 <div className="col-3 sorting">
@@ -276,20 +263,21 @@ export default function Products(){
                         onClick={event => {!isPriceDrop ? setIsPriceDrop(true) : setIsPriceDrop(false); handleDropAnim(isPriceDrop ? 2 : 1, "dropPrice")}}>Ár <i className="fas fa-angle-right" id="dropPrice"/></h2>
                     <div className="collapse" id="priceMenu">
                         <div className="p-relative">
-                            <input 
-                                type="number" 
-                                value={minPrice}
-                                placeholder="Minimum..."
-                                onChange={event => event.target.value ? setMinPrice(event.target.value) : setMinPrice()}
-                            />
 
-                            <input 
-                                type="text" 
-                                value={maxPrice}
-                                className="mt-3"
-                                placeholder="Maximum..."
-                                onChange={event => event.target.value ? setMaxPrice(event.target.value) : setMaxPrice()}
-                            />
+                                <input 
+                                    type="number" 
+                                    placeholder="Minimum..."
+                                    onChange={event => event.target.value ? setMinPrice(event.target.value) : setMinPrice("")}
+                                />
+
+                                <input 
+                                    type="number" 
+                                    value={maxPrice}
+                                    className="mt-3"
+                                    placeholder="Maximum..."
+                                    onChange={event => event.target.value ? setMaxPrice(event.target.value) : setMaxPrice("")}
+                                />
+
                             <button type="button" className="price-btn" onClick={() => {handleFilter(); arrowAnim()}}><i id="priceArrow" className="fas fa-arrow-right"/></button>
                         </div>
                     </div>
@@ -509,9 +497,12 @@ export default function Products(){
                 {/* Products */}
                 <div className="col-9 content">
                     <div className="wrapper">
-                        <div className="top-content">
+                        <div className="top-content p-relative">
                             <div className="d-flex">
-                                <h3>{ filteredProducts.length == 0 ? !isFetch ?  "Nincs találat" : "" : filteredProducts.length + " találat" } </h3>                         
+                                <h3>{ filteredProducts.length == 0 ? !isFetch ?  "Nincs találat" : "" : filteredProducts.length + " találat" } </h3>
+                                <div className="sort-type">
+                                    <span>Rendezés:</span>  <button className="main-btn main-btn-anim">Csökkenő ár <i className="fas fa-angle-down"/></button>
+                                </div>
                             </div>
                         </div>
                         {

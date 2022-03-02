@@ -141,9 +141,14 @@ const handleSlide = (targetId, toPath) => {
         {marginLeft: 0},
         {marginLeft: "92%"}
     ], {
-        duration: 500,
+        duration: 300,
         iterations: 1
     })
+    if (toPath === "settings") {
+        setTimeout(() => {
+            target.classList.add(toPath == "settings" ? "settings" : "")
+        }, 295)
+    }
 }
 
 export default function Account(){

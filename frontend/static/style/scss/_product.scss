@@ -27,17 +27,18 @@
         .pr-card {
             border: 5px solid $lightGray2;
             position: relative;
-            width: 100%;
+            width: 400px;
             margin: 0 auto;
             .pr-card-img {
                 position: absolute;
                 top: -75px;
-                right: 60px;
+                right: 40px;
             }
             .main-btn {
-                margin-top: 75px;
-                margin-left: 0px;
                 transition: all .2s;
+                position: absolute;
+                right: 40px;
+                bottom: 40px;
                 i {
                     color: $lightGray1;
                     margin-left: 3px;
@@ -148,8 +149,21 @@
             padding: 50px;
             width: 100%;
             .top-content {
+                border-bottom: 5px dotted $main;
+                .sort-type {
+                    position: absolute;
+                    right: 20px;
+                    top: -10px;
+                    .main-btn {
+                        padding: 4px 20px !important;
+                    }
+                    span {
+                        margin-right: 6px;
+                    }
+                }
                 h3 {
                     font-size: 20px;
+                    margin-top: 10px;
                 }
             }
             .pr-item {

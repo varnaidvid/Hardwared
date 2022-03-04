@@ -11,11 +11,11 @@ const ProductItem = (props) => {
     return (
         <div className="pr-item">
             <div className="row">
-                <div className="col-3">
+                <div className="col-12 col-xl-3">
                     <img src="/static/images/pcs/pc2.png" className="main-img" height="150"/>
                 </div>
 
-                <div className="col-9">
+                <div className="col-12 col-xl-9">
                     <h5 className="sup-title">Akár 2 napon belül</h5>
                     <h1>{props.name}</h1>
                     <div className="d-flex">
@@ -221,11 +221,15 @@ export default function Products(){
 
         <hr className="pr-hr"/>
 
+        <button className="btn btn-primary d-block p-4" type="button" data-bs-toggle="collapse" data-bs-target="#sortingDrop" aria-expanded="false" aria-controls="sortingDrop">Igen</button>
+
         <div className="pr-section-2 main-wrapper">
-            <div className="row justify-content-center w-100">
+            <div className="row">
 
                 {/* Sorting */}
-                <div className="col-3 sorting">
+                <div className="col-3">
+                <div className="navbar-expand-xl h-100">
+                <div className="sorting collapse navbar-collapse" id="sortingDrop">
                     <h1>Preferencia</h1>
                     <hr className="sorting-hr"/>
 
@@ -272,7 +276,6 @@ export default function Products(){
 
                                 <input 
                                     type="number" 
-                                    value={maxPrice}
                                     className="mt-3"
                                     placeholder="Maximum..."
                                     onChange={event => event.target.value ? setMaxPrice(event.target.value) : setMaxPrice("")}
@@ -491,6 +494,8 @@ export default function Products(){
                             <span className="checkmark"></span>
                         </label>
                     </div>
+                </div>
+                </div>
                 </div>
 
 

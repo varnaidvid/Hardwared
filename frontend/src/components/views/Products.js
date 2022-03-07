@@ -190,7 +190,7 @@ export default function Products(){
             {/* Featured Products */}
             <div className="pr-featured main-wrapper">
             <div className="row">
-                <div className="col-6 d-none d-lg-flex">
+                <div className="col-12 col-xl-6 d-none d-xl-flex">
                     <div className="pr-card">
                         <h5 className="sup-title">Nap ajánlata</h5>
                         <h2 className="pr-card-title">Desktop<br/>Slate V1</h2>
@@ -203,7 +203,7 @@ export default function Products(){
                     </div>
                 </div>
 
-                <div className="col-6">
+                <div className="col-12 col-xl-6">
                     <div className="pr-card">
                         <h5 className="sup-title">Kiemelt termék</h5>
                         <h2 className="pr-card-title">Desktop<br/>Xtreme</h2>
@@ -221,13 +221,11 @@ export default function Products(){
 
         <hr className="pr-hr"/>
 
-        <button className="btn btn-primary d-block p-4" type="button" data-bs-toggle="collapse" data-bs-target="#sortingDrop" aria-expanded="false" aria-controls="sortingDrop">Igen</button>
-
         <div className="pr-section-2 main-wrapper">
             <div className="row">
 
                 {/* Sorting */}
-                <div className="col-3">
+                <div className="col-12 col-xl-3">
                 <div className="navbar-expand-xl h-100">
                 <div className="sorting collapse navbar-collapse" id="sortingDrop">
                     <h1>Preferencia</h1>
@@ -500,14 +498,12 @@ export default function Products(){
 
 
                 {/* Products */}
-                <div className="col-9 content">
+                <div className="col-12 col-xl-9 content">
                     <div className="wrapper">
                         <div className="top-content p-relative">
                             <div className="d-flex">
                                 <h3>{ filteredProducts.length == 0 ? !isFetch ?  "Nincs találat" : "" : filteredProducts.length + " találat" } </h3>
-                                <div className="sort-type">
-                                    <span>Rendezés:</span>  <button className="main-btn main-btn-anim">Csökkenő ár <i className="fas fa-angle-down"/></button>
-                                </div>
+                                <button className="sortingDropButton d-block d-xl-none" type="button" data-bs-toggle="collapse" data-bs-target="#sortingDrop" aria-expanded="false" aria-controls="sortingDrop"><i className="fas fa-filter"/></button>
                             </div>
                         </div>
                         {

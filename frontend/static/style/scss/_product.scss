@@ -78,6 +78,8 @@
     }
 }
 
+#sortingDrop { height: 100%; }
+
 .pr-section-2 {
     .sorting {
         @media (min-width: 1200px) {
@@ -153,21 +155,22 @@
             padding: 50px;
             width: 100%;
             .top-content {
+                .sortingDropButton {
+                    background-color: $main;
+                    padding: 10px;
+                    outline: none;
+                    border: none;
+                    color: $white;
+                    border-radius: 6px;
+                    margin-left: auto;
+                    margin-right: 20px;
+                    margin-bottom: 10px;
+                }
                 border-bottom: 5px dotted $main;
-                .sort-type {
-                    position: absolute;
-                    right: 20px;
-                    top: -10px;
-                    .main-btn {
-                        padding: 4px 20px !important;
-                    }
-                    span {
-                        margin-right: 6px;
-                    }
                 }
                 h3 {
                     font-size: 20px;
-                    margin-top: 10px;
+                    margin-top: 20px;
                 }
             }
             .pr-item {
@@ -237,14 +240,28 @@
             }
         }
     }
-}
 
 @media (max-width: 1199px) {
+    .pr-section-1 {
+        margin-top: 60px;
+    }
     .pr-item {
         text-align: center !important;
         .d-flex {
             justify-content: center;
             align-items: center;
         }
+    }
+    #sortingDrop {
+        position: absolute;
+        left: 0;
+        top: 520px;
+        z-index: 10;
+        width: 240px;
+        height: 600px;
+        border-radius: 0;
+        border-bottom-right-radius: 100px;
+        border-top-right-radius: 100px;
+        box-shadow: 0 0 3px 10px rgba(0,0,0,0.025);
     }
 }

@@ -120,7 +120,7 @@
             position: absolute;
             top: 0;
             bottom: 0;
-            right: 0;
+            right: 10px;
             background-color: transparent;
             color: $white;
             font-size: 20px;
@@ -134,15 +134,9 @@
                 border-radius: 10px;
                 height: 40px;
                 padding-left: 12px;
-                &::placeholder {
-                    font-weight: 600;
-                }
-                &:focus {
-                    outline: none;
-                }
-                &::-webkit-inner-spin-button {
-                    -webkit-appearance: none;
-                }
+                &::placeholder { font-weight: 600; }
+                &:focus { outline: none; }
+                &::-webkit-inner-spin-button { -webkit-appearance: none; }
             }
         }
     }

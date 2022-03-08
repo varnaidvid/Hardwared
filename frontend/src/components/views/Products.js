@@ -221,7 +221,7 @@ export default function Products(){
 
         <hr className="pr-hr"/>
 
-        <div className="pr-section-2 main-wrapper">
+        <div className="pr-section-2 main-wrapper mb-5">
             <div className="row">
 
                 {/* Sorting */}
@@ -508,15 +508,15 @@ export default function Products(){
                         </div>
                         {
                             filteredProducts == 0 ?
-                                products.length == 0 ? (
-                                    <>
-                                        <Skeleton count={3}/>
-                                        <br/>
-                                        <Skeleton count={3}/>
-                                        <br/>
-                                        <Skeleton count={3}/>
-                                    </>                                
-                                ) : "" : filteredProducts.map(product => <ProductItem key={product.id} {...product}/>)
+                            products.length == 0 ? (
+                                <>
+                                    <Skeleton count={3}/>
+                                    <br/>
+                                    <Skeleton count={3}/>
+                                    <br/>
+                                    <Skeleton count={3}/>
+                                </>                                
+                            ) : "" : filteredProducts.map(product => <ProductItem key={product.id} {...product}/>)
                         }
                     </div>
                 </div>

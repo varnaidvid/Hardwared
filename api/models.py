@@ -14,6 +14,8 @@ from PIL import Image
 from django.core.files import File
 
 
+#
+# User
 def make_avatar(avatar, size, uid):
     img = Image.open(avatar)
     avatar = img.convert("RGB")
@@ -46,9 +48,13 @@ def create_user_token(sender, instance, created, **kwargs):
         token = Token.objects.create(user=instance)
         token.save()
 
+
+#
+# Computer
 class Computer(models.Model):     
     generation = models.CharField(max_length=8, default="")
     name = models.CharField(max_length=30, unique=True)
+    family = models.CharField(max_length=30, blank=True, unique=False, default="", null=True)
     sale = models.IntegerField(null=True, blank=True, default=None)
     sale_duration = models.DateTimeField(blank=True, null=True, default=None)
     price = models.IntegerField(null=False, blank=False)
@@ -120,4 +126,17 @@ class Rating(models.Model):
 
     def __str__(self):
         return f"{self.user.username} on {self.computer}"
-    
+
+
+#
+# Cart
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+class CartItem(models.Model):
+    product = models.ForeignKey(Computer, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.product

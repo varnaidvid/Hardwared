@@ -654,7 +654,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    right: 0;
+    right: 10px;
     background-color: transparent;
     color: #eeeeee;
     font-size: 20px; }
@@ -817,14 +817,25 @@
   .main-account #account-slider {
     position: absolute;
     left: 0;
-    top: 0;
+    transform: translateX(0);
+    top: -5px;
     height: 5px;
-    width: 125px;
+    width: 100px;
     background-color: #eeeeee;
-    border-radius: 10px; }
+    border-radius: 10px;
+    transition: all .5s; }
     .main-account #account-slider.settings {
-      left: unset;
-      right: 0; }
+      left: 100%;
+      transform: translateX(-100%);
+      width: 165px; }
+    .main-account #account-slider.favorites {
+      left: 29%;
+      transform: translateX(-29%);
+      width: 170px; }
+    .main-account #account-slider.orders {
+      left: 71%;
+      transform: translateX(-71%);
+      width: 150px; }
   .main-account h1 {
     margin-top: 50px; }
   .main-account .signout {
@@ -860,6 +871,27 @@
         font-weight: 600; }
         .main-account .cart .title-block h2 i {
           margin-right: 10px; }
+  .main-account .fav {
+    margin: 80px auto;
+    margin-bottom: 300px; }
+    .main-account .fav .fav-card {
+      border: 5px solid #292a37;
+      padding: 20px 10px;
+      border-radius: 12px;
+      margin: 20px; }
+      .main-account .fav .fav-card h2 {
+        font-size: 24px;
+        margin-bottom: 0; }
+      .main-account .fav .fav-card hr {
+        float: left;
+        opacity: 1;
+        height: 4px;
+        background-color: #eeeeee;
+        border-radius: 10px;
+        margin-top: 6px; }
+      .main-account .fav .fav-card .fav-review span {
+        margin-top: -4px;
+        margin-left: 6px; }
   .main-account .trio {
     margin: 100px auto;
     margin-bottom: 300px; }

@@ -38,9 +38,11 @@
   h5 {
     margin-bottom: 10px;
   }
-  .main-btn {
-    margin-top: 65px !important;
-    margin-bottom: 25px !important;    
+  .auth-wrapper {
+    .main-btn {
+      margin-top: 65px !important;
+      margin-bottom: 25px !important;    
+    }
   }
   .or-login-wrapper {
     width: 95% !important;

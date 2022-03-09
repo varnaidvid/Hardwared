@@ -27,7 +27,7 @@
         .pr-card {
             border: 5px solid $lightGray2;
             position: relative;
-            width: 400px;
+            width: 500px;
             margin: 0 auto;
             .pr-card-img {
                 position: absolute;
@@ -113,6 +113,7 @@
             height: 5px;
             background-color: $main;
             width: 20px;
+            border-radius: 10px;
         }
         .price-btn {
             outline: none;
@@ -140,11 +141,14 @@
             }
         }
     }
-    .content {
+    .pr-content {
         background-color: $gray;
         border: 5px solid $lightGray2;
         border-radius: 30px;
         margin-right: -22px;
+
+        a { color: unset; text-decoration: unset; }
+    
         .wrapper {
             padding: 50px;
             width: 100%;
@@ -157,7 +161,6 @@
                     color: $white;
                     border-radius: 6px;
                     margin-left: auto;
-                    margin-right: 20px;
                     margin-bottom: 10px;
                 }
                 border-bottom: 5px dotted $main;
@@ -173,6 +176,13 @@
                 background-color: $gray;
                 margin: 20px 0;
                 padding: 10px 20px;
+                outline: 5px dotted transparent;
+                transition: all .2s;
+
+                &:hover {
+                    outline: 5px dotted $main;
+                }
+
                 .main-img {
                     align-self: center;
                 }
@@ -184,12 +194,13 @@
                 h1 {
                     padding-top: 0;
                     margin-top: 0;
+                    margin-bottom: 0;
                     font-size: 28px;
                 }
-                .d-flex {
+                .review {
                     span {
                         color: $lightGray1;
-                        margin-top: -5px;
+                        margin-top: 0;
                         margin-left: 5px;
                         font-weight: 500;
                     }
@@ -211,31 +222,58 @@
                     margin: 0;
                     padding: 6px 0;
                 }
+                .pr-item-content {
+                    margin-left: 10px;
+                }
+                .price-wrapper {
+                    width: max-content;
+                    border: 1px solid $main;
+                    border-radius: 10px;
+                    padding: 4px 14px;
+                }
                 .discount-wrapper {
-                    display: flex;
-                }
-                .discount {
-                    border: 1px solid $error;
-                    padding: 6px 16px;
-                    padding-left: 20px;
-                    border-radius: 10px;
-                }
-                .off {
-                    background-color: $error;
-                    border-radius: 10px;
-                    margin-right: -16px;
-                    font-size: 12px;
-                    padding: 2px 10px;
-                    font-weight: 500;
-                    height: 22px;
-                    z-index: 2;
-                    margin-top: 12px;
+                    margin-bottom: 10px;
+                    position: relative;
+                    width: max-content;
+                    .discount {
+                        border: 1px solid $error;
+                        padding: 4px 14px;
+                        padding-bottom: 10px;
+                        padding-left: 20px;
+                        border-radius: 10px;
+                    }
+                    .off {
+                        position: absolute;
+                        bottom: -10px;
+                        left: 0;
+                        right: 0;
+                        margin: 0 auto;
+                        width: max-content;
+                        background-color: $error;
+                        border-radius: 10px;
+                        font-size: 12px;
+                        font-weight: 500;
+                        height: 22px;
+                        z-index: 2;
+                        span {
+                            text-align: center;
+                            padding: 12px;
+                        }
+                    }
                 }
             }
         }
     }
 
+.loading-circle {
+    margin-top: -6px;
+    height: 100%;
+    width: 100%;
+}
+
 @media (max-width: 1199px) {
+    .pr-item-content { margin: 0 !important; }
+    .discount-wrapper { margin: 0 auto; }
     .pr-section-1 {
         margin-top: 60px;
     }
@@ -249,13 +287,56 @@
     #sortingDrop {
         position: absolute;
         left: 0;
-        top: 520px;
+        top: 510px;
         z-index: 10;
         width: 240px;
-        height: 600px;
+        height: max-content;
         border-radius: 0;
-        border-bottom-right-radius: 100px;
-        border-top-right-radius: 100px;
-        box-shadow: 0 0 3px 10px rgba(0,0,0,0.025);
+        border-bottom-right-radius: 20px;
+        border-top-right-radius: 20px;
+        box-shadow: 0 0 2px 8px rgba(0,0,0,0.025);
+    }
+    .price-btn {
+        right: 0 !important;
+    }
+}
+
+@media (max-width: 767px) {
+    #sortingDrop {
+        top: 470px;
+    }
+    .pr-featured {
+        bottom: -220px !important;
+    }
+    .pr-section-2 {
+        .content {
+            border: none;
+            .wrapper {
+                padding: 30px;
+            }
+        }
+    }
+    .pr-section-1 {
+        .pr-title { font-size: 34px; padding: 0 10px; }
+        .pr-featured {
+            .pr-card {
+                width: 400px;
+                .pr-card-title { font-size: 28px; }
+                .sup-title { font-size: 14px; }
+                .d-flex img { height: 10px; }
+                .pr-card-img { height: 130px; }
+                .d-flex span { font-size: smaller; }
+            }
+        }
+    }  
+}
+
+@media (max-width: 500px) {
+    .pr-section-1 {
+        .pr-featured {
+            .pr-card {
+                width: 360px;
+            }
+        }
     }
 }

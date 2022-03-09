@@ -6,27 +6,30 @@ from .serializers import ComputerSerializer, LoginSerializer, RegisterSerializer
 from .models import Computer, Profile
 from django.contrib.auth.models import User
 from django.db.models import Avg, Q
-from django.core import serializers
+from django.shortcuts import get_object_or_404
 
 from rest_framework import generics, status, authentication, exceptions
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
-from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 
 class ComputerView(generics.GenericAPIView):
     serializer_class = ComputerSerializer
 
     def get(self, request, *args, **kwargs):
-        serializer = ComputerSerializer(Computer.objects.all(), many=True)
-        
-        for i in serializer.data:
-            i.update({"rating": Computer.objects.get(id=i["id"]).get_rating()})
-            i.update({"rating_len": Computer.objects.get(id=i["id"]).get_rating_len()})
-
-        return Response(serializer.data)
+        if request.GET.get("id"):
+            serializer = ComputerSerializer(Computer.objects.get(id=request.GET.get("id")))
+            serializer = serializer.data
+            serializer.update({"rating": Computer.objects.get(id=request.GET.get("id")).get_rating()})
+            serializer.update({"rating_len": Computer.objects.get(id=request.GET.get("id")).get_rating_len()})
+            return Response(serializer)
+        else:
+            serializer = ComputerSerializer(Computer.objects.all(), many=True)
+            for i in serializer.data:
+                i.update({"rating": Computer.objects.get(id=i["id"]).get_rating()})
+                i.update({"rating_len": Computer.objects.get(id=i["id"]).get_rating_len()})
+            return Response(serializer.data)
 
 class UserCreate(generics.GenericAPIView):
     serializer_class = RegisterSerializer, ProfileSerializer

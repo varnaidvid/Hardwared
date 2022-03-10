@@ -52,4 +52,4 @@ class LoginSerializer(serializers.Serializer):
 class ComputerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Computer
-        fields = ("id", "generation", "name", "family", "price", "sale", "sale_duration", "stock", "gpu", "gpu_type", "cpu", "cpu_type", "memory", "storage", "storage_type", "created_at")
+        fields = ("id", "generation", "name", "family", "image", "image_folder", "price", "sale", "sale_duration", "stock", "gpu", "gpu_type", "cpu", "cpu_type", "memory", "storage", "storage_type", "created_at")

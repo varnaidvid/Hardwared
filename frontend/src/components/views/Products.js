@@ -14,7 +14,7 @@ const ProductItem = (props) => {
             <div className="pr-item">
                 <div className="row">
                     <div className="col-12 col-xl-3">
-                        <img src="/static/images/pcs/pc2.png" className="main-img" height="150"/>
+                        <img src={`${props.image}`} className="main-img" height="150"/>
                     </div>
 
                     <div className="col-12 col-xl-9">

@@ -158,6 +158,7 @@
                 width: 60px;
                 border-radius: 15px 50% 50% 50%;
                 text-align: center;
+                pointer-events: none;
                 &.mail { background-color: $success; }
                 &.lock { background-color: $error; }
                 &.notification { background-color: $yellow; }
@@ -174,4 +175,5 @@
     left: 0;
     right: 0;
     width: 100%;
+    pointer-events: none;
 }

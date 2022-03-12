@@ -1,5 +1,6 @@
 from re import S
 from this import d
+from time import strftime
 from django.urls import reverse
 from rest_framework.serializers import Serializer
 from .serializers import ComputerSerializer, LoginSerializer, RegisterSerializer, UserSerializer, ProfileSerializer
@@ -23,12 +24,14 @@ class ComputerView(generics.GenericAPIView):
             serializer = serializer.data
             serializer.update({"rating": Computer.objects.get(id=request.GET.get("id")).get_rating()})
             serializer.update({"rating_len": Computer.objects.get(id=request.GET.get("id")).get_rating_len()})
+            serializer.update({"sale_ends": Computer.objects.get(id=request.GET.get("id")).sale_end()})
             return Response(serializer)
         else:
             serializer = ComputerSerializer(Computer.objects.all(), many=True)
             for i in serializer.data:
                 i.update({"rating": Computer.objects.get(id=i["id"]).get_rating()})
                 i.update({"rating_len": Computer.objects.get(id=i["id"]).get_rating_len()})
+                i.update({"sale_ends": Computer.objects.get(id=i["id"]).sale_end()})
             return Response(serializer.data)
 
 class UserCreate(generics.GenericAPIView):

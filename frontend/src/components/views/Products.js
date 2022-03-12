@@ -21,14 +21,9 @@ const ProductItem = (props) => {
                         <div className="pr-item-content">
                             <h5 className="sup-title">Akár 2 napon belül</h5>
                             <h1>{props.name}</h1>
+
                             <div className="d-flex review">
-                                { 
-                                    props.rating == 5 ? <StarHandler type="5"/> :
-                                    props.rating == 4 ? <StarHandler type="4"/> :
-                                    props.rating == 3 ? <StarHandler type="3"/> :
-                                    props.rating == 2 ? <StarHandler type="2"/> :
-                                    props.rating == 1 ? <StarHandler type="1"/> : <span style={{color: "#8a8a8f"}}>Nincs értékelés</span>
-                                }
+                                {<StarHandler type={props.rating}/>}
                                 <span>{ props.rating_len !== 0 ? "(" + props.rating_len + ")" : "" }</span>
                             </div>
                             <h5 className="desc">{props.cpu} - {props.gpu} - {props.memory} RAM - {props.storage}</h5>
@@ -117,19 +112,19 @@ export default function Products(){
 
     useEffect(() => {
         axios.get("http://localhost:3000/api/products/")
-        .then(res => {
-            setProducts(res.data)
-            setFilteredProducts(res.data)
-            setTimeout(() => {
-                setIsFetch(false)
-            }, 1000)
-        })
-        .catch(err => {
-            setTimeout(() => {
-                toast.error("Valami hiba történt!")
-                setIsFetch(false)
-            }, 1000)
-        })
+            .then(res => {
+                setProducts(res.data)
+                setFilteredProducts(res.data)
+                setTimeout(() => {
+                    setIsFetch(false)
+                }, 1000)
+            })
+            .catch(err => {
+                setTimeout(() => {
+                    toast.error("Valami hiba történt!")
+                    setIsFetch(false)
+                }, 1000)
+            })
     }, [])
 
 
@@ -552,7 +547,11 @@ export default function Products(){
                                             </div>
                                         </div>
                                     </div>
-                                ) : "" : filteredProducts.map(product => <ProductItem key={product.id} {...product}/>)
+                                ) : "" : (
+                                    <div className="mt-5">
+                                        {filteredProducts.map(product => <ProductItem key={product.id} {...product}/>)}                                    
+                                    </div>
+                                    )
                             }
                     </div>
                 </div>
@@ -570,10 +569,18 @@ const SingleProduct = props => {
     const [product, setProduct] = useState([])
     const [isFetch, setIsFetch] = useState(true)
 
+    const [mainImg, setMainImg] = useState()
+    const [currentImg, setCurrentImg] = useState()
+
+    const [submitState, setSubmitState] = useState("normal")
+
     useEffect(() => {
         axios.get(`http://localhost:3000/api/products/?id=${id}`)
         .then(res => {
             setProduct(res.data)
+            setMainImg(res.data.image)
+            setCurrentImg(res.data.image)
+
             setTimeout(() => {
                 setIsFetch(false)
             }, 1000)
@@ -586,16 +593,87 @@ const SingleProduct = props => {
         })
     }, [id])
 
+
     return (
         <div className="pr-content">
-            <div className="d-flex">
-                <Link to="/termekek">Termékek {">"} </Link>
-                <Link to={`/termekek/${product.family}`}> {product.family} {">"} </Link>
-                <Link to={`/termekek/${product.id}`}> {product.name}</Link>
+        <div className="single-wrapper">
+            <div className="single-top-content">
+                <div className="d-flex">
+                    <Link to="/termekek">Termékek <i className="fas fa-angle-right"/> </Link>
+                    <Link to="/termekek">Gamer számítógép <i className="fas fa-angle-right"/> </Link>
+                    <Link to={`/termekek/${product.id}`}> {product.name}</Link>
+                </div>
             </div>
-           {
-                <ProductItem key={product.id} {...product}/>
-            }
+
+            <div className="single-item-wrapper">
+                <div className="row">
+
+                    <div className="col-12 col-md-5">
+                        <img src={`${currentImg}`} alt="" className="current-image"/>
+                        <div className="secondary-images">
+                            <div className="row justify-content-center">
+                                { 
+                                    [...Array(product.image_number)].map((value, index) => (
+                                        <div key={index}>{value}</div>
+                                    ))
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div className="col-12 col-md-7">
+                        <h1>{product.name}</h1>
+                        <div className="d-flex review">
+                            {<StarHandler type={product.rating}/>}
+                            <span>{ product.rating_len !== 0 ? "(" + product.rating_len + ")" : "" }</span>
+                        </div>
+
+                        <div className="mt-4 mb-4">
+                            <div className="product-widget">
+                                <span className="exclamation red">!</span>
+                                <h2>Kíváló <span className="red">teljesítmény</span> és <span className="red">ár</span></h2>
+                            </div>   
+                            <div className="product-widget onstock">
+                                <span className="exclamation green">!</span>
+                                <h2><span className="green">Átvehető</span> akár holnap <span className="green">09:00</span>-től</h2>
+                            </div>
+                            { product.sale ? (
+                                <div className="product-widget">
+                                    <span className="exclamation red">!</span>
+                                    <h2>Az <span className="red">akció</span> véget ér <span className="red">{ product.sale_ends }</span>-kor</h2>
+                                </div>
+                            ) : "" }
+                        </div>
+
+                        <div className="d-flex price">
+                            <h4><img src="/static/images/svg/money.svg" height="12"/> {product.price} HUF</h4>
+                        </div>
+                        { product.sale ? (
+                            <div className="sale-container">
+                                Akár <img src="/static/images/svg/money.svg" height="6"/> {product.price - product.sale} HUF megtakarítás
+                            </div>
+                        ) : "" }
+                        
+                        <div className={ product.sale ? "mt-4" : "mt-5" }>
+                            <button className={ submitState === "loading" ? "main-btn submit-btn loading" : submitState === "success" ? "main-btn submit-btn success" : submitState === "error" ? "main-btn submit-btn error" : "main-btn submit-btn"} type="submit" id="submit">
+                                <span><i className="fas fa-shopping-cart"/> Kosárba.</span>
+                                <div className={ submitState === "success" ? "submit-success active" : "submit-success" }>
+                                    <i className="fas fa-check"></i>
+                                </div>
+                                <div className={ submitState === "error" ? "submit-error active" : "submit-error" }>
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            </button>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+        
+        </div>
         </div>
     )
 }

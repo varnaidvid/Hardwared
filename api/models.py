@@ -1,7 +1,3 @@
-from contextlib import nullcontext
-from email.policy import default
-from random import choices
-from statistics import quantiles
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
@@ -14,6 +10,7 @@ from io import BytesIO
 from PIL import Image
 from django.core.files import File
 
+import time
 
 #
 # User
@@ -58,7 +55,12 @@ class Computer(models.Model):
 
     def get_media_folder(self):
         pass
-    
+
+    def sale_end(self):
+        if self.sale_duration != None:
+            return self.sale_duration.strftime('%m/%d %H:%M:%S')
+        return ""
+
     generation = models.CharField(max_length=8, default="")
     name = models.CharField(max_length=30, unique=True)
     family = models.CharField(max_length=30, blank=True, unique=False, default="", null=True)
@@ -67,6 +69,7 @@ class Computer(models.Model):
     price = models.IntegerField(null=False, blank=False)
     stock = models.IntegerField(blank=False, null=False)
     image_folder = models.CharField(max_length=30, default="", blank=True, null=True)
+    image_number = models.IntegerField(null=True, blank=True, default=1)
     image = models.ImageField(null=True, blank=True, upload_to=get_static_folder)
     created_at = models.DateTimeField(default=timezone.now)
 

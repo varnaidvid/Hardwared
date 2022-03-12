@@ -50,7 +50,11 @@ const StarHandler = (props) => {
             <img src="/static/images/svg/filled-star.svg" height="15"/>
             <img src="/static/images/svg/filled-star.svg" height="15"/>
         </>
-    )}
+    )} else {
+        return (
+            <span style={{color: "#8a8a8f"}}>Nincs értékelés</span>
+        )
+    }
 }
 
 export default StarHandler

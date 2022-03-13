@@ -608,13 +608,24 @@ const SingleProduct = props => {
             <div className="single-item-wrapper">
                 <div className="row">
 
-                    <div className="col-12 col-md-5">
+                    <div className="col-12 col-xl-5">
                         <img src={`${currentImg}`} alt="" className="current-image"/>
                         <div className="secondary-images">
                             <div className="row justify-content-center">
                                 { 
                                     [...Array(product.image_number)].map((value, index) => (
-                                        <div key={index}>{value}</div>
+                                        index != 0 ? (
+                                            <div className="col">
+                                                <div className="second-image-container">
+                                                    <img 
+                                                        src={`${product.image_folder}/${index + 1}.png`} 
+                                                        height="75"
+                                                        onMouseEnter={() => setCurrentImg(`${product.image_folder}/${index + 1}.png`)}
+                                                        onMouseLeave={() => setCurrentImg(mainImg)}
+                                                        />
+                                                </div>
+                                            </div>
+                                        ) : ""
                                     ))
                                 }
                             </div>
@@ -623,7 +634,7 @@ const SingleProduct = props => {
 
 
 
-                    <div className="col-12 col-md-7">
+                    <div className="col-12 col-xl-7">
                         <h1>{product.name}</h1>
                         <div className="d-flex review">
                             {<StarHandler type={product.rating}/>}
@@ -671,6 +682,88 @@ const SingleProduct = props => {
                         
                     </div>
                 </div>
+
+                <div className="product-specs">
+                    <h2>Műszaki adatok</h2>
+                    <hr/>
+                    <div className="row">
+                        <div className="col-12 col-lg-4">
+                            <table className="table table-hover">
+                                <tr>
+                                    <th>Számítógép család: </th>
+                                    <td>{product.family}</td>
+                                </tr>
+                                <tr>
+                                    <th>Generáció: </th>
+                                    <td>{product.generation}.</td>
+                                </tr>
+                                <tr>
+                                    <th>Processzor: </th>
+                                    <td>{product.cpu_type} - {product.cpu}</td>
+                                </tr>
+                                <tr>
+                                    <th>Videókártya: </th>
+                                    <td>{product.gpu_type} - {product.gpu}</td>
+                                </tr>
+                                <tr>
+                                    <th>Alaplap: </th>
+                                    <td>{product.mbu}</td>
+                                </tr>
+                                <tr>
+                                    <th>Memória: </th>
+                                    <td>{product.memory}</td>
+                                </tr>
+                                <tr>
+                                    <th>Tárhely: </th>
+                                    <td>{product.storage}</td>
+                                </tr>
+                                <tr>
+                                    <th>Tápegység: </th>
+                                    <td>GIGABYTE Gold 750W</td>
+                                </tr>
+                                <tr>
+                                    <th>Op. rendszer: </th>
+                                    <td>Windows 10 Pro</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div className="col-12 col-lg-8">
+                            <div className="row">
+                                <div className="col-12 col-xl-6">
+                                    <div className="row">
+                                        <div className="col-6">
+                                            <div className="fomo-container">
+                                                <img src="/static/images/gtav.png" height="100" className="d-block"/>
+                                            </div>
+                                        </div>
+                                        <div className="col-6">
+                                            <div className="fomo-container">
+                                                <img src="/static/images/valorant.png" height="100" className="d-block"/>
+                                            </div>
+                                        </div>
+                                        <div className="col-6">
+                                            <div className="fomo-container">
+                                                <img src="/static/images/cyberpunk.png" height="100" className="d-block"/>
+                                            </div>
+                                        </div>
+                                        <div className="col-6">
+                                            <div className="fomo-container">
+                                                <img src="/static/images/fortnite.png" height="100" className="d-block"/>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                                <div className="col-12 order-first order-xl-last col-xl-6">
+                                    <h3>Nem fogsz lemaradni egy játékról sem</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <img src="/static/images/valami.png" height="130" className="d-block"/>
+
+                    </div>
+                </div>
+            
             </div>
         
         </div>

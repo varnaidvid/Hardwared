@@ -322,6 +322,50 @@
                         font-weight: 600;
                         img { margin-top: -2px; }
                     }
+
+                    .secondary-images {
+                        .second-image-container {
+                            img {
+                                border: 3px solid $lightGray2;
+                                border-radius: 6px;
+                                padding: 8px;
+                                display: block;
+                                margin: 0 auto;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+
+                    .product-specs {
+                        margin-top: 50px;
+                        h2 { margin-bottom: 0; }
+                        hr {
+                            margin-top: 6px;
+                            width: 30px;
+                            opacity: 1;
+                            background-color: $main;
+                            height: 4px;
+                            border-radius: 6px;
+                            margin-bottom: 16px;
+                        }
+                        .table {
+                            tr {
+                                border: none;
+                                border-bottom: 2px dotted $main;
+                                border-radius: 10px;
+                                color: $white;
+                                th, td {
+                                    padding: 4px;
+                                }
+                            }
+                        }
+
+                        .fomo-container {
+                            padding: 12px 24px;
+                            border-radius: 4px;
+                            border: 2px solid $lightGray2;
+                        }
+                    }
                 }
             }
 

@@ -93,6 +93,7 @@ class Computer(models.Model):
         ("SSD & HDD", "SSD & HDD")
     )
 
+    mbu = models.CharField(max_length=20, default="")
     gpu = models.CharField(max_length=20, null=False)
     gpu_type = models.CharField(max_length=20, null=False, choices=gpu_choices)
     cpu = models.CharField(max_length=20, null=False)

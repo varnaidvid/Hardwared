@@ -574,6 +574,8 @@ const SingleProduct = props => {
 
     const [submitState, setSubmitState] = useState("normal")
 
+    const [emailFocus, setEmailFocus] = useState(false)
+
     useEffect(() => {
         axios.get(`http://localhost:3000/api/products/?id=${id}`)
         .then(res => {
@@ -635,7 +637,9 @@ const SingleProduct = props => {
 
 
                     <div className="col-12 col-xl-7">
-                        <h1>{product.name}</h1>
+                        <div className="product-name">
+                            <h1>{product.name}</h1>
+                        </div>
                         <div className="d-flex review">
                             {<StarHandler type={product.rating}/>}
                             <span>{ product.rating_len !== 0 ? "(" + product.rating_len + ")" : "" }</span>
@@ -729,37 +733,59 @@ const SingleProduct = props => {
                         </div>
                         <div className="col-12 col-lg-8">
                             <div className="row">
-                                <div className="col-12 col-xl-6">
+                                <div className="col-12">
+                                    <div className="fomo-free">
+                                        <h3>Nem fog lemaradni egy játékról sem</h3>
+                                        <span>Szakembereink a legkiválóbb teljesítményt nyújtják a játékra alkalmas rendszereinkel. Egy percig sem kell aggódnia, hogy ki kéne hagynia egy játékot a teljesítménye miatt!</span>
+                                    </div>
+                                </div>
+                                <div className="col-12">
+                                    <div className="main-fomo">
                                     <div className="row">
-                                        <div className="col-6">
+                                        <div className="col-6 col-xl-3">
                                             <div className="fomo-container">
-                                                <img src="/static/images/gtav.png" height="100" className="d-block"/>
+                                                <img src="/static/images/gtav.png" height="60"/>
+                                                <h2><span>62</span> FPS</h2>
                                             </div>
                                         </div>
-                                        <div className="col-6">
+                                        <div className="col-6 col-xl-3">
                                             <div className="fomo-container">
-                                                <img src="/static/images/valorant.png" height="100" className="d-block"/>
+                                                <img src="/static/images/valorant.png" className="valorant" height="16"/>
+                                                <h2><span>126</span> FPS</h2>
                                             </div>
                                         </div>
-                                        <div className="col-6">
-                                            <div className="fomo-container">
-                                                <img src="/static/images/cyberpunk.png" height="100" className="d-block"/>
+                                        <div className="col-6 col-xl-3">
+                                            <div className="fomo-container cyb">
+                                                <img src="/static/images/cyberpunk.png" height="30"/>
+                                                <h2><span>74</span> FPS</h2>
                                             </div>
                                         </div>
-                                        <div className="col-6">
-                                            <div className="fomo-container">
-                                                <img src="/static/images/fortnite.png" height="100" className="d-block"/>
+                                        <div className="col-6 col-xl-3">
+                                            <div className="fomo-container fort">
+                                                <img src="/static/images/fortnite.png" height="30"/>
+                                                <h2><span>102</span> FPS</h2>
                                             </div>
                                         </div> 
                                     </div>
-                                </div>
-                                <div className="col-12 order-first order-xl-last col-xl-6">
-                                    <h3>Nem fogsz lemaradni egy játékról sem</h3>
+                                    <h5 className="sub-title">* Magas grafikai minőséggel, 1080p felbontáson</h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <img src="/static/images/valami.png" height="130" className="d-block"/>
+                        <div className="newsletter-container">
+                            <div className="newsletter-wrapper">
+                                <h1>Iratkozzon fel hírlevelünkre</h1>
+
+                                <div className="input-wrapper">
+                                    <div className="input-container">
+                                        <input name="email" type="email" placeholder="Írja be az ímél címét..."/>
+                                        <button type="button" className="newsletter-button">Feliratkozás <i className="fas fa-hand-pointer"/></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
 
                     </div>
                 </div>

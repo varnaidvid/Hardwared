@@ -858,9 +858,80 @@
           .pr-section-2 .pr-content .single-wrapper .single-item-wrapper .product-specs .table tr th, .pr-section-2 .pr-content .single-wrapper .single-item-wrapper .product-specs .table tr td {
             padding: 4px; }
         .pr-section-2 .pr-content .single-wrapper .single-item-wrapper .product-specs .fomo-container {
-          padding: 12px 24px;
+          height: 150px;
+          width: 100%;
           border-radius: 4px;
-          border: 2px solid #292a37; }
+          border: 2px solid #292a37;
+          position: relative; }
+          .pr-section-2 .pr-content .single-wrapper .single-item-wrapper .product-specs .fomo-container img {
+            position: absolute;
+            top: 25px;
+            left: 0;
+            right: 0;
+            margin: 0 auto; }
+            .pr-section-2 .pr-content .single-wrapper .single-item-wrapper .product-specs .fomo-container img.valorant {
+              top: 40px; }
+          .pr-section-2 .pr-content .single-wrapper .single-item-wrapper .product-specs .fomo-container h2 {
+            position: absolute;
+            bottom: 10px;
+            font-size: 18px;
+            text-align: center;
+            left: 0;
+            right: 0; }
+            .pr-section-2 .pr-content .single-wrapper .single-item-wrapper .product-specs .fomo-container h2 span {
+              color: #78FF9E;
+              font-weight: 700; }
+        .pr-section-2 .pr-content .single-wrapper .single-item-wrapper .product-specs .fomo-free {
+          margin-top: 30px; }
+          .pr-section-2 .pr-content .single-wrapper .single-item-wrapper .product-specs .fomo-free span {
+            color: #8a8a8f;
+            font-size: 16px; }
+        .pr-section-2 .pr-content .single-wrapper .single-item-wrapper .product-specs .main-fomo {
+          margin-top: 20px; }
+          .pr-section-2 .pr-content .single-wrapper .single-item-wrapper .product-specs .main-fomo .sub-title {
+            color: #8a8a8f;
+            font-size: 12px;
+            padding-left: 6px;
+            padding-top: 10px; }
+      .pr-section-2 .pr-content .single-wrapper .single-item-wrapper .newsletter-container {
+        margin: 30px auto;
+        margin-top: 100px;
+        position: relative;
+        width: 750px;
+        height: max-content;
+        padding: 12px;
+        border-radius: 12px;
+        border: 2px dotted #676eff; }
+        .pr-section-2 .pr-content .single-wrapper .single-item-wrapper .newsletter-container .newsletter-wrapper {
+          border-radius: 12px;
+          background-color: rgba(103, 110, 255, 0.8);
+          width: 100%;
+          height: max-content;
+          padding: 20px 50px; }
+          .pr-section-2 .pr-content .single-wrapper .single-item-wrapper .newsletter-container .newsletter-wrapper h1 {
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 20px; }
+          .pr-section-2 .pr-content .single-wrapper .single-item-wrapper .newsletter-container .newsletter-wrapper .input-container {
+            margin-top: 0; }
+          .pr-section-2 .pr-content .single-wrapper .single-item-wrapper .newsletter-container .newsletter-wrapper input {
+            background-color: #292a37;
+            padding-top: 0;
+            width: 100%;
+            max-width: unset; }
+          .pr-section-2 .pr-content .single-wrapper .single-item-wrapper .newsletter-container .newsletter-wrapper .newsletter-button {
+            position: absolute;
+            right: 10px;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+            outline: none;
+            border: none;
+            border-radius: 8px;
+            height: 65%;
+            width: 130px;
+            background-color: #676eff;
+            color: #eeeeee; }
 
 .review span {
   color: #8a8a8f;
@@ -874,6 +945,10 @@
   width: 100%; }
 
 @media (max-width: 1199px) {
+  .product-name {
+    margin-top: 20px; }
+  .cyb, .fort {
+    margin-top: 20px; }
   .pr-item-content {
     margin: 0 !important; }
   .discount-wrapper {
@@ -899,7 +974,21 @@
   .price-btn {
     right: 0 !important; } }
 
+@media (max-width: 992px) {
+  .fomo-container {
+    height: 60px;
+    width: 100%; } }
+
+@media (min-width: 992px) {
+  .fomo-free, .main-fomo {
+    padding-left: 40px; }
+  .fomo-free {
+    margin-top: 0 !important; } }
+
 @media (max-width: 767px) {
+  .pr-content {
+    border: none !important;
+    margin-right: 0 !important; }
   #sortingDrop {
     top: 470px; }
   .pr-featured {

@@ -512,7 +512,7 @@ export default function Products(){
                         </div>
                             {
                                 filteredProducts == 0 ?
-                                products.length == 0 ? (
+                                products.length == 0 ? isFetch ? (
                                     <div className="mt-5">
                                         <div className="row">
                                             <div className="col-3 col-md-2">
@@ -547,7 +547,7 @@ export default function Products(){
                                             </div>
                                         </div>
                                     </div>
-                                ) : "" : (
+                                ) : "" : "" : (
                                     <div className="mt-5">
                                         {filteredProducts.map(product => <ProductItem key={product.id} {...product}/>)}                                    
                                     </div>

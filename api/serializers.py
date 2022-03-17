@@ -1,6 +1,6 @@
 from wsgiref import validate
 from rest_framework import serializers, validators
-from .models import Computer, Profile, Rating
+from .models import Computer, Profile, Rating, Cart, CartItem
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from rest_framework.validators import UniqueValidator
@@ -52,4 +52,14 @@ class LoginSerializer(serializers.Serializer):
 class ComputerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Computer
-        fields = ("id", "generation", "name", "family", "image", "image_folder", "image_number", "price", "sale", "sale_duration", "stock", "gpu", "mbu", "gpu_type", "cpu", "cpu_type", "memory", "storage", "storage_type", "created_at")
+        fields = ("id", "generation", "name", "family", "image", "image_folder", "image_number", "price", "sale", "sale_duration", "stock", "gpu", "mbu", "gpu_type", "cpu", "cpu_type", "memory", "storage", "storage_type", "created_at")    
+
+class CartItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CartItem
+        fields = ["cart", "product", "quantity"]
+
+class CartItemUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CartItem
+        fields = ["product", "quantity"] 

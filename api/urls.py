@@ -2,10 +2,11 @@ from django.urls import path, re_path, include
 from . import views
 
 urlpatterns = [
-    path("", views.GetUser.as_view()),
     path("products/", views.ComputerView.as_view()),
     path("products/<int:id>/", views.ComputerView.as_view()),
     path("user/register/", views.UserCreate.as_view(), name="register_user"),
     path("user/login/", views.UserAuth.as_view(), name="auth_user"),
     path("user/logout/", views.UserAuth.as_view(), name="auth_user"),
+    path("cart/", views.CartView.as_view(), name="view_cart"),
+    path("cart/add/", views.CartItemCreate.as_view(), name="create_cart_item"),
 ]

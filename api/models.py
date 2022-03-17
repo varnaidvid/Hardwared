@@ -40,13 +40,6 @@ class Profile(models.Model):
     def __str__(self):
         return f"{self.user}'s profile"
 
-@receiver(post_save, sender=User)
-def create_user_token(sender, instance, created, **kwargs):
-    if created:
-        token = Token.objects.create(user=instance)
-        token.save()
-
-
 #
 # Computer
 class Computer(models.Model):
@@ -93,7 +86,7 @@ class Computer(models.Model):
         ("SSD & HDD", "SSD & HDD")
     )
 
-    mbu = models.CharField(max_length=20, default="")
+    mbu = models.CharField(max_length=20, default="", null=False)
     gpu = models.CharField(max_length=20, null=False)
     gpu_type = models.CharField(max_length=20, null=False, choices=gpu_choices)
     cpu = models.CharField(max_length=20, null=False)
@@ -144,12 +137,18 @@ class Rating(models.Model):
 #
 # Cart
 class Cart(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name="user_cart", on_delete=models.CASCADE)
 
 class CartItem(models.Model):
-    product = models.ForeignKey(Computer, on_delete=models.CASCADE)
+    product = models.ForeignKey(Computer, related_name="cart_product", on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, related_name="cart_item", on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.product
+
+@receiver(post_save, sender=User)
+def create_user(sender, instance, created, **kwargs):
+    if created:
+        cart = Cart.objects.create(user=instance)
+        cart.save()
+        token = Token.objects.create(user=instance)
+        token.save()

@@ -77,17 +77,17 @@
     .main-account-wrapper {
         padding: 0 50px;
     }
-    .cart {
+    .orders, .cart {
         margin: 100px auto;
         background-color: $darkGray;
-        height: 200px;
+        height: max-content;
         border-top: 5px solid $lightGray2;
         border-bottom: 5px solid $lightGray2;
         .continue {
             position: absolute;
             top: -35px;
-            right: 40px;
             color: $lightGray1;
+            right: 40px;
         }
         .title-block {
             background-color: $main;
@@ -103,6 +103,42 @@
                 font-weight: 600;
                 i {
                     margin-right: 10px;
+                }
+            }
+        }
+    }
+    .cart {
+        .cart-item {
+            border: 3px solid $lightGray2;
+            margin: 40px;
+            padding: 20px;
+            border-radius: 8px;
+            .review {
+                span { margin-top: -4px; }
+            }
+            h3 { margin-bottom: 0; }
+            .buttons {
+                justify-content: center;
+                margin-top: 12px;
+                .quantity {
+                    padding: 4px 8px;
+                    background-color: $main;
+                    border-top-left-radius: 8px;
+                    border-bottom-left-radius: 8px;
+                    width: max-content;
+                    height: max-content;      
+                }
+                .delete {
+                    border: none;
+                    background-color: $error;
+                    font-weight: 600;
+                    padding: 4px 8px;
+                    border-top-right-radius: 8px;
+                    border-bottom-right-radius: 8px;
+                    transition: all .2s;
+                    i { color: white; }
+                    &:hover { transform: scale(0.90); }
+                    &:focus { transform: scale(1.05); }
                 }
             }
         }

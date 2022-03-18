@@ -139,10 +139,16 @@ class Rating(models.Model):
 class Cart(models.Model):
     user = models.ForeignKey(User, related_name="user_cart", on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.user.username}'s cart"
+
 class CartItem(models.Model):
     product = models.ForeignKey(Computer, related_name="cart_product", on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     cart = models.ForeignKey(Cart, related_name="cart_item", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.cart.user.username} - {self.product.name}"
 
 
 @receiver(post_save, sender=User)

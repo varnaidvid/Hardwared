@@ -58,7 +58,7 @@ export default function NavBar(props){
                         { user ? (
                             <div className="user-nav justify-content-center mx-auto self-align-center text-center d-flex">
                                 <li className="nav-item nav-icon nav-cart">
-                                    <NavLink to="/" className="nav-link" activeClassName="active"><i class="fas fa-shopping-cart"></i></NavLink>
+                                    <NavLink to="/fiok" className="nav-link" activeClassName="active"><i class="fas fa-shopping-cart"></i></NavLink>
                                 </li>
                                 <li className="nav-item nav-icon">
                                     <NavLink to="/" className="nav-link" activeClassName="active"><i class="fas fa-comment-dots"></i></NavLink>

@@ -783,6 +783,9 @@
       padding: 0 30px;
       margin: 0 auto;
       margin-top: 40px; }
+      .pr-section-2 .pr-content .single-wrapper .single-item-wrapper .text-gray {
+        color: #8a8a8f;
+        padding-top: 8px; }
       .pr-section-2 .pr-content .single-wrapper .single-item-wrapper .current-image {
         height: 300px;
         margin: 0 auto;
@@ -1094,18 +1097,18 @@
     color: #FF7575; }
   .main-account .main-account-wrapper {
     padding: 0 50px; }
-  .main-account .cart {
+  .main-account .orders, .main-account .cart {
     margin: 100px auto;
     background-color: #1d1d29;
-    height: 200px;
+    height: max-content;
     border-top: 5px solid #292a37;
     border-bottom: 5px solid #292a37; }
-    .main-account .cart .continue {
+    .main-account .orders .continue, .main-account .cart .continue {
       position: absolute;
       top: -35px;
-      right: 40px;
-      color: #8a8a8f; }
-    .main-account .cart .title-block {
+      color: #8a8a8f;
+      right: 40px; }
+    .main-account .orders .title-block, .main-account .cart .title-block {
       background-color: #676eff;
       border: 5px solid #292a37;
       border-radius: 10px;
@@ -1114,11 +1117,44 @@
       position: absolute;
       top: -50px;
       left: 100px; }
-      .main-account .cart .title-block h2 {
+      .main-account .orders .title-block h2, .main-account .cart .title-block h2 {
         font-size: 22px;
         font-weight: 600; }
-        .main-account .cart .title-block h2 i {
+        .main-account .orders .title-block h2 i, .main-account .cart .title-block h2 i {
           margin-right: 10px; }
+  .main-account .cart .cart-item {
+    border: 3px solid #292a37;
+    margin: 40px;
+    padding: 20px;
+    border-radius: 8px; }
+    .main-account .cart .cart-item .review span {
+      margin-top: -4px; }
+    .main-account .cart .cart-item h3 {
+      margin-bottom: 0; }
+    .main-account .cart .cart-item .buttons {
+      justify-content: center;
+      margin-top: 12px; }
+      .main-account .cart .cart-item .buttons .quantity {
+        padding: 4px 8px;
+        background-color: #676eff;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        width: max-content;
+        height: max-content; }
+      .main-account .cart .cart-item .buttons .delete {
+        border: none;
+        background-color: #FF7575;
+        font-weight: 600;
+        padding: 4px 8px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        transition: all .2s; }
+        .main-account .cart .cart-item .buttons .delete i {
+          color: white; }
+        .main-account .cart .cart-item .buttons .delete:hover {
+          transform: scale(0.9); }
+        .main-account .cart .cart-item .buttons .delete:focus {
+          transform: scale(1.05); }
   .main-account .fav {
     margin: 80px auto;
     margin-bottom: 300px; }

@@ -275,6 +275,10 @@
                     padding: 0 30px;
                     margin: 0 auto;
                     margin-top: 40px;
+                    .text-gray {
+                        color: $lightGray1;
+                        padding-top: 8px;
+                    }
                     .current-image {
                         height: 300px;
                         margin: 0 auto;

@@ -13,6 +13,7 @@ from rest_framework import generics, status, authentication, exceptions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
 
 class ComputerView(generics.GenericAPIView):
@@ -93,36 +94,62 @@ class CartItemCreate(generics.GenericAPIView):
     serializer_class = CartItemSerializer
 
     def post(self, request, *args, **kwargs):
-        cart = Cart.objects.get(user=User.objects.get(pk=request.POST.get("user_id")))
-        product = Computer.objects.get(pk=request.POST.get("product_id"))
-        serializer = self.get_serializer(data={
-            "product": product,
-            "cart": cart,
-            "quantity": request.POST.get("quantity")
-        })
-        serializer.is_valid(raise_exception=True)
-        if serializer.is_valid():
-            cartItem = serializer.save()
-            return Response({"isCreated": "true"}, status=status.HTTP_201_CREATED)
-        
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        token = Token.objects.get(key=request.data["token"])
+        cart = Cart.objects.get(user=token.user)
+        product = Computer.objects.get(pk=request.data["product_id"])
 
+        cart_items = CartItem.objects.all().filter(cart=cart)
+
+        try:
+            cart_item = cart_items.get(product=product)
+            cart_item.quantity += request.data["quantity"]
+            cart_item.save()
+            return Response({"QuantityAdded": True}, status=status.HTTP_200_OK)
+        except:
+            serializer = self.get_serializer(data={
+                "product": request.data["product_id"],
+                "cart": cart.pk,
+                "quantity": request.data["quantity"]
+            })
+            serializer.is_valid(raise_exception=True)
+            if serializer.is_valid():
+                cartItem = serializer.save()
+                return Response({"isCreated": True}, status=status.HTTP_201_CREATED)
+            
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class CartItemDelete(generics.GenericAPIView):
+    serializer_class = CartItemSerializer
+
+    def post(self, request, *args, **kwargs):
+        token = Token.objects.get(key=request.data["token"])
+        cart = Cart.objects.get(user=token.user)
+        product = Computer.objects.get(pk=request.data["product_id"])
+
+        cart_items = CartItem.objects.all().filter(cart=cart, product=product)
+        cart_items.delete()
+        return Response({"isDeleted": True}, status=status.HTTP_200_OK)
+
+class CartItemCount(generics.GenericAPIView):
+    serializer_class = CartItemSerializer
+
+    def post(self, request, *args, **kwargs):
+        token = Token.objects.get(key=request.data["token"])
+        cart = Cart.objects.get(user=token.user)
+        product = Computer.objects.get(pk=request.data["product_id"])
+
+        try:
+            cart_item = CartItem.objects.get(cart=cart, product=product)
+            return Response({"quantity": cart_item.quantity}, status=status.HTTP_200_OK)
+        except:
+            return Response({"quantity": "none"}, status=status.HTTP_400_BAD_REQUEST)
 
 class CartView(generics.GenericAPIView):
     serializer_class = CartItemSerializer
 
-    def post(self, request, *args, **kwargs):
-        print()
-        print()
-        print()
-        print(request.POST)
-        print(dict(request.POST).values())
-        print(request.data["user_id"])
-        print()
-        print()
-
-        user = User.objects.get(pk=request.data["user_id"])
-        cart = Cart.objects.get(user=user)
+    def post(self, request, *args, **kwargs):       
+        token = Token.objects.get(key=request.data["token"])
+        cart = Cart.objects.get(user=token.user)
         cart_items = CartItem.objects.all().filter(cart=cart)
 
         products = []

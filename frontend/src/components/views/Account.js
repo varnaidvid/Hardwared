@@ -1,6 +1,7 @@
-import React, { Component, useContext } from "react"
+import React, { Component, useContext, useEffect, useState } from "react"
 import { NavLink, Redirect, Route } from "react-router-dom"
 import { MainContext } from "../App"
+import StarHandler from "../constants/StarHandler"
 import toast from "react-hot-toast"
 import axios from "axios"
 
@@ -11,8 +12,49 @@ export const signOut = () => {
     sessionStorage.clear()
 }
 
+const CartItem = (props) => {
+    const onDelete = id => {
+        axios.post("http://localhost:3000/api/cart/delete/", {
+            "token": props.user.token,
+            "product_id": id
+        })
+        .then(res => {
+            props.setCart(props.cart.filter(item => item.id != id))
+        })
+        .catch(err => {
+            toast.error("Valami hiba történt!")
+            console.log(err)
+        })
+    }
+
+    return (
+        <div className="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div className="cart-item text-center">
+                <img src={`${props.image}`} height="100" className="d-block mx-auto"/>
+                    <h3>{props.name}</h3>
+                    <div className="d-flex buttons">
+                        <span className="quantity">{props.quantity} darab</span>
+                        <button className="delete" onClick={() => onDelete(props.id)}><i className="fas fa-trash-alt"/></button>
+                    </div>
+            </div>
+        </div>
+    )
+}
+
 const Profile = (props) => {
     const [user, setUser] = useContext(MainContext)
+
+    const [cart, setCart] = useState([])
+    useEffect(() => {
+        axios.post("http://localhost:3000/api/cart/", { "token": user.token })
+        .then(res => {
+            setCart(res.data)
+        })
+        .catch(err => {
+            toast.error("Valami hiba történt!")
+            console.log(err.data)
+        })
+    }, [])
 
     return (
         <>
@@ -28,10 +70,12 @@ const Profile = (props) => {
                     <h2><i className="fas fa-shopping-cart"/> Kosár</h2>
                 </div>
                 <span className="continue">Tovább {'->'} </span>
-
+                <div className="row">
+                    { cart.map(item => <CartItem key={item.id} {...item} cart={cart} setCart={setCart} user={user}/>) }
+                </div>
             </div>
             
-            <div className="cart p-relative">
+            <div className="orders p-relative">
                 <div className="title-block">
                     <h2><i className="fas fa-list"/>Legutóbbi rendelések</h2>
                 </div>

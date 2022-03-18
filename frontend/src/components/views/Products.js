@@ -1,5 +1,6 @@
 import axios from "axios"
-import React, {Component, useState, useEffect} from "react"
+import { MainContext } from "../App"
+import React, {Component, useState, useEffect, useContext} from "react"
 import StarHandler from "../constants/StarHandler"
 import toast, { useToaster } from "react-hot-toast"
 import handleDropAnim from "../constants/handleDropAnim"
@@ -23,7 +24,7 @@ const ProductItem = (props) => {
                             <h1>{props.name}</h1>
 
                             <div className="d-flex review">
-                                {<StarHandler type={props.rating}/>}
+                                {<StarHandler type={props.rating} height={15}/>}
                                 <span>{ props.rating_len !== 0 ? "(" + props.rating_len + ")" : "" }</span>
                             </div>
                             <h5 className="desc">{props.cpu} - {props.gpu} - {props.memory} RAM - {props.storage}</h5>
@@ -506,8 +507,10 @@ export default function Products(){
                     <div className="wrapper">
                         <div className="top-content p-relative">
                             <div className="d-flex">
-                                <h3>{ filteredProducts.length == 0 ? !isFetch ?  "Nincs találat" : "" : filteredProducts.length + " találat" } </h3>
-                                <button className="sortingDropButton d-block d-xl-none" onClick={() => setSortDrop(!sortDrop)} type="button" data-bs-toggle="collapse" data-bs-target="#sortingDrop" aria-expanded="false" aria-controls="sortingDrop"><i className={!sortDrop ? "fas fa-filter" : "fas fa-times fa-lg"}/></button>
+                                <h3>{ filteredProducts.length == 0 ? !isFetch ?  "Nincs találat" : "Keresés..." : filteredProducts.length + " találat" } </h3>
+                                { filteredProducts.length != 0 ? (
+                                    <button className="sortingDropButton d-block d-xl-none" onClick={() => setSortDrop(!sortDrop)} type="button" data-bs-toggle="collapse" data-bs-target="#sortingDrop" aria-expanded="false" aria-controls="sortingDrop"><i className={!sortDrop ? "fas fa-filter" : "fas fa-times fa-lg"}/></button>
+                                ) : "" }
                             </div>
                         </div>
                             {
@@ -566,8 +569,11 @@ export default function Products(){
 const SingleProduct = props => {
     const { id } = useParams()
 
+    const [user, setUser] = useContext(MainContext)
+
     const [product, setProduct] = useState([])
     const [isFetch, setIsFetch] = useState(true)
+    const [cartCount, setCartCount] = useState(0)
 
     const [mainImg, setMainImg] = useState()
     const [currentImg, setCurrentImg] = useState()
@@ -593,8 +599,36 @@ const SingleProduct = props => {
                 setIsFetch(false)
             }, 1000)
         })
-    }, [id])
+    }, [])
 
+    const addToCart = (id) => {
+        axios.post("http://localhost:3000/api/cart/add/", {
+            "token": user.token,
+            "product_id": id,
+            "quantity": 1
+        })
+        .then(res => {
+            if (res.data.QuantityAdded) {
+                toast.success("Mennyiség hozzáadva!")
+            } else {
+                toast.success("Sikeresen kosárba rakva!")
+            }
+        })
+        .catch(err => {
+            toast.error("Valami hiba történt!")
+            console.log(err.data)
+        })
+
+        axios.post("http://localhost:3000/api/products/cart_count/", {
+            "token": user.token,
+            "product_id": id
+        })
+        .then(res => {
+            if (res.data.quantity != "none"){
+                setCartCount(res.data.quantity)
+            }
+        })
+    }
 
     return (
         <div className="pr-content">
@@ -672,7 +706,7 @@ const SingleProduct = props => {
                         ) : "" }
                         
                         <div className={ product.sale ? "mt-4" : "mt-5" }>
-                            <button className={ submitState === "loading" ? "main-btn submit-btn loading" : submitState === "success" ? "main-btn submit-btn success" : submitState === "error" ? "main-btn submit-btn error" : "main-btn submit-btn"} type="submit" id="submit">
+                            <button className={ submitState === "loading" ? "main-btn submit-btn loading" : submitState === "success" ? "main-btn submit-btn success" : submitState === "error" ? "main-btn submit-btn error" : "main-btn submit-btn"} type="button" onClick={() => addToCart(product.id)}>
                                 <span><i className="fas fa-shopping-cart"/> Kosárba.</span>
                                 <div className={ submitState === "success" ? "submit-success active" : "submit-success" }>
                                     <i className="fas fa-check"></i>
@@ -682,7 +716,9 @@ const SingleProduct = props => {
                                 </div>
                             </button>
                         </div>
-
+                        <div className="w-100 text-center">
+                            <span className="text-center text-gray">{ cartCount == 0 ? "" : cartCount + " darab már kosárban!" }</span>
+                        </div>
                         
                     </div>
                 </div>

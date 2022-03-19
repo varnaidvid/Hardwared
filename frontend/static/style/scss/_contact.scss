@@ -1,0 +1,77 @@
+.contact-section-1 {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 80px;
+    .contact-bg-text {
+        bottom: -120px;
+    }
+    .contact-title {
+        text-transform: unset !important;     
+        font-weight: 600 !important;
+        font-size: 46px;
+    }
+    .contact-featured {
+        position: absolute;
+        top: 100px;
+        left: 0;
+        right: 0;
+    }
+    .contact-card {
+        border: 5px solid $lightGray2;
+        position: relative;
+        max-width: 600px;
+        margin: 0 auto;
+        height: max-content;
+        border-radius: 30px;
+        background-color: $gray;
+        padding: 16px 42px;
+
+        .row h1 {
+            font-weight: 600;
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+        hr {
+            opacity: 1;
+            background-color: $main;
+            height: 5px;
+            width: 30px;
+            border-radius: 6px;
+            margin: 0;
+            margin-bottom: 20px;
+        }
+
+        .d-flex {
+            margin-top: 10px;
+        }
+        span {
+            color: $lightGray1;
+            font-size: 16px;
+            margin-top: -3px;
+            margin-left: 8px;
+        }
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: $main;
+        }
+        iframe {
+            border-radius: 12px;
+            border: 5px solid $lightGray2;
+        }
+    }
+}
+.contact-hr {
+    opacity: 1;
+    width: 100%;
+    margin-bottom: 200px;
+    background-color: $lightGray2;
+    height: 5px !important;
+    margin-bottom: 1400px;
+}
+
+@media (max-width: 1200px) {
+    .contact-section-1 {
+        margin-top: 60px;
+    }
+}

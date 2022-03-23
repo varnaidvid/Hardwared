@@ -9,7 +9,7 @@ export default function ContactUs(){
 
             <div className="contact-featured">
                 <div className="contact-card">
-                    <div className="row">
+                    <div className="row pt-10">
                         <div className="col-12 col-md-6">
                             <h1>Értékesítés</h1>
                             <hr/>
